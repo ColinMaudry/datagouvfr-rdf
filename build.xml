@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." name="download-convert-upload">
+<project basedir="." name="download-convert-upload" default="upload">
 	<!--<property name="baseurl" value="http://colin.maudry.com/share/"/>-->
 	<property name="baseurl" value="http://data.gouv.fr/fr/"/>
+	<property file="upload.properties"/>
 	<tstamp>
 		<format property="now"
 			pattern="yyyy-MM-dd'T'hh-mm-ss"/>
@@ -35,9 +36,8 @@
 			<fileset dir="csv/temp/" includes="*.csv"/>
 		</move>
 		<echo> </echo>
-		<echo>Unescaping escaped quotes that are followed by a semicolon (\";)... </echo>
+		<echo>Unescaping escaped quotes that are followed by a semicolon (\";)...</echo>
 		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match='\\";' replace='";'/>
-		<echo> </echo>
 		<echo>Replacing "." with "_" in headers to ease TARQL processing...</echo>
 		<replace file="csv/datasets.csv" encoding="utf-8" token=';"metric.' value=';"metric_'/>
 		<replace file="csv/resources.csv" encoding="utf-8"  token=';"checksum.' value=';"checksum_'/>
@@ -50,19 +50,45 @@
 			<file basedir="csv/" name="resources.csv"/>
 		</copy> 	
 		<echo>Deleting temp directory...</echo>
-		<deltree dir="csv/temp/"/>
+		<delete dir="csv/temp/"/>
 	</target>
 	
 	<target name="convert" depends="clean">
 		<echo>[CONVERT]</echo>
-		<mkdir dir="rdf"/>
+		<mkdir dir="rdf/history"/>
 		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="tarql.bat" searchpath="true" output="rdf/${now}_datasets.ttl">
+		<exec executable="tarql.bat" searchpath="true" output="rdf/datasets.ttl">
 			<arg line="construct-datasets.rq"/>
 		</exec>
 		<echo>Querying resources.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="tarql.bat" searchpath="true" output="rdf/${now}_resources.ttl">
+		<exec executable="tarql.bat" searchpath="true" output="rdf/resources.ttl">
 			<arg line="construct-resources.rq"/>
 		</exec>
+		<echo>Archiving RDF...</echo>
+		<copy tofile="rdf/history/${now}_datasets.ttl">
+			<file basedir="rdf/" name="datasets.ttl"/>
+		</copy>
+		<copy tofile="rdf/history/${now}_resources.ttl">
+			<file basedir="rdf/" name="resources.ttl"/>
+		</copy> 	
 	</target>
+	
+	<target name="upload" depends="convert">
+		<echo>[UPLOAD]</echo>
+		<echo>Uploading datasets.ttl to the repository...</echo>
+		<exec executable="curl.exe" searchpath="true">
+			<arg line="-X PUT"/>
+			<arg line="--data-binary @'rdf/datasets.ttl'"/>
+			<arg line="-H 'Content-type:text/turtle'"/>
+			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphBaseUri}datasets'"/>
+		</exec>
+		<echo>Uploading resources.ttl to the repository...</echo>
+		<exec executable="curl.exe" searchpath="true">
+			<arg line="-X PUT"/>
+			<arg line="--data-binary @'rdf/resources.ttl'"/>
+			<arg line="-H 'Content-type:text/turtle'"/>
+			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphBaseUri}resources'"/>
+		</exec>		
+	</target>
+	
 </project>
