@@ -9,6 +9,8 @@ PREFIX dgfr: <http://colin.maudry.com/ontologies/dgfr#>
 PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
 
+
+#This doesn't work, it fails after processing a dozen of resources.
 construct
 {
   ?dataset dcat:keyword ?splitTags .

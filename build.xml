@@ -41,6 +41,7 @@
 		<echo>Replacing "." with "_" in headers to ease TARQL processing...</echo>
 		<replace file="csv/datasets.csv" encoding="utf-8" token=';"metric.' value=';"metric_'/>
 		<replace file="csv/resources.csv" encoding="utf-8"  token=';"checksum.' value=';"checksum_'/>
+		<replace file="csv/resources.csv" encoding="utf-8"  token='"dataset.' value='"dataset_'/>
 		
 		<echo>Archiving clean CSVs...</echo>
 		<copy tofile="csv/history/${now}_datasets.csv">
