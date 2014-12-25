@@ -1,0 +1,58 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dgfr: <http://colin.maudry.com/ontologies/dgfr#>
+PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
+PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
+
+construct
+
+{
+
+  ?dataset a dcat:Dataset ;
+    dct:identifier ?a ;
+    dct:title ?title ;
+    dcat:landingPage ?urlAsUri ;
+    dct:rightsHolder ?organization ;
+    dct:publisher ?supplier ;
+    dct:description ?description ;
+    dct:accrualPeriodicity ?dctFrequency ;
+    dct:license ?license ;
+    dgfr:private ?lcPrivate ;
+    dgfr:featured ?lcFeatured ;
+    dct:created ?createdAsDateTime ;
+    dct:modified ?modifiedAsDateTime ;
+   # dcat:keywords ?splitTags ;
+    dgfr:visitors ?visitors ;
+    dgfr:views ?views ;
+    dgfr:followers ?followers ;
+    dgfr:reuses ?reuses ;
+    dgfr:visits ?visits ;
+    dgfr:hits ?hits ;
+    dgfr:issues ?issues .  
+}
+from <file:csv/datasets.csv#delimiter=%3B;encoding=utf-8>
+  where {
+  
+  bind(uri(concat("http://data.gouv.fr/fr/datasets/",?id,"#this")) as ?dataset)
+  bind(uri(?url) as ?urlAsUri)
+  bind(uri(concat("http://purl.org/cld/freq/",?frequency)) as ?dctFrequency)
+  bind(xs:boolean(if (?private="",false,lcase(?private))) as ?lcPrivate)
+  bind(xs:boolean(if (?featured="",false,lcase(?featured))) as ?lcFeatured)
+  bind(xs:dateTime(?created_at) as ?createdAsDateTime)
+  bind(xs:dateTime(?last_modified) as ?modifiedAsDateTime)
+  bind(xs:int(?metric_views) as ?views)
+  bind(xs:int(?metric_issues) as ?issues)
+  bind(xs:int(?metric_followers) as ?followers)
+  bind(xs:int(?metric_hits) as ?hits)
+  bind(xs:int(?metric_visits) as ?visits)
+  bind(xs:int(?metric_visitors) as ?visitors)
+  bind(xs:int(?metric_reuses) as ?reuses)
+
+  }
+  
+  
