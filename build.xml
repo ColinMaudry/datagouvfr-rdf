@@ -49,28 +49,20 @@
 		<copy tofile="csv/history/${now}_resources.csv">
 			<file basedir="csv/" name="resources.csv"/>
 		</copy> 	
-		
-		
-		<!--<echo>Replacing "." with "_" in headers to ease TARQL processing...</echo>
-		<loadfile srcfile="test.xml" property="file.first.and.last.line.removed">
-			<filterchain>
-				<filterreader classname="org.apache.tools.ant.filters.HeadFilter">
-					<param name="lines" value="-1"/>
-					<param name="skip" value="1"/>
-				</filterreader>
-				<filterreader classname="org.apache.tools.ant.filters.TailFilter">
-					<param name="lines" value="-1"/>
-					<param name="skip" value="1"/>
-				</filterreader>
-			</filterchain>
-		</loadfile>-->
+		<echo>Deleting temp directory...</echo>
+		<deltree dir="csv/temp/"/>
 	</target>
 	
-	<target name="convert">
+	<target name="convert" depends="clean">
+		<echo>[CONVERT]</echo>
 		<mkdir dir="rdf"/>
-		<exec dir="." command="tarql" searchpath="true" output="rdf/${now}_datasets.ttl">
-						
-		
+		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
+		<exec executable="tarql.bat" searchpath="true" output="rdf/${now}_datasets.ttl">
+			<arg line="construct-datasets.rq"/>
+		</exec>
+		<echo>Querying resources.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
+		<exec executable="tarql.bat" searchpath="true" output="rdf/${now}_resources.ttl">
+			<arg line="construct-resources.rq"/>
 		</exec>
 	</target>
 </project>
