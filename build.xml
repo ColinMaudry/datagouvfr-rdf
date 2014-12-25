@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="download-convert-upload" default="download">
+	<property name="baseurl" value="http://colin.maudry.com/share/"/>
+	<!--<property name="baseurl" value="http://data.gouv.fr/fr/"/>-->
+	<tstamp>
+		<format property="now"
+			pattern="yyyy-MM-dd'T'hh-mm-ss"
+			locale="fr,FR"/>
+	</tstamp>
+  <target name="download">
+  	<echo>[DOWNLOAD]</echo>
+  	<mkdir dir="csv/history"/>
+  	<echo>Downloading datasets.csv...</echo>
+  	<get
+  		verbose="true"
+  		src="${baseurl}datasets.csv"
+  		dest="csv/datasets.csv"/>
+  	<echo>Downloading resources.csv...</echo>
+  	<get
+  		verbose="true"
+  		src="${baseurl}resources.csv"
+  		dest="csv/resources.csv"/>
+  	<echo>Archiving...</echo>
+  	<copy tofile="csv/history/${now}_datasets.csv">
+  		<file basedir="csv/" name="datasets.csv"/>
+  	</copy>
+  	<copy tofile="csv/history/${now}_resources.csv">
+  		<file basedir="csv/" name="resources.csv"/>
+  	</copy>  	
+  </target>
+	
+	<!--<target name="clean">
+		<exec dir="scripts/" command=""></exec>
+	</target>
+	
+	<target name="convert">
+		<mkdir dir="rdf"/>
+		<exec dir="." command="tarql" searchpath="true" output="rdf/${now}_datasets.ttl">
+						
+		
+		</exec>
+	</target>-->
+</project>
