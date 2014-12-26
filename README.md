@@ -24,7 +24,7 @@ Various stuff around uplifting the French open data portal to the [Semantic Web]
 
 So far, I'm not able to give away the credentials of my repository and let anyone update the RDF metadata. This implies that the script does not run out-of-the-box, you need to edit the UPLOAD task with the address/credentials/graphs you wish.
 
-If you run the script in a Unix environment, remember you need to remove ".bat" from executale names in the script (I need to automate this).
+If you run the script in a Unix environment, remember you need to remove ".bat" from executable names in the script (I need to automate this).
 
 ### Next steps
 
