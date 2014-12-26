@@ -15,8 +15,9 @@
     dcterms:title "Métadonnées de jeux de données publiés sur http://data.gouv.fr"@fr ;
     dcterms:source <http://data.gouv.fr/fr/datasets.csv> ;
     dcterms:source <http://data.gouv.fr/fr/resources.csv> ;
-    dcterms:created "2014-12-26T02:40:15"^^xsd:dateTime ;
-    dcterms:issued "2014-12-26T02:40:15"^^xsd:dateTime ;
+    dcterms:created "2014-12-21T16:00:00"^^xsd:dateTime ;
+    dcterms:issued "2014-12-21T16:00:00"^^xsd:dateTime ;
+    dcterms:modified "@endDate"^^xsd:dateTime ;
     dcterms:license <http://www.opendatacommons.org/licenses/odbl/> ;
     dcterms:subject <http://dbpedia.org/resource/Open_government> ;
     dcterms:subject <http://dbpedia.org/resource/France> ;

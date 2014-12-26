@@ -13,9 +13,8 @@ activities:updateDGFR-RDF a prov:Activity ;
 	prov:used <http://data.gouv.fr/fr/datasets.csv> ;
 	prov:used <http://data.gouv.fr/fr/resources.csv> ;
 	prov:used <https://github.com/ColinMaudry/datagouvfr-rdf> ;
-	prov:startedAtTime "2014-12-26T02:40:15"^^xsd:dateTime ;
-	prov:generated <http://dydra.com/colin-maudry/datagouvfr#this> ;
-	prov:endedAtTime "2014-12-26T02:40:15"^^xsd:dateTime .
+	prov:startedAtTime "@startDate"^^xsd:dateTime ;
+	prov:generated <http://dydra.com/colin-maudry/datagouvfr#this> .
 	
 <http://dydra.com/colin-maudry/datagouvfr#this> a void:Dataset ;
 	a prov:Entity .
@@ -25,10 +24,10 @@ activities:updateDGFR-RDF a prov:Activity ;
 	
 <http://data.gouv.fr/fr/datasets.csv>
 	prov:wasAttributedTo <http://data.gouv.fr#this> ;
-	dcterms:created "2014-12-26T02:40:15"^^xsd:dateTime .
+	dcterms:created "@startDate"^^xsd:dateTime .
 <http://data.gouv.fr/fr/resources.csv>
 	prov:wasAttributedTo <http://data.gouv.fr#this> ;
-	dcterms:created "2014-12-26T02:40:15"^^xsd:dateTime .
+	dcterms:created "@startDate"^^xsd:dateTime .
 
 <http://data.gouv.fr#this> a foaf:Organization ;
 	foaf:name "Plateforme ouverte des données publiques françaises"@fr .
