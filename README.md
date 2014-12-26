@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (v0.1.0)
+Semantic data.gouv.fr (0.1.1)
 ==============
 
 Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -33,7 +33,12 @@ If you run the script in a Unix environment, remember you need to remove ".bat" 
 
 ## Change log
 
-#### v0.1.0
+##### 0.1.1
+
+- Configured upload and update of VoID and PROV metadata (in default graph)
+- Enabled scheduled task to update data every day
+
+#### 0.1.0
 
 - Script to download/clean/convert/publish data.gouv.fr dataset metadata
 - Basic documentation
