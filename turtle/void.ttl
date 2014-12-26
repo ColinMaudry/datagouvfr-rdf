@@ -1,0 +1,60 @@
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+
+
+ <http://dydra.com/colin-maudry/datagouvfr#this> a void:Dataset ;
+    dcterms:creator <http://colin.maudry.com/rdf/me> ;
+    foaf:homepage <http://dydra.com/colin-maudry/datagouvfr> ;
+    foaf:primaryTopicOf <https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/> ;
+    dcterms:title "Metadata of the datasets published on http://data.gouv.fr"@en ;
+    dcterms:title "Métadonnées de jeux de données publiés sur http://data.gouv.fr"@fr ;
+    dcterms:source <http://data.gouv.fr/fr/datasets.csv> ;
+    dcterms:source <http://data.gouv.fr/fr/resources.csv> ;
+    dcterms:created "2014-12-21T16:00:00"^^xsd:dateTime ;
+    dcterms:issued "2014-12-21T16:00:00"^^xsd:dateTime ;
+    dcterms:modified "@endDate"^^xsd:dateTime ;
+    dcterms:license <http://www.opendatacommons.org/licenses/odbl/> ;
+    dcterms:subject <http://dbpedia.org/resource/Open_government> ;
+    dcterms:subject <http://dbpedia.org/resource/France> ;
+    
+    void:feature <http://www.w3.org/ns/formats/N3> ;
+    void:feature <http://www.w3.org/ns/formats/N-Triples> ;
+    void:feature <http://www.w3.org/ns/formats/N-Quads> ;
+    void:feature <http://www.w3.org/ns/formats/JSON-LD> ;
+ 	void:feature <http://www.w3.org/ns/formats/RDF_XML> ;   
+ 	void:feature <http://www.w3.org/ns/formats/Turtle> ;
+ 	
+ 	void:sparqlEndpoint <http://dydra.com/colin-maudry/datagouvfr/sparql> ;
+ 	
+ 	void:dataDump <http://dydra.com/colin-maudry/datagouvfr.rdf> ;
+ 	void:dataDump <http://dydra.com/colin-maudry/datagouvfr.ttl> ;
+ 	void:dataDump <http://dydra.com/colin-maudry/datagouvfr.nt> ;
+ 	void:dataDump <http://dydra.com/colin-maudry/datagouvfr.jsonld> ;
+ 	void:dataDump <http://dydra.com/colin-maudry/datagouvfr.nq> ;
+ 	
+ 	void:exampleResource <http://data.gouv.fr/fr/resources/3725f125-9e93-491a-a82d-ea33c2822b3b#this> ;
+ 	void:exampleResource <http://data.gouv.fr/fr/datasets/536993baa3a729239d20428c#this> ;
+ 	
+ 	void:uriSpace "http://data.gouv.fr/fr/" ;
+ 	
+ 	void:vocabulary <http://purl.org/dc/terms/> ;
+ 	void:vocabulary <http://www.w3.org/ns/dcat> ;
+ 	void:vocabulary <http://colin.maudry.com/ontologies/dgfr> ;
+ 	
+	sd:namedGraph <http://data.gouv.fr/graphs/datasets> ;
+	sd:namedGraph <http://data.gouv.fr/graphs/resources> .
+ 	
+ <http://dydra.com/colin-maudry/datagouvfr/sparql#this> a sd:Service ;
+ 	sd:url <http://dydra.com/colin-maudry/datagouvfr/sparql> ;
+ 	 sd:defaultDatasetDescription <http://dydra.com/colin-maudry/datagouvfr#this> .
+ 	 	
+ 	
+ 	 	
+ 
+ 	
+ 	
