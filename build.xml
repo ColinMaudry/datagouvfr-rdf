@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." name="download-convert-upload" default="upload">
+<project basedir="." name="download-convert-upload" default="metadata">
 	<!--<property name="baseurl" value="http://colin.maudry.com/share/"/>-->
 	<property name="baseurl" value="http://data.gouv.fr/fr/"/>
 	<property file="upload.properties"/>
 	<tstamp>
+		<!-- With - to be filename-compatible -->
 		<format property="now"
-			pattern="yyyy-MM-dd'T'hh-mm-ss"/>
+			pattern="yyyy-MM-dd'T'HH-mm-ss"/>
 	</tstamp>
-  <target name="download">
+	<tstamp>
+		<!-- Standard dateTime format -->
+		<format property="start"
+			pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+	</tstamp>
+	<target name="download">
   	<echo>[DOWNLOAD]</echo>
   	<mkdir dir="csv/history"/>
   	<echo>Downloading datasets.csv...</echo>
@@ -59,11 +65,11 @@
 		<mkdir dir="rdf/history"/>
 		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
 		<exec executable="tarql.bat" searchpath="true" output="rdf/datasets.ttl">
-			<arg line="construct-datasets.rq"/>
+			<arg line="sparql/construct-datasets.rq"/>
 		</exec>
 		<echo>Querying resources.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
 		<exec executable="tarql.bat" searchpath="true" output="rdf/resources.ttl">
-			<arg line="construct-resources.rq"/>
+			<arg line="sparql/construct-resources.rq"/>
 		</exec>
 		<echo>Archiving RDF...</echo>
 		<copy tofile="rdf/history/${now}_datasets.ttl">
@@ -92,4 +98,38 @@
 		</exec>		
 	</target>
 	
+	<target name="metadata" depends="upload">
+		<echo>[METADATA]</echo>
+		<tstamp>
+			<!-- <tstamp> returns the same timestamp all over the script. It's consequently
+			better to simply get a date (for now)-->
+			<format property="end"
+				pattern="yyyy-MM-dd"/>
+		</tstamp>
+		<mkdir dir="turtle/temp"/>
+		<echo>Replacing placeholders in VoID and PROV metadata...</echo>
+		<copy todir="turtle/temp">
+			<fileset dir="turtle/" includes="*.ttl"/>
+		</copy>
+		<replace token="@startDate" value="${start}">
+			<fileset dir="turtle/temp" includes="*.ttl"/>
+		</replace>
+		<replace token="@endDate" value="${end}">
+			<fileset dir="turtle/temp" includes="*.ttl"/>
+		</replace>
+		<echo>Uploading metadata to the main graph of the repository...</echo>
+		<exec executable="curl.exe" searchpath="true">
+			<arg line="-v -X PUT"/>
+			<arg line="--data-binary @'turtle/prov.ttl'"/>
+			<arg line="-H 'Content-type:text/turtle'"/>
+			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?default'"/>
+		</exec>
+		<exec executable="curl.exe" searchpath="true">
+			<arg line="-v -X POST"/>
+			<arg line="--data-binary @'turtle/void.ttl'"/>
+			<arg line="-H 'Content-type:text/turtle'"/>
+			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?default'"/>
+		</exec>
+		<!--<delete dir="turtle/temp"/>-->
+	</target>
 </project>

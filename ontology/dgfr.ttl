@@ -1,0 +1,121 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix :     <http://colin.maudry.com/ontologies/dgfr#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+#Author: Colin Maudry
+#Contact: colin@maudry.com
+
+<http://colin.maudry.com/ontologies/dgfr#>
+	a owl:Ontology ;
+	dcterms:title "Data.gouv.fr (DGFR) ontology" ;
+	dcterms:creator <http://colin.maudry/rdf/colin-maudry#me> ;
+	dcterms:created "2014-12-12"^^xsd:date ;
+	dcterms:modified "2014-12-12"^^xsd:date ;
+	dcterms:description "The DGFR ontology defines the terms required to describe the datasets published or referenced on data.gouv.fr, when DCAT and Dublin Core are not enough."@en ;
+	dcterms:description "L'ontologie DGFR définit les termes nécessaires à la description des jeux de données publiés ou référencés sur data.gouv.fr, lorsque DCAT et Dublin Core ne suffisent pas."@fr ;
+	cc:license <http://unlicense.org> ;
+	vann:preferredNamespaceUri <http://colin.maudry.com/ontologies/dgfr#>;
+    vann:preferredNamespacePrefix "dgfr";
+	rdfs:seeAlso <http://data.gouv.fr> .
+
+	<http://colin.maudry/rdf/colin-maudry#me> foaf:name "Colin Maudry" ;
+		foaf:mbox  <mailto:colin@maudry.com>  . 
+
+#For dcat:Dataset
+
+	:private a rdf:Property ;
+		rdfs:range xsd:boolean ;
+		rdfs:label "Private" ;
+		rdfs:comment "Defines whether the dataset is private (not public) or not."@en ;
+		rdfs:comment "Détermine si le jeu de données est privé (non public) ou non."@fr ;
+		rdfs:domain dcat:Dataset .
+	
+	:featured a rdf:Property ;
+		rdfs:range xsd:boolean ;
+		rdfs:label "Featured" ;
+		rdfs:comment "Defines whether the dataset is shown on the portal front page or not."@en ;
+		rdfs:comment "Détermine si le jeu de données est visible sur la page d'accueil du portail, ou non."@fr ;
+		rdfs:domain dcat:Dataset .
+	
+	:visitors a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Visitors" ;
+		rdfs:comment "The number of unique visitors who viewed the page of the dataset."@en ;
+		rdfs:comment "Le nombre de visiteurs unique qui se sont rendus sur la page du jeu de données."@fr ;
+		rdfs:domain dcat:Dataset .
+	
+	:views a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Views" ;
+		rdfs:comment "The number of times the page of the dataset bas been viewed."@en ;
+		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue."@fr ;
+		rdfs:domain dcat:Dataset .
+	
+	:reuses a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Reuses" ;
+		rdfs:comment "The number of reuses that have been created from the data of the dataset and published on the same page."@en ;
+		rdfs:comment "Le nombre de réutilisations qui ont été créées à partir des données du jeu de données et publiés sur la même page."@fr ;
+		rdfs:domain dcat:Dataset .	
+		
+	:followers a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Followers" ;
+		rdfs:comment "The number of users who subscribed to be informed when the dataset is updated."@en ;
+		rdfs:comment "Le nombre d'utilisateurs qui se sont abonnés pour être informés lorsque le jeu de données est mis à jour."@fr ;
+		rdfs:domain dcat:Dataset .
+
+	:issues a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Issues" ;
+		rdfs:comment "The number of issues that have been reported about the dataset (wrong or missing data)."@en ;
+		rdfs:comment "Le nombre d'anomalies qui ont été signalées pour le jeu de données (données erronées ou manquantes)."@fr ;
+		rdfs:domain dcat:Dataset .	
+		
+#For dcat:Distribution
+		
+	:type a rdf:Property ;
+		rdfs:range xsd:string ;
+		rdfs:label "Type";
+		rdfs:comment "The type of resource (file, remote file, API, etc.)"@en ;
+		rdfs:comment "Le type de ressource (fichier, fichier distant, API, etc.)"@fr ;
+		rdfs:domain dcat:Distribution . 
+	
+	:format a rdf:Property ;
+		rdfs:range xsd:string ;
+		rdfs:label "Format" ;
+		rdfs:comment "Defines the format of a resource/dcat:Distribution. Used until proper resources of type dct:MediaTypeOrExtent are found."@en ;
+		rdfs:comment "Détermine le format d'une ressource/dcat:Distribution. Propriété utilisée jusqu'à ce que l'on trouve des ressources de type dct:MediaTypeOrExtent."@fr ;
+		rdfs:domain dcat:Distribution .
+	
+	:checksumType a rdf:Property ;
+		rdfs:range xsd:string ;
+		rdfs:label "Format" ;
+		rdfs:comment "The type of checksum of the resource."@en ;
+		rdfs:comment "Le type de somme de contrôle de la ressource."@fr ;
+		rdfs:domain dcat:Distribution .
+
+	:checksumValue a rdf:Property ;
+		rdfs:range xsd:string ;
+		rdfs:label "Format" ;
+		rdfs:comment "The checksum of the resource."@en ;
+		rdfs:comment "La somme de contrôle de la ressource."@fr ;
+		rdfs:domain dcat:Distribution .
+		
+	:downloads a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Downloads" ;
+		rdfs:comment "The number of times the resource was downloaded."@en ;
+		rdfs:comment "Le nombre de fois que la ressource a été téléchargée."@fr ;
+		rdfs:domain dcat:Distribution .
+	
+	
+			

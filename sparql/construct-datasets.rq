@@ -35,7 +35,7 @@ construct
     dgfr:hits ?hits ;
     dgfr:issues ?issues .  
 }
-from <file:csv/datasets.csv#delimiter=%3B;encoding=utf-8>
+from <file:../csv/datasets.csv#delimiter=%3B;encoding=utf-8>
   where {
   
   bind(uri(concat("http://data.gouv.fr/fr/datasets/",?id,"#this")) as ?dataset)

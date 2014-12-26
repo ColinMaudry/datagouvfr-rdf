@@ -30,7 +30,7 @@ construct
       
   ?dataset dcat:distribution ?resource .
 }
-from <file:csv/resources.csv#delimiter=%3B;encoding=utf-8>
+from <file:../csv/resources.csv#delimiter=%3B;encoding=utf-8>
   where {
   
   bind(uri(concat("http://data.gouv.fr/fr/resources/",?id,"#this")) as ?resource)
