@@ -35,7 +35,7 @@ from <file:../csv/resources.csv#delimiter=%3B;encoding=utf-8>
   
   bind(uri(concat("http://data.gouv.fr/fr/resources/",?id,"#this")) as ?resource)
   bind(uri(concat("http://data.gouv.fr/fr/datasets/",?dataset_id,"#this")) as ?dataset)
-  bind(if(contains(?url," "),"",uri(?url)) as ?urlAsUri)
+  bind(if(contains(?url," "), uri(encode_for_uri(?url)),uri(?url)) as ?urlAsUri)
   bind(xs:dateTime(?created_at) as ?createdAsDateTime)
   bind(xs:dateTime(?modified) as ?modifiedAsDateTime)
   bind(xs:int(?downloads) as ?downloadsAsInt)
