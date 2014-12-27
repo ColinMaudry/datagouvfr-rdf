@@ -33,6 +33,11 @@ If you run the script in a Unix environment, remember you need to remove ".bat" 
 
 ## Change log
 
+##### 0.1.2
+
+- Fixed resources that have spaces in their URLs (url-encode)
+- Added dgfr:slug for datasets
+
 ##### 0.1.1
 
 - Configured upload and update of VoID and PROV metadata (in default graph)
