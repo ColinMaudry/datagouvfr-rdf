@@ -27,6 +27,7 @@ construct
     dct:created ?createdAsDateTime ;
     dct:modified ?modifiedAsDateTime ;
    # dcat:keywords ?splitTags ;
+   	dgfr:slug ?slug ;
     dgfr:visitors ?visitors ;
     dgfr:views ?views ;
     dgfr:followers ?followers ;
