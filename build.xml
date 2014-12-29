@@ -98,7 +98,7 @@
 		</exec>		
 	</target>
 	
-	<target name="metadata" depends="upload">
+	<target name="metadata">
 		<echo>[METADATA]</echo>
 		<tstamp>
 			<!-- <tstamp> returns the same timestamp all over the script. It's consequently
@@ -120,13 +120,13 @@
 		<echo>Uploading metadata to the main graph of the repository...</echo>
 		<exec executable="curl.exe" searchpath="true">
 			<arg line="-v -X PUT"/>
-			<arg line="--data-binary @'turtle/prov.ttl'"/>
+			<arg line="--data-binary @'turtle/temp/prov.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
 			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?default'"/>
 		</exec>
 		<exec executable="curl.exe" searchpath="true">
 			<arg line="-v -X POST"/>
-			<arg line="--data-binary @'turtle/void.ttl'"/>
+			<arg line="--data-binary @'turtle/temp/void.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
 			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?default'"/>
 		</exec>
