@@ -44,6 +44,10 @@ Otherwise, you can reach me:
 
 ## Change log
 
+##### 0.1.3
+
+- Fixed RDF dataset modification date
+
 ##### 0.1.2
 
 - Fixed resources that have spaces in their URLs (url-encode)
@@ -58,9 +62,6 @@ Otherwise, you can reach me:
 
 - Script to download/clean/convert/publish data.gouv.fr dataset metadata
 - Basic documentation
-
-
-
 
 
 
