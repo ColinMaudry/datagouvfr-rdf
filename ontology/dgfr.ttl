@@ -13,6 +13,26 @@
 #Author: Colin Maudry
 #Contact: colin@maudry.com
 
+
+#The following data.gouv.fr properties are mapped with Dublin Core or DCAT properties during the conversion:
+
+# For datasets and resources
+# id			> dct:identifier
+# created_at 	> dct:created
+# last_modified	> dct:modified
+
+#For datasets
+# frequency 	> dct:accrualPeriodicity
+# organization 	> dct:rightsHolder
+# supplier 		> dct:publisher
+# url 			> dcat:landingPage
+# tags			> dcat:keyword (not implemented yet)
+
+#For resources
+# url			> dcat:downloadUrl 
+# mime			> dcat:mediaType
+# size 			> dcat:byteSize
+
 <http://colin.maudry.com/ontologies/dgfr#>
 	a owl:Ontology ;
 	dcterms:title "Data.gouv.fr (DGFR) ontology" ;
@@ -30,6 +50,8 @@
 		foaf:mbox  <mailto:colin@maudry.com>  . 
 
 #For dcat:Dataset
+
+
 
 	:private a rdf:Property ;
 		rdfs:range xsd:boolean ;
@@ -81,7 +103,7 @@
 		rdfs:domain dcat:Dataset .	
 		
 #For dcat:Distribution
-		
+
 	:type a rdf:Property ;
 		rdfs:range xsd:string ;
 		rdfs:label "Type";
