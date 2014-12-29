@@ -31,7 +31,22 @@ If you run the script in a Unix environment, remember you need to remove ".bat" 
 - Adding [PROV](http://www.w3.org/TR/2013/REC-prov-o-20130430/#description-starting-point-terms) metadata upon data update
 - Updating [VoID](http://www.w3.org/TR/void/) metadata upon data update
 
+## Contact
+
+I would love to read your feedback/comments/suggestions!
+
+If you have a Github account, you can [create an issue](https://github.com/ColinMaudry/datagouvfr-rdf/issues/new).
+
+Otherwise, you can reach me:
+
+- by email: colin@maudry.com
+- on Twitter: [@CMaudry](https://twitter.com/CMaudry)
+
 ## Change log
+
+##### 0.1.3
+
+- Fixed RDF dataset modification date
 
 ##### 0.1.2
 
@@ -47,17 +62,6 @@ If you run the script in a Unix environment, remember you need to remove ".bat" 
 
 - Script to download/clean/convert/publish data.gouv.fr dataset metadata
 - Basic documentation
-
-## Contact
-
-I would love to read your feedback/comments/suggestions!
-
-If you have a Github account, you can [create an issue](https://github.com/ColinMaudry/datagouvfr-rdf/issues/new).
-
-Otherwise, you can reach me:
-
-- by email: colin@maudry.com
-- on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 
 
