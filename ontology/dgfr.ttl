@@ -67,13 +67,6 @@
 		rdfs:comment "Détermine si le jeu de données est visible sur la page d'accueil du portail, ou non."@fr ;
 		rdfs:domain dcat:Dataset .
 	
-	:visitors a rdf:Property ;
-		rdfs:range xsd:int ;
-		rdfs:label "Visitors" ;
-		rdfs:comment "The number of unique visitors who viewed the page of the dataset."@en ;
-		rdfs:comment "Le nombre de visiteurs unique qui se sont rendus sur la page du jeu de données."@fr ;
-		rdfs:domain dcat:Dataset .
-	
 	:views a rdf:Property ;
 		rdfs:range xsd:int ;
 		rdfs:label "Views" ;
@@ -100,6 +93,13 @@
 		rdfs:label "Issues" ;
 		rdfs:comment "The number of issues that have been reported about the dataset (wrong or missing data)."@en ;
 		rdfs:comment "Le nombre d'anomalies qui ont été signalées pour le jeu de données (données erronées ou manquantes)."@fr ;
+		rdfs:domain dcat:Dataset .
+
+	:uniqueVisitors a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Unique visitors" ;
+		rdfs:comment "The number of unique visitors who viewed the page of the dataset."@en ;
+		rdfs:comment "Le nombre de visiteurs uniques qui se sont rendus sur la page du jeu de données."@fr ;
 		rdfs:domain dcat:Dataset .	
 		
 #For dcat:Distribution
@@ -120,14 +120,14 @@
 	
 	:checksumType a rdf:Property ;
 		rdfs:range xsd:string ;
-		rdfs:label "Format" ;
+		rdfs:label "Checksum type" ;
 		rdfs:comment "The type of checksum of the resource."@en ;
 		rdfs:comment "Le type de somme de contrôle de la ressource."@fr ;
 		rdfs:domain dcat:Distribution .
 
 	:checksumValue a rdf:Property ;
 		rdfs:range xsd:string ;
-		rdfs:label "Format" ;
+		rdfs:label "Checksum value" ;
 		rdfs:comment "The checksum of the resource."@en ;
 		rdfs:comment "La somme de contrôle de la ressource."@fr ;
 		rdfs:domain dcat:Distribution .

@@ -60,7 +60,7 @@
 		<delete dir="csv/temp/"/>
 	</target>
 	
-	<target name="convert" depends="clean">
+	<target name="convert">
 		<echo>[CONVERT]</echo>
 		<mkdir dir="rdf/history"/>
 		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
