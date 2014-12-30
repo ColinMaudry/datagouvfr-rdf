@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.1.1)
+Semantic data.gouv.fr (0.1.4)
 ==============
 
 Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -44,6 +44,10 @@ Otherwise, you can reach me:
 
 ## Change log
 
+##### 0.1.4
+
+- Fixed missing properties (mismatch at conversion stage). Still no tags
+
 ##### 0.1.3
 
 - Fixed RDF dataset modification date
@@ -62,7 +66,6 @@ Otherwise, you can reach me:
 
 - Script to download/clean/convert/publish data.gouv.fr dataset metadata
 - Basic documentation
-
 
 
 

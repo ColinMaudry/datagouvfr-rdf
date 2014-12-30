@@ -38,6 +38,7 @@ from <file:../csv/resources.csv#delimiter=%3B;encoding=utf-8>
   bind(if(contains(?url," "), uri(encode_for_uri(?url)),uri(?url)) as ?urlAsUri)
   bind(xs:dateTime(?created_at) as ?createdAsDateTime)
   bind(xs:dateTime(?modified) as ?modifiedAsDateTime)
+  bind(xs:int(?size) as ?sizeAsInt)
   bind(xs:int(?downloads) as ?downloadsAsInt)
   bind(lcase(?format) as ?lcFormat)
   bind(lcase(?type) as ?lcType)

@@ -98,7 +98,7 @@
 		</exec>		
 	</target>
 	
-	<target name="metadata">
+	<target name="metadata" depends="upload">
 		<echo>[METADATA]</echo>
 		<tstamp>
 			<!-- <tstamp> returns the same timestamp all over the script. It's consequently

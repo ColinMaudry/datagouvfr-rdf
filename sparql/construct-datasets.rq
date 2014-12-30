@@ -28,12 +28,12 @@ construct
     dct:modified ?modifiedAsDateTime ;
    # dcat:keywords ?splitTags ;
    	dgfr:slug ?slug ;
-    dgfr:visitors ?visitors ;
     dgfr:views ?views ;
     dgfr:followers ?followers ;
     dgfr:reuses ?reuses ;
     dgfr:visits ?visits ;
     dgfr:hits ?hits ;
+    dgfr:uniqueVisitors ?unique_visitors ;
     dgfr:issues ?issues .  
 }
 from <file:../csv/datasets.csv#delimiter=%3B;encoding=utf-8>
@@ -49,10 +49,10 @@ from <file:../csv/datasets.csv#delimiter=%3B;encoding=utf-8>
   bind(xs:int(?metric_views) as ?views)
   bind(xs:int(?metric_issues) as ?issues)
   bind(xs:int(?metric_followers) as ?followers)
-  bind(xs:int(?metric_hits) as ?hits)
-  bind(xs:int(?metric_visits) as ?visits)
-  bind(xs:int(?metric_visitors) as ?visitors)
+  bind(xs:int(?metric_nb_hits) as ?hits)
+  bind(xs:int(?metric_nb_visits) as ?visits)
   bind(xs:int(?metric_reuses) as ?reuses)
+  bind(xs:int(?metric_nb_uniq_visitors) as ?unique_visitors)
 
   }
   
