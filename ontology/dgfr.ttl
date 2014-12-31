@@ -102,6 +102,13 @@
 		rdfs:comment "Le nombre de visiteurs uniques qui se sont rendus sur la page du jeu de données."@fr ;
 		rdfs:domain dcat:Dataset .	
 		
+	:slug a rdf:Property ;
+		rdfs:range xsd:string ;
+		rdfs:label "Slug" ;
+		rdfs:comment "A URL-friendly version of the title."@en ;
+		rdfs:comment "Une version du titre simplifiée pour pouvoir être inséré dans une URL."@fr ;
+		rdfs:domain dcat:Dataset .	
+		
 #For dcat:Distribution
 
 	:type a rdf:Property ;
