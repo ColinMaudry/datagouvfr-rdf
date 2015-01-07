@@ -56,7 +56,10 @@ $prefLabel, $altLabel, $title and $name variables.
 </xsl:template>
 
 <xsl:template match="result" mode="title">
-    <title>Search Results</title>
+    <title>
+    	<xsl:value-of select="primaryTopic/label"/>
+    	<xsl:text> - data.gouv.fr Linked Data browser by Colin Maudry</xsl:text>
+    </title>
 </xsl:template>
 
 <xsl:template match="result" mode="meta">
@@ -87,6 +90,7 @@ $prefLabel, $altLabel, $title and $name variables.
     <link rel="stylesheet" href="{$_resourceRoot}css/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="{$_resourceRoot}css/smoothness/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="{$_resourceRoot}css/result.css" type="text/css" />
+	<link rel="stylesheet" href="{$_resourceRoot}css/datagouvfr.css" type="text/css" />
     <xsl:comment>
         <xsl:text>[if lt IE 9]&gt;</xsl:text>
         <xsl:text>&lt;link rel="stylesheet" href="</xsl:text><xsl:value-of select='$_resourceRoot'/><xsl:text>css/ie.css" type="text/css">&lt;/link></xsl:text>
@@ -334,7 +338,7 @@ $prefLabel, $altLabel, $title and $name variables.
         <xsl:apply-templates select="." mode="formats" />
     </nav>
     <header>
-        <h1><a href="/">Linked Data API</a></h1>
+        <h1><a href="/">Data.gouv.fr Linked Data browser</a></h1>
     </header>
 </xsl:template>
 
@@ -342,6 +346,7 @@ $prefLabel, $altLabel, $title and $name variables.
     <footer>
         <xsl:apply-templates select="wasResultOf" mode="footer" />
         <p>
+        	Set up by <a href="http://about.me/ColinMaudry">Colin Maudry</a>, more info <a href="https://t.co/nsqlhzlFja">here</a>. <br />
             <xsl:text>Powered by </xsl:text>
             <xsl:apply-templates select="wasResultOf/processor" mode="footer" />
             <xsl:text>an implementation of the </xsl:text>

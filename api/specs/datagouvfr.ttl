@@ -1,0 +1,243 @@
+#
+# A hello-world config. 
+#
+
+# Assorted prefix declarations. Some of them are for the structuring
+# of the API config, others are for the vocabulary definitions.
+#
+
+@prefix api:                <http://purl.org/linked-data/api/vocab#> .
+@prefix dct:				<http://purl.org/dc/terms/> .
+
+@prefix rdf:                <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+# The elda namespace/prefix is for Elda extensions to the LDA specification.
+@prefix elda:               <http://www.epimorphics.com/vocabularies/lda#> .
+
+# Prefix for example-local entities.
+@prefix dgfr:				<http://colin.maudry.com/ontologies/dgfr#>.
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+# ---------------------------------------------------------------------
+# API config
+
+dgfr:api a api:API 
+	; rdfs:label "Data.gouv.fr Linked data API"@en
+	; api:variable [api:name "visibleSparqlForm"; api:value "http://dydra.com/colin-maudry/datagouvfr/query"]
+	; api:sparqlEndpoint <http://dydra.com/colin-maudry/datagouvfr/sparql>
+	# ; api:defaultViewer api:labelledDescribeViewer
+	; api:defaultFormatter dgfr:HtmlFormatter 
+    ; api:formatter
+        [a elda:FeedFormatter
+        ; api:name "atom"
+        ; rdfs:label "Atom"
+        ; elda:className "com.epimorphics.lda.renderers.FeedRendererFactory"
+        ; api:mimeType "application/atom+xml"
+        ]
+    ; api:formatter dgfr:CsvFormatter
+	; api:endpoint dgfr:datasets 
+	; api:endpoint dgfr:datasetSlug
+	; api:endpoint dgfr:resources
+	; api:endpoint dgfr:resourceId
+	; elda:enableCounting true
+   	; elda:cacheExpiryTime "10m"
+	.
+
+<http://dydra.com/colin-maudry/datagouvfr/sparql> elda:supportsNestedSelect true .
+
+# Endpoint definition	
+	
+dgfr:datasets a api:ListEndpoint 
+	; rdfs:label "Datasets" 
+	; api:uriTemplate "/datasets" 
+	; api:selector [api:filter "type=Dataset"; api:sort "modified"]
+	; elda:graphTemplate "http://data.gouv.fr/graphs/datasets"
+	.	
+
+dgfr:datasetSlug a api:ItemEndpoint 
+	; api:defaultViewer dgfr:datasetNormal
+	#; api:viewer dgfr:datasetResources dataset and distribution data must be in the same graph
+	; api:viewer dgfr:datasetStats
+	; rdfs:label "Dataset by slug" 
+	; api:uriTemplate "/datasets/{slug}" 
+    ; api:selector
+        [ api:filter "slug={slug}"
+        ; api:sort "title"
+        ]
+	; elda:graphTemplate "http://data.gouv.fr/graphs/datasets"
+	.
+
+dgfr:resources a api:ListEndpoint 
+	; rdfs:label "Resources" 
+	; api:uriTemplate "/resources" 
+	; api:selector [api:filter "type=Distribution"; api:sort "modified"]
+	; elda:graphTemplate "http://data.gouv.fr/graphs/resources"
+	.	
+
+dgfr:resourceId a api:ItemEndpoint 
+	; rdfs:label "Resource by id" 
+	; api:uriTemplate "/resources/{id}" 
+    ; api:selector
+        [ api:where "?item <http://purl.org/dc/terms/identifier> ?id."
+        ; api:sort "title"
+        ]
+	; elda:graphTemplate "http://data.gouv.fr/graphs/resources"
+	.
+
+#Viewers
+
+dgfr:datasetNormal
+  a api:Viewer ;
+  api:name "Normal" ;
+  api:properties "label,landing_page,description,created,modified" ;
+  .
+  
+dgfr:datasetResources
+  a api:Viewer ;
+  api:include dgfr:datasetNormal ;
+  api:name "Resources" ;
+  api:properties "distribution.title,distribution,distribution.downloads,distribution.format" ;
+  .
+
+dgfr:datasetStats
+	a api:Viewer ;
+	api:include dgfr:datasetNormal ;
+	api:name "Statistics" ;
+	api:properties "reuses,unique_visitors,views,issues,followers"
+	.
+
+
+
+#
+# This XSLT formatter produces rich HTML from the viewer properties.
+#
+
+dgfr:HtmlFormatter a api:XsltFormatter 
+	; api:name "html" 
+	; api:mimeType "text/html; charset=utf-8" 
+	; api:stylesheet "lda-assets/xslt/result-osm-trimmed-dgfr.xsl"
+	# ; elda:shortnameMode elda:roundTrip
+	.
+	
+dgfr:CsvFormatter a api:XsltFormatter ;
+  api:name "csv" ;
+  rdfs:label "CSV" ;
+  api:stylesheet "lda-assets/xslt/csv.xsl" ;
+  api:mimeType "text/csv" .
+
+dcat:Dataset a rdfs:Class ;
+api:label "Dataset" .
+
+dcat:Distribution a rdfs:Class ;
+api:label "Distribution" .
+
+dct:modified a rdf:Property ;
+rdfs:domain rdfs:Resource ;
+rdfs:range xsd:dateTime ;
+api:label "modified" .
+
+dct:created a rdf:Property ;
+rdfs:domain rdfs:Resource ;
+rdfs:range xsd:dateTime ;
+api:label "created" .
+
+dct:description a rdf:Property ;
+rdfs:domain rdfs:Resource ;
+rdfs:range xsd:string ;
+api:label "description" .
+
+dct:identifier a rdf:Property ;
+rdfs:domain rdfs:Resource ;
+rdfs:range xsd:string ;
+api:label "id" .
+
+dct:title a rdf:Property ;
+rdfs:range xsd:string ;
+api:label "title" .
+
+
+dcat:distribution api:label "distribution" .
+dcat:Distribution api:label "Distribution" .
+dcat:landingPage api:label "landing_page" .
+rdfs:label api:label "label" ; api:multiValued true .
+
+#DGFR
+dgfr:checksumType
+    <http://purl.org/linked-data/api/vocab#label> "checksum_type" ;
+    a rdf:Property ;
+    rdfs:label "Checksum type" ;
+    rdfs:range xsd:string .
+
+dgfr:checksumValue
+    <http://purl.org/linked-data/api/vocab#label> "checksum_value" ;
+    a rdf:Property ;
+    rdfs:label "Checksum value" ;
+    rdfs:range xsd:string .
+
+dgfr:downloads
+    <http://purl.org/linked-data/api/vocab#label> "downloads" ;
+    a rdf:Property ;
+    rdfs:label "Downloads" ;
+    rdfs:range xsd:int .
+
+dgfr:featured
+    <http://purl.org/linked-data/api/vocab#label> "featured" ;
+    a rdf:Property ;
+    rdfs:label "Featured" ;
+    rdfs:range xsd:boolean .
+
+dgfr:followers
+    <http://purl.org/linked-data/api/vocab#label> "followers" ;
+    a rdf:Property ;
+    rdfs:label "Followers" ;
+    rdfs:range xsd:int .
+
+dgfr:format
+    <http://purl.org/linked-data/api/vocab#label> "format" ;
+    a rdf:Property ;
+    rdfs:label "Format" ;
+    rdfs:range xsd:string .
+
+dgfr:issues
+    <http://purl.org/linked-data/api/vocab#label> "issues" ;
+    a rdf:Property ;
+    rdfs:label "Issues" ;
+    rdfs:range xsd:int .
+
+dgfr:private
+    <http://purl.org/linked-data/api/vocab#label> "private" ;
+    a rdf:Property ;
+    rdfs:label "Private" ;
+    rdfs:range xsd:boolean .
+
+dgfr:reuses
+    <http://purl.org/linked-data/api/vocab#label> "reuses" ;
+    a rdf:Property ;
+    rdfs:label "Reuses" ;
+    rdfs:range xsd:int .
+
+dgfr:slug
+    <http://purl.org/linked-data/api/vocab#label> "slug" ;
+    a rdf:Property ;
+    rdfs:label "Slug" ;
+    rdfs:range xsd:string .
+
+dgfr:type
+    <http://purl.org/linked-data/api/vocab#label> "restype" ;
+    a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:range xsd:string .
+
+dgfr:uniqueVisitors
+    <http://purl.org/linked-data/api/vocab#label> "unique_visitors" ;
+    a rdf:Property ;
+    rdfs:label "Unique visitors" ;
+    rdfs:range xsd:int .
+
+dgfr:views
+    <http://purl.org/linked-data/api/vocab#label> "views" ;
+    a rdf:Property ;
+    rdfs:label "Views" ;
+    rdfs:range xsd:int .
