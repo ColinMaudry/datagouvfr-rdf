@@ -1,3 +1,5 @@
 temp/
 *.bat
 upload.properties
+api/specs/*.ttl
+!api/specs/datagouvfr.ttl
