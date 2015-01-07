@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project basedir="." name="download-convert-upload" default="metadata">
 	<!--<property name="baseurl" value="http://colin.maudry.com/share/"/>-->
-	<property name="baseurl" value="http://data.gouv.fr/fr/"/>
+	<property name="baseurl" value="http://www.data.gouv.fr/fr/"/>
 	<property file="upload.properties"/>
 	<tstamp>
 		<!-- With - to be filename-compatible -->
