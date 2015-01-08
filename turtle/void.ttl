@@ -46,8 +46,7 @@
  	void:vocabulary <http://www.w3.org/ns/dcat> ;
  	void:vocabulary <http://colin.maudry.com/ontologies/dgfr> ;
  	
-	sd:namedGraph <http://data.gouv.fr/graphs/datasets> ;
-	sd:namedGraph <http://data.gouv.fr/graphs/resources> .
+	sd:namedGraph <http://www.data.maudry.com> .
  	
  <http://dydra.com/colin-maudry/datagouvfr/sparql#this> a sd:Service ;
  	sd:url <http://dydra.com/colin-maudry/datagouvfr/sparql> ;
