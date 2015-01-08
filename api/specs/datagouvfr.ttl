@@ -58,7 +58,7 @@ dgfr:datasets a api:ListEndpoint
 
 dgfr:datasetSlug a api:ItemEndpoint 
 	; api:defaultViewer dgfr:datasetNormal
-	#; api:viewer dgfr:datasetResources dataset and distribution data must be in the same graph
+	; api:viewer dgfr:datasetResources
 	; api:viewer dgfr:datasetStats
 	; rdfs:label "Dataset by slug" 
 	; api:uriTemplate "/datasets/{slug}" 
@@ -66,14 +66,14 @@ dgfr:datasetSlug a api:ItemEndpoint
         [ api:filter "slug={slug}"
         ; api:sort "title"
         ]
-	; elda:graphTemplate "http://data.gouv.fr/graphs/datasets"
+	; elda:graphTemplate "http://www.data.maudry.com"
 	.
 
 dgfr:resources a api:ListEndpoint 
 	; rdfs:label "Resources" 
 	; api:uriTemplate "/resources" 
 	; api:selector [api:filter "type=Distribution"; api:sort "modified"]
-	; elda:graphTemplate "http://data.gouv.fr/graphs/resources"
+	; elda:graphTemplate "http://www.data.maudry.com"
 	.	
 
 dgfr:resourceId a api:ItemEndpoint 
@@ -83,7 +83,7 @@ dgfr:resourceId a api:ItemEndpoint
         [ api:where "?item <http://purl.org/dc/terms/identifier> ?id."
         ; api:sort "title"
         ]
-	; elda:graphTemplate "http://data.gouv.fr/graphs/resources"
+	; elda:graphTemplate "http://www.data.maudry.com"
 	.
 
 #Viewers
@@ -98,7 +98,7 @@ dgfr:datasetResources
   a api:Viewer ;
   api:include dgfr:datasetNormal ;
   api:name "Resources" ;
-  api:properties "distribution.title,distribution,distribution.downloads,distribution.format" ;
+  api:properties "distribution.label,distribution,distribution.downloads,distribution.format" ;
   .
 
 dgfr:datasetStats
