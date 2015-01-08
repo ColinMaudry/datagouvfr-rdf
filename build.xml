@@ -83,18 +83,18 @@
 	<target name="upload" depends="convert">
 		<echo>[UPLOAD]</echo>
 		<echo>Uploading datasets.ttl to the repository...</echo>
-		<exec executable="curl.exe" searchpath="true">
+		<exec executable="curl.exe" searchpath="true" failonerror="true">
 			<arg line="-X PUT"/>
 			<arg line="--data-binary @'rdf/datasets.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphBaseUri}datasets'"/>
+			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphUri}'"/>
 		</exec>
 		<echo>Uploading resources.ttl to the repository...</echo>
-		<exec executable="curl.exe" searchpath="true">
-			<arg line="-X PUT"/>
+		<exec executable="curl.exe" searchpath="true" failonerror="true">
+			<arg line="-X POST"/>
 			<arg line="--data-binary @'rdf/resources.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphBaseUri}resources'"/>
+			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphUri}'"/>
 		</exec>		
 	</target>
 	
