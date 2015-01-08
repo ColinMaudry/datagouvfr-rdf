@@ -17,6 +17,7 @@ construct
     dct:identifier ?id ;
     dcat:downloadUrl ?urlAsUri ;
     dct:title ?title ;
+    rdfs:label ?title ;
     dct:description ?description ;
     dgfr:type ?lcType ;
     dgfr:format ?lcFormat ;
