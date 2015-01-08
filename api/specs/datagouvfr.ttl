@@ -195,7 +195,7 @@ dgfr:followers
     rdfs:range xsd:int .
 
 dgfr:format
-    <http://purl.org/linked-data/api/vocab#label> "format" ;
+    <http://purl.org/linked-data/api/vocab#label> "resformat" ;
     a rdf:Property ;
     rdfs:label "Format" ;
     rdfs:range xsd:string .
