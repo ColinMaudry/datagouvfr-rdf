@@ -7,7 +7,7 @@ $prefLabel, $altLabel, $title and $name variables.
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:import href="linked-data-api.xsl" />
+<xsl:import href="linked-data-api.xsl"/>
 
 <xsl:output method="html" encoding="utf-8" indent="yes" />
 
@@ -72,8 +72,12 @@ $prefLabel, $altLabel, $title and $name variables.
 
 <xsl:template match="result" mode="title">
     <title>
+    	<xsl:if test="primaryTopic/label">
+    		<xsl:value-of select="primaryTopic/label"/>
+    		<xsl:text> - </xsl:text>
+    	</xsl:if>
     	<xsl:value-of select="primaryTopic/label"/>
-    	<xsl:text> - data.gouv.fr Linked Data browser by Colin Maudry</xsl:text>
+    	<xsl:text>data.gouv.fr Linked Data browser by Colin Maudry</xsl:text>
     </title>
 </xsl:template>
 
