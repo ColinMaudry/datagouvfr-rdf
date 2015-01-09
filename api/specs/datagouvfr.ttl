@@ -236,6 +236,12 @@ dgfr:uniqueVisitors
     rdfs:label "Unique visitors" ;
     rdfs:range xsd:int .
 
+dgfr:visits
+    <http://purl.org/linked-data/api/vocab#label> "visits" ;
+    a rdf:Property ;
+    rdfs:label "Visits" ;
+    rdfs:range xsd:int .
+
 dgfr:views
     <http://purl.org/linked-data/api/vocab#label> "views" ;
     a rdf:Property ;

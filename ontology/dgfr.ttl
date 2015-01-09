@@ -74,6 +74,13 @@
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue."@fr ;
 		rdfs:domain dcat:Dataset .
 	
+	:visits a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Visits" ;
+		rdfs:comment "The number of times the page of the dataset bas been visited."@en ;
+		rdfs:comment "Le nombre de fois que la page du jeu de données a été visitée."@fr ;
+		rdfs:domain dcat:Dataset .
+	
 	:reuses a rdf:Property ;
 		rdfs:range xsd:int ;
 		rdfs:label "Reuses" ;
