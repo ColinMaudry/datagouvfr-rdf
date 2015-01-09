@@ -35,7 +35,7 @@ from <file:../csv/resources.csv#delimiter=%3B;encoding=utf-8>
   where {
   
   bind(uri(concat("https://www.data.maudry.com/fr/resources/",?id)) as ?resource)
-  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?dataset_slug)) as ?dataset)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?dataset_slug,"/")) as ?dataset)
   bind(if(contains(?url," "), uri(encode_for_uri(?url)),uri(?url)) as ?urlAsUri)
   bind(xs:dateTime(?created_at) as ?createdAsDateTime)
   bind(xs:dateTime(?modified) as ?modifiedAsDateTime)
