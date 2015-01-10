@@ -41,6 +41,7 @@ dgfr:api a api:API
 	; api:endpoint dgfr:datasetSlug
 	; api:endpoint dgfr:resources
 	; api:endpoint dgfr:resourceId
+	; api:endpoint dgfr:doc 
 	; elda:enableCounting true
    	; elda:cacheExpiryTime "10m"
 	.
@@ -90,6 +91,16 @@ dgfr:resourceId a api:ItemEndpoint
 	; api:defaultViewer dgfr:resourceNormal
 	.
 
+	#Endpoint for the documentation
+	dgfr:doc a api:ItemEndpoint 
+	; rdfs:label "Documentation" 
+	; api:defaultFormatter dgfr:DocFormatter
+	; api:uriTemplate "/" 
+    ; api:selector
+        [ api:where "?item a <http://rdfs.org/ns/void#Dataset>  ."
+        ]
+	.
+
 #Viewers
 
 dgfr:datasetNormal
@@ -134,6 +145,13 @@ dgfr:CsvFormatter a api:XsltFormatter ;
   rdfs:label "CSV" ;
   api:stylesheet "lda-assets/xslt/csv.xsl" ;
   api:mimeType "text/csv" .
+  
+dgfr:DocFormatter a api:XsltFormatter 
+	; api:name "doc" 
+	; api:mimeType "text/html; charset=utf-8" 
+	; api:stylesheet "lda-assets/xslt/dgfr-doc-fr.xsl"
+	# ; elda:shortnameMode elda:roundTrip
+	.
 
 dcat:Dataset a rdfs:Class ;
 api:label "Dataset" .
