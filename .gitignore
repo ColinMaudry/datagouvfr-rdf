@@ -3,3 +3,5 @@ run.bat
 upload.properties
 api/specs/*.ttl
 !api/specs/datagouvfr.ttl
+server.xml
+
