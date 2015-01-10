@@ -40,7 +40,7 @@ construct
 from <file:../csv/datasets.csv#delimiter=%3B;encoding=utf-8>
   where {
   
-  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?slug,"/")) as ?dataset)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?slug)) as ?dataset)
   bind(uri(?url) as ?urlAsUri)
   bind(uri(concat("http://purl.org/cld/freq/",?frequency)) as ?dctFrequency)
   bind(xs:boolean(if (?private="",false,lcase(?private))) as ?lcPrivate)
