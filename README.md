@@ -1,7 +1,9 @@
-Semantic data.gouv.fr (0.1.5)
+Semantic data.gouv.fr (0.2.0)
 ==============
 
 Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
+
+This is the foundation work that fuels the [data.gouv.fr explorer app](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
 
 ## Update script
 
@@ -43,6 +45,12 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+#### 0.2.0
+
+- The [data.gouv.fr explorer app](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=), with somewhat documented APIs, is live!
+- URIs have changed to match the domain of the app
+- Added dgfr:visits and dcterms:keywords (as comma-separated list, meh) in the data 
 
 ##### 0.1.5
 
