@@ -82,6 +82,7 @@ $prefLabel, $altLabel, $title and $name variables.
 </xsl:template>
 
 <xsl:template match="result" mode="meta">
+		<meta charset="UTF-8" />
     <link rel="shortcut icon" href="{$_resourceRoot}images/datagovuk_favicon.png" type="image/x-icon" /> 
     <xsl:apply-templates select="first | prev | next | last" mode="metalink" />
     <xsl:apply-templates select="hasFormat/item" mode="metalink" />
@@ -354,6 +355,14 @@ $prefLabel, $altLabel, $title and $name variables.
 
 <xsl:template match="result" mode="header">
     <nav class="site">
+    	<div class="links">
+    		<ul>
+    			<li class="first"><a href="/fr">Home</a></li>
+    			<li><a href="/fr/datasets">Datasets</a></li>
+    			<li><a href="/fr/resources">Resources (dcat:Distribution)</a></li>
+    			<li class="last"><a href="#provenance-footer">SPARQL query</a></li>
+    		</ul>
+    	</div>
         <xsl:apply-templates select="." mode="formats" />
     </nav>
     <header>
@@ -376,7 +385,7 @@ $prefLabel, $altLabel, $title and $name variables.
 </xsl:template>
 
 <xsl:template match="wasResultOf" mode="footer">
-    <div class="provenance">
+    <div class="provenance" id="provenance-footer">
         <xsl:apply-templates select="selectionResult[query/value != '']" mode="footer" />
         <xsl:apply-templates select="viewingResult[query/value != '']" mode="footer" />
     </div>
