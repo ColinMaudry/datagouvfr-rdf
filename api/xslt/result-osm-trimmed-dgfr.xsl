@@ -555,7 +555,7 @@ $prefLabel, $altLabel, $title and $name variables.
                         <xsl:if test="items/item">
                             <p id="openSearch">Show search form</p>
                         </xsl:if>
-                        <h1>Search Results</h1>
+                        <h1>Search results</h1>
                     </header>
                     <xsl:if test="items/item">
                         <xsl:apply-templates select="." mode="search" />
