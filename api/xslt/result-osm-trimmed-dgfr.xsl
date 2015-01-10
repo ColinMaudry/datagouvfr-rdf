@@ -51,21 +51,23 @@ $prefLabel, $altLabel, $title and $name variables.
                 <xsl:apply-templates select="." mode="content" />
                 <xsl:apply-templates select="." mode="footer" />
             </div>
-        	<!-- Piwik - Thanks Axel -->
+        	<!-- Piwik - thanks Axel-->
         	<script type="text/javascript">
         		var _paq = _paq || [];
+        		_paq.push(['setVisitorCookieTimeout', '1209600']);
+        		_paq.push(['setSessionCookieTimeout', '0']);
         		_paq.push(['trackPageView']);
         		_paq.push(['enableLinkTracking']);
         		(function() {
-        		var u="//analytics.maudry.com/";
+        		var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.maudry.com/";
         		_paq.push(['setTrackerUrl', u+'piwik.php']);
         		_paq.push(['setSiteId', 4]);
-        		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        		g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
         		})();
         	</script>
-        	<noscript><p><img src="//analytics.maudry.com/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
         	<!-- End Piwik Code -->
+        	<noscript><p><img src="http://analytics.maudry.com/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
         </body>
     </html>
 </xsl:template>
