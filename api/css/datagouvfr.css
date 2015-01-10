@@ -7,3 +7,8 @@ nav.site
 	background-image:none;
 	background:none;
 }
+
+nav.topnav section.view li 
+{
+	display:block;
+}
