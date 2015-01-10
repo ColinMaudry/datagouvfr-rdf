@@ -51,22 +51,22 @@ $prefLabel, $altLabel, $title and $name variables.
                 <xsl:apply-templates select="." mode="content" />
                 <xsl:apply-templates select="." mode="footer" />
             </div>
+        	<!-- Piwik - Thanks Axel -->
+        	<script type="text/javascript">
+        		var _paq = _paq || [];
+        		_paq.push(['trackPageView']);
+        		_paq.push(['enableLinkTracking']);
+        		(function() {
+        		var u="//analytics.maudry.com/";
+        		_paq.push(['setTrackerUrl', u+'piwik.php']);
+        		_paq.push(['setSiteId', 4]);
+        		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        		})();
+        	</script>
+        	<noscript><p><img src="//analytics.maudry.com/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+        	<!-- End Piwik Code -->
         </body>
-    	<!-- Piwik -->
-    	<script type="text/javascript">
-    		var _paq = _paq || [];
-    		_paq.push(['trackPageView']);
-    		_paq.push(['enableLinkTracking']);
-    		(function() {
-    		var u="//analytics.maudry.com/";
-    		_paq.push(['setTrackerUrl', u+'piwik.php']);
-    		_paq.push(['setSiteId', 4]);
-    		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    		})();
-    	</script>
-    	<noscript><p><img src="//analytics.maudry.com/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
-    	<!-- End Piwik Code -->
     </html>
 </xsl:template>
 
@@ -77,7 +77,7 @@ $prefLabel, $altLabel, $title and $name variables.
     		<xsl:text> - </xsl:text>
     	</xsl:if>
     	<xsl:value-of select="primaryTopic/label"/>
-    	<xsl:text>data.gouv.fr Linked Data browser by Colin Maudry</xsl:text>
+    	<xsl:text>data.gouv.fr explorer by Colin Maudry</xsl:text>
     </title>
 </xsl:template>
 
@@ -357,7 +357,7 @@ $prefLabel, $altLabel, $title and $name variables.
         <xsl:apply-templates select="." mode="formats" />
     </nav>
     <header>
-        <h1><a href="/">Data.gouv.fr Linked Data browser</a></h1>
+        <h1><a href="/">Data.gouv.fr explorer</a></h1>
     </header>
 </xsl:template>
 
