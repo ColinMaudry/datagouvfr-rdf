@@ -63,7 +63,7 @@ dgfr:datasetSlug a api:ItemEndpoint
 	; api:viewer dgfr:datasetResources
 	; api:viewer dgfr:datasetStats
 	; rdfs:label "Dataset by slug" 
-	; api:uriTemplate "/datasets/{slug}/" 
+	; api:uriTemplate "/datasets/{slug}" 
     ; api:selector
         [ api:filter "type=Dataset&slug={slug}"
         ; api:sort "title"
@@ -76,6 +76,7 @@ dgfr:resources a api:ListEndpoint
 	; api:uriTemplate "/resources" 
 	; api:selector [api:filter "type=Distribution"; api:sort "-created"]
 	; elda:graphTemplate "http://www.data.maudry.com"
+	; api:defaultViewer dgfr:resourceNormal
 	.	
 
 dgfr:resourceId a api:ItemEndpoint 
@@ -86,6 +87,7 @@ dgfr:resourceId a api:ItemEndpoint
         ; api:sort "title"
         ]
 	; elda:graphTemplate "http://www.data.maudry.com"
+	; api:defaultViewer dgfr:resourceNormal
 	.
 
 #Viewers
@@ -93,24 +95,28 @@ dgfr:resourceId a api:ItemEndpoint
 dgfr:datasetNormal
   a api:Viewer ;
   api:name "Normal" ;
-  api:properties "label,landing_page,description,created,modified" ;
+  api:properties "label,landing_page,description,created,modified,distribution.label,distribution.dgfr_format" ;
   .
   
 dgfr:datasetResources
   a api:Viewer ;
   api:include dgfr:datasetNormal ;
   api:name "Resources" ;
-  api:properties "distribution.label,distribution,distribution.downloads,distribution.resformat" ;
+  api:properties "distribution.downloads,distribution.description,distribution.issued,distribution.modified,distribution.download_url,distribution.byte_size" ;
   .
 
 dgfr:datasetStats
 	a api:Viewer ;
 	api:include dgfr:datasetNormal ;
 	api:name "Statistics" ;
-	api:properties "reuses,unique_visitors,views,visits,issues,followers"
+	api:properties "reuses,unique_visitors,views,visits,hits,issues,followers"
 	.
 
-
+dgfr:resourceNormal
+	a api:Viewer ;
+	api:name "Normal" ;
+	api:properties "label,description,id,issued,byte_size,media_type,modified,downloads,download_url,dgfr_format,dataset,dataset.label"
+	.
 
 #
 # This XSLT formatter produces rich HTML from the viewer properties.
@@ -159,10 +165,18 @@ dct:title a rdf:Property ;
 rdfs:range xsd:string ;
 api:label "title" .
 
+dct:issued a rdf:Property ;
+rdfs:range xsd:dateTime ;
+rdfs:domain rdfs:Resource ;
+api:label "issued" .
 
 dcat:distribution api:label "distribution" .
 dcat:Distribution api:label "Distribution" .
 dcat:landingPage api:label "landing_page" .
+dcat:downloadUrl api:label "download_url" .
+dcat:byteSize api:label "byte_size" ;
+	rdfs:range xsd:int .
+dcat:mediaType api:label "media_type" .
 rdfs:label api:label "label" ; api:multiValued true .
 
 #DGFR
@@ -197,7 +211,7 @@ dgfr:followers
     rdfs:range xsd:int .
 
 dgfr:format
-    <http://purl.org/linked-data/api/vocab#label> "resformat" ;
+    <http://purl.org/linked-data/api/vocab#label> "dgfr_format" ;
     a rdf:Property ;
     rdfs:label "Format" ;
     rdfs:range xsd:string .
@@ -227,7 +241,7 @@ dgfr:slug
     rdfs:range xsd:string .
 
 dgfr:type
-    <http://purl.org/linked-data/api/vocab#label> "restype" ;
+    <http://purl.org/linked-data/api/vocab#label> "dgfr_type" ;
     a rdf:Property ;
     rdfs:label "Type" ;
     rdfs:range xsd:string .
@@ -242,6 +256,12 @@ dgfr:visits
     <http://purl.org/linked-data/api/vocab#label> "visits" ;
     a rdf:Property ;
     rdfs:label "Visits" ;
+    rdfs:range xsd:int .
+    
+dgfr:hits
+    <http://purl.org/linked-data/api/vocab#label> "hits" ;
+    a rdf:Property ;
+    rdfs:label "Hits" ;
     rdfs:range xsd:int .
 
 dgfr:views
