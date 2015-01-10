@@ -544,7 +544,7 @@ $prefLabel, $altLabel, $title and $name variables.
                 <xsl:when test="items">
                     <header>
                         <xsl:if test="items/item">
-                            <p id="openSearch">Show Search Form</p>
+                            <p id="openSearch">Show search form</p>
                         </xsl:if>
                         <h1>Search Results</h1>
                     </header>
@@ -1999,7 +1999,7 @@ $prefLabel, $altLabel, $title and $name variables.
 
 <xsl:template match="/result/primaryTopic" mode="content" priority="10">
     <header>
-        <p id="openSearch">Show Search Form</p>
+        <p id="openSearch">Show search form</p>
         <h1><xsl:apply-templates select="." mode="name" /></h1>
         <p class="id"><a href="{@href}"><xsl:value-of select="@href" /></a></p>
     </header>
