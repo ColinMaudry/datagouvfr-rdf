@@ -152,6 +152,13 @@
 		rdfs:comment "The number of times the resource was downloaded."@en ;
 		rdfs:comment "Le nombre de fois que la ressource a été téléchargée."@fr ;
 		rdfs:domain dcat:Distribution .
+		
+	:dataset a rdf:Property ;
+		rdfs:range dcat:Dataset ;
+		rdfs:label "Dataset" ;
+		rdfs:comment "A dataset in which this distribution is included." ;
+		rdfs:comment "Un jeu de données dans lequel cette ressource est incluse" ;
+		rdfs:domain dcat:Distribution .		
 	
 	
 			
