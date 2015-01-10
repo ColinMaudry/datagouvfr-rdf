@@ -170,10 +170,10 @@ $prefLabel, $altLabel, $title and $name variables.
             
             $('#openSearch')
                 .toggle(function () {
-                    $(this).text('Hide Search Form');
+                    $(this).text('Hide search form');
                     $('#search').slideDown('slow');
                 }, function () {
-                    $(this).text('Show Search Form');
+                    $(this).text('Show search form');
                     $('#search').slideUp('slow');
                 });
             
@@ -1004,7 +1004,7 @@ $prefLabel, $altLabel, $title and $name variables.
 <xsl:template match="result" mode="summary">
     <xsl:if test="count(items/item) > 1">
         <section class="summary">
-            <h1>On This Page</h1>
+            <h1>On this page</h1>
             <xsl:call-template name="createInfo">
                 <xsl:with-param name="text">Links to the items within this page, and to the previous and/or next pages of results.</xsl:with-param>
             </xsl:call-template>
