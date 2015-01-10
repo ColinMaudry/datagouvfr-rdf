@@ -16,6 +16,7 @@ construct
   ?dataset a dcat:Dataset ;
     dct:identifier ?a ;
     dct:title ?title ;
+    rdfs:label ?title ;
     dcat:landingPage ?urlAsUri ;
     dct:rightsHolder ?organization ;
     dct:publisher ?supplier ;
@@ -26,7 +27,7 @@ construct
     dgfr:featured ?lcFeatured ;
     dct:created ?createdAsDateTime ;
     dct:modified ?modifiedAsDateTime ;
-   # dcat:keywords ?splitTags ;
+    dcat:keywords ?tags ;
    	dgfr:slug ?slug ;
     dgfr:views ?views ;
     dgfr:followers ?followers ;
@@ -39,7 +40,7 @@ construct
 from <file:../csv/datasets.csv#delimiter=%3B;encoding=utf-8>
   where {
   
-  bind(uri(concat("http://data.gouv.fr/fr/datasets/",?id,"#this")) as ?dataset)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?slug)) as ?dataset)
   bind(uri(?url) as ?urlAsUri)
   bind(uri(concat("http://purl.org/cld/freq/",?frequency)) as ?dctFrequency)
   bind(xs:boolean(if (?private="",false,lcase(?private))) as ?lcPrivate)

@@ -37,17 +37,16 @@
  	void:dataDump <http://dydra.com/colin-maudry/datagouvfr.jsonld> ;
  	void:dataDump <http://dydra.com/colin-maudry/datagouvfr.nq> ;
  	
- 	void:exampleResource <http://data.gouv.fr/fr/resources/3725f125-9e93-491a-a82d-ea33c2822b3b#this> ;
- 	void:exampleResource <http://data.gouv.fr/fr/datasets/536993baa3a729239d20428c#this> ;
+ 	void:exampleResource <https://www.data.maudry.com/fr/datasets/resultats-des-elections-cantonales-de-mars-2011-1er-tour-nd> ;
+ 	void:exampleResource <https://www.data.maudry.com/fr/resources/536993baa3a729239d20428c> ;
  	
- 	void:uriSpace "http://data.gouv.fr/fr/" ;
+ 	void:uriSpace "https://www.data.maudry.com/fr/" ;
  	
  	void:vocabulary <http://purl.org/dc/terms/> ;
  	void:vocabulary <http://www.w3.org/ns/dcat> ;
  	void:vocabulary <http://colin.maudry.com/ontologies/dgfr> ;
  	
-	sd:namedGraph <http://data.gouv.fr/graphs/datasets> ;
-	sd:namedGraph <http://data.gouv.fr/graphs/resources> .
+	sd:namedGraph <http://www.data.maudry.com> .
  	
  <http://dydra.com/colin-maudry/datagouvfr/sparql#this> a sd:Service ;
  	sd:url <http://dydra.com/colin-maudry/datagouvfr/sparql> ;

@@ -74,6 +74,13 @@
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue."@fr ;
 		rdfs:domain dcat:Dataset .
 	
+	:visits a rdf:Property ;
+		rdfs:range xsd:int ;
+		rdfs:label "Visits" ;
+		rdfs:comment "The number of times the page of the dataset bas been visited."@en ;
+		rdfs:comment "Le nombre de fois que la page du jeu de données a été visitée."@fr ;
+		rdfs:domain dcat:Dataset .
+	
 	:reuses a rdf:Property ;
 		rdfs:range xsd:int ;
 		rdfs:label "Reuses" ;
@@ -100,6 +107,13 @@
 		rdfs:label "Unique visitors" ;
 		rdfs:comment "The number of unique visitors who viewed the page of the dataset."@en ;
 		rdfs:comment "Le nombre de visiteurs uniques qui se sont rendus sur la page du jeu de données."@fr ;
+		rdfs:domain dcat:Dataset .	
+		
+	:slug a rdf:Property ;
+		rdfs:range xsd:string ;
+		rdfs:label "Slug" ;
+		rdfs:comment "A URL-friendly version of the title."@en ;
+		rdfs:comment "Une version du titre simplifiée pour pouvoir être inséré dans une URL."@fr ;
 		rdfs:domain dcat:Dataset .	
 		
 #For dcat:Distribution
@@ -138,6 +152,13 @@
 		rdfs:comment "The number of times the resource was downloaded."@en ;
 		rdfs:comment "Le nombre de fois que la ressource a été téléchargée."@fr ;
 		rdfs:domain dcat:Distribution .
+		
+	:dataset a rdf:Property ;
+		rdfs:range dcat:Dataset ;
+		rdfs:label "Dataset" ;
+		rdfs:comment "A dataset in which this distribution is included." ;
+		rdfs:comment "Un jeu de données dans lequel cette ressource est incluse" ;
+		rdfs:domain dcat:Distribution .		
 	
 	
 			
