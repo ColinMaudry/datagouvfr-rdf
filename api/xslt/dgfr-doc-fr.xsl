@@ -128,50 +128,50 @@ $prefLabel, $altLabel, $title and $name variables.
 									<td>XML</td>
 									<td>.xml</td>
 									<td>application/xml</td>
-									<td>http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.xml</td>
-									<td>http://localhost:8080/fr/datasets.xml</td>
+									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</td>
+									<td>https://www.data.maudry.com/fr/datasets.xml</td>
 								</tr>
 								<tr>
 									<td>JSON</td>
 									<td>.json</td>
 									<td>application/json</td>
-									<td>http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.json</td>
-									<td>http://localhost:8080/fr/datasets.json</td>
+									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.json</td>
+									<td>https://www.data.maudry.com/fr/datasets.json</td>
 								</tr>
 								<tr>
 									<td>CSV</td>
 									<td>.csv</td>
 									<td>text/csv</td>
-									<td>http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.csv</td>
-									<td>http://localhost:8080/fr/datasets.csv</td>
+									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.csv</td>
+									<td>https://www.data.maudry.com/fr/datasets.csv</td>
 								</tr>
 								<tr>
 									<td><a href="https://fr.wikipedia.org/wiki/Atom">Atom</a></td>
 									<td>.atom</td>
 									<td>application/atom+xml</td>
-									<td>http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.atom</td>
-									<td>http://localhost:8080/fr/datasets.atom</td>
+									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.atom</td>
+									<td>https://www.data.maudry.com/fr/datasets.atom</td>
 								</tr>
 								<tr>
 									<td>Text (identique au JSON)</td>
 									<td>.text</td>
 									<td>text/plain</td>
-									<td>http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.text</td>
-									<td>http://localhost:8080/fr/datasets.text</td>
+									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.text</td>
+									<td>https://www.data.maudry.com/fr/datasets.text</td>
 								</tr>
 								<tr>
 									<td><a href="https://en.wikipedia.org/wiki/RDF/XML">RDF/XML</a></td>
 									<td>.rdf</td>
 									<td>application/rdf+xml</td>
-									<td>http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.rdf</td>
-									<td>http://localhost:8080/fr/datasets.rdf</td>
+									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.rdf</td>
+									<td>https://www.data.maudry.com/fr/datasets.rdf</td>
 								</tr>
 								<tr>
 									<td><a href="https://en.wikipedia.org/wiki/Turtle_%28syntax%29">Turtle</a></td>
 									<td>.ttl</td>
 									<td>text/turtle</td>
-									<td>http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.ttl</td>
-									<td>http://localhost:8080/fr/datasets.ttl</td>
+									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.ttl</td>
+									<td>https://www.data.maudry.com/fr/datasets.ttl</td>
 								</tr>
 							</tbody>
 						</table>
@@ -185,28 +185,28 @@ $prefLabel, $altLabel, $title and $name variables.
 							</thead>
 							<tbody>
 								<tr>
-									<td><tt>curl http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018.xml</tt></td>
+									<td><tt>curl https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</tt></td>
 									<td>Un ensemble prédéfini de propriétés pour ce dataset en XML.</td>
 								</tr>
 								<tr>
-									<td><tt>curl http://localhost:8080/fr/datasets/poles-d-excellence-rurale-30383018?_view=all</tt></td>
+									<td><tt>curl https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018?_view=all</tt></td>
 									<td>Toutes les propriétés directes de ce dataset en HTML.</td>
 								</tr>
 								<tr>
-									<td><tt>curl http://localhost:8080/fr/datasets.json</tt></td>
+									<td><tt>curl https://www.data.maudry.com/fr/datasets.json</tt></td>
 									<td>Un ensemble prédéfini de propriétés pour les 10 derniers datasets créés sur data.gouv.fr en JSON.</td>
 								</tr>
 								<tr>
-									<td><tt>curl -H "Accept:text/turtle" http://localhost:8080/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers</tt></td>
+									<td><tt>curl -H "Accept:text/turtle" https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers</tt></td>
 									<td>Les métadonnées liées aux statistiques des 10 datasets qui ont le plus de followers (ordre décroissant) au format Turtle. Comme ici on utilise la <a
 										href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a>, la réponse inclue des métadonnées supplémentaire liées à la
 										requête, telles que la requête SPARQL utilisée et la configuration de l'API.</td>
 								</tr>
 							</tbody>
 						</table>
-						<p>Je ne présente ici qu'une petite partie des paramètres que vous pouvez passer dans l'URL. Je vous suggère de naviguer dans <a href="/fr/datasets">l'interface d'exploration</a> et de cliquer partout, en observant l'évolution de l'URL.</p>
+						<p>Je ne présente ici qu'une petite partie des paramètres que vous pouvez passer dans l'URL. Je vous suggère de naviguer dans <a href="/fr/datasets">l'interface d'exploration</a> et de cliquer partout, en observant l'évolution de l'URL. Pour être honnête, je découvre encore les possibilités offertes par l'API Elda. Conscient qu'une bonne API est une API bien documentée, je tâcherai d'étoffer ce chapitre. Vous pouvez également <a href="dgfr-doc-fr.xsl">le faire vous-même</a> !</p>
 						<h3>URI</h3>
-						<p>La structure des URI est la même que celle utilisées pour les pages data.gouv.fr, à ceci près que :</p>
+						<p>La structure des URI est la même que celles utilisées pour les pages data.gouv.fr, à ceci près que :</p>
 						<ul>
 							<li>le domaine est différent : https://www.data.maudry.com</li>
 							<li>il n'y pas de slash (/) à la fin des URI. Toutes les URI se terminant par un slash sont redirigées vers l'équivalent sans slash.</li>
@@ -215,7 +215,7 @@ $prefLabel, $altLabel, $title and $name variables.
 						<h3>Fraîcheur des données</h3>
 						<p>Je m'engage à synchroniser les métadonnées data.gouv.fr avec le triple store au moins une fois par semaine. En pratique, cette synchronisation a lieu environ une fois par jour. Vous pouvez vérifier la fraîcheur des données <a href="http://dydra.com/colin-maudry/datagouvfr/derniers-jeux-de-donnees-heure-gmt.html">ici</a>.</p>
 						<h3>Performance</h3>
-						<p>Les données sont stockées dans un triple store fourni à titre gracieux par Dydra. Si d'ordinaire les performances sont acceptables, il n'y a aucune garantie que ce soit toujours le cas si l'application est très sollicitée.</p>
+						<p>Les données sont stockées dans un triple store fourni à titre gracieux par <a href="http://dydra.com">Dydra</a>. Si d'ordinaire les performances sont acceptables, il n'y a aucune garantie que ce soit toujours le cas si l'application est très sollicitée.</p>
 						<p>Elda garde chaque réponse en cache pendant 10 minutes (en tout cas c'est ce que je lui ai demandé).</p>
 						<p>Vous pouvez voir des statistiques sur les requêtes reçues par l'outil et les temps de réponse <a href="/control/show-stats">ici</a>.</p>
 						<h2 id="contact">Me contacter</h2>
