@@ -231,22 +231,17 @@ $prefLabel, $altLabel, $title and $name variables.
 			</div>
 			<!-- Bootstrap core JavaScript
     ================================================== -->
-			<!-- Piwik - thanks Axel-->
-			<script type="text/javascript">
-				var _paq = _paq || [];
-				_paq.push(['setVisitorCookieTimeout', '1209600']);
-				_paq.push(['setSessionCookieTimeout', '0']);
-				_paq.push(['trackPageView']);
-				_paq.push(['enableLinkTracking']);
-				(function() {
-				var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.maudry.com/";
-				_paq.push(['setTrackerUrl', u+'piwik.php']);
-				_paq.push(['setSiteId', 4]);
-				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-				g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-				})();
+			<!-- Sorry, couldn't use Piwik because https -->
+			<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				
+				ga('create', 'UA-58462015-1', 'auto');
+				ga('send', 'pageview');
+				
 			</script>
-			<!-- End Piwik Code -->
 		</body>
 		
 	</html>
