@@ -54,12 +54,10 @@ $prefLabel, $altLabel, $title and $name variables.
         	<!-- Piwik - thanks Axel-->
         	<script type="text/javascript">
         		var _paq = _paq || [];
-        		_paq.push(['setVisitorCookieTimeout', '1209600']);
-        		_paq.push(['setSessionCookieTimeout', '0']);
         		_paq.push(['trackPageView']);
         		_paq.push(['enableLinkTracking']);
         		(function() {
-        		var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.maudry.com/";
+        		var u=("http" + "://analytics.maudry.com/";
         		_paq.push(['setTrackerUrl', u+'piwik.php']);
         		_paq.push(['setSiteId', 4]);
         		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
