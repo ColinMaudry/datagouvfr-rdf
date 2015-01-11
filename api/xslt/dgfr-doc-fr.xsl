@@ -220,7 +220,6 @@ $prefLabel, $altLabel, $title and $name variables.
 						<h3>Performance</h3>
 						<p>Les données sont stockées dans un triple store fourni à titre gracieux par <a href="http://dydra.com">Dydra</a>. Si d'ordinaire les performances sont acceptables, il n'y a aucune garantie que ce soit toujours le cas si l'application est très sollicitée.</p>
 						<p>Elda garde chaque réponse en cache pendant 10 minutes (en tout cas c'est ce que je lui ai demandé).</p>
-						<p>L'application est hébérgée sur un </p>
 						<p>Vous pouvez voir des statistiques sur les requêtes reçues par l'outil et les temps de réponse depuis le dernier redémarrage de l'application <a href="/control/show-stats">ici</a>.</p>
 						<h2 id="contact">Me contacter</h2>
 						<p>Par email : colin@maudry.com</p>
