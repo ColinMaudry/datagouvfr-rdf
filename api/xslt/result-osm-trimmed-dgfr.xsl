@@ -84,7 +84,7 @@ $prefLabel, $altLabel, $title and $name variables.
 </xsl:template>
 
 <xsl:template match="result" mode="meta">
-		<meta charset="UTF-8" />
+		<meta charset="utf-8" />
     <link rel="shortcut icon" href="{$_resourceRoot}images/datagovuk_favicon.png" type="image/x-icon" /> 
     <xsl:apply-templates select="first | prev | next | last" mode="metalink" />
     <xsl:apply-templates select="hasFormat/item" mode="metalink" />

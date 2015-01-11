@@ -30,8 +30,7 @@ If you run the script in a Unix environment, remember you need to remove ".bat" 
 
 ### Next steps
 
-- Adding [PROV](http://www.w3.org/TR/2013/REC-prov-o-20130430/#description-starting-point-terms) metadata upon data update
-- Updating [VoID](http://www.w3.org/TR/void/) metadata upon data update
+- Tell me!
 
 ## Contact
 

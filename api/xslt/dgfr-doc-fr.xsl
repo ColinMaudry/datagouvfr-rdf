@@ -28,11 +28,11 @@ $prefLabel, $altLabel, $title and $name variables.
 			<meta charset="utf-8"/>
 			<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 			<meta content="width=device-width, initial-scale=1" name="viewport"/>
-			<meta content="" name="description"/>
-			<meta content="" name="author"/>
+			<meta content="CasanovaLD, l'appli qui dévergonde les métadonnées data.gouv.fr" name="description"/>
+			<meta content="Colin Maudry" name="author"/>
 			<link rel="shortcut icon" href="{$_resourceRoot}images/datagovuk_favicon.png" type="image/x-icon" />
 			
-			<title>Documentation - data.gouv.fr explorer by Colin Maudry</title>
+			<title>CasanovaLD pour data.gouv.fr by Colin Maudry</title>
 			
 			<!-- Bootstrap core CSS -->
 			<link href="{$_resourceRoot}css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
@@ -51,11 +51,11 @@ $prefLabel, $altLabel, $title and $name variables.
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Data.gouv.fr explorer</a>
+						<a class="navbar-brand" href="#">CasanovaLD</a>
 					</div>
 					<div class="collapse navbar-collapse" id="navbar">
 						<ul class="nav navbar-nav">
-							<li><a href="/fr/datasets">Explorer</a></li>
+							<li><a href="/fr/datasets">Explorer !</a></li>
 							<li><a href="https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/">data.gouv.fr en RDF</a></li>
 							<li><a href="https://github.com/ColinMaudry/datagouvfr-rdf">Code source</a></li>
 							<li><a href="#contact">Contact</a></li>
@@ -66,23 +66,33 @@ $prefLabel, $altLabel, $title and $name variables.
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-8">
-						<h1>Documentation</h1>
+						<h1>CasanovaLD, l'appli qui dévergonde les métadonnées <a href="http://data.gouv.fr">data.gouv.fr</a></h1>
 						<h2 id="what">Qu'est-ce que c'est ?</h2>
-						<p>Le <strong>data.gouv.fr explorer</strong> remplit deux fonctions :</p>
+						<p><strong>CasanovaLD</strong> remplit deux fonctions :</p>
 						<ul>
 							<li>Proposer <a href="#api">des API</a> en lecture seule afin que les développeurs puissent facilement utiliser les métadonnées <a href="http://data.gouv.fr"
 								>data.gouv.fr</a> pour leurs applications</li>
 							<li>Grâce à ces mêmes API, proposer <a href="/fr/datasets">une interface de navigation et de recherche</a></li>
 						</ul>
-						<h2>Qu'est qu'il apporte par rapport aux fonctionnalités déjà présentes sur <a href="http://data.gouv.fr">http://data.gouv.fr</a> ?</h2>
+						<h2>Qu'est que CasanovaLD apporte par rapport aux fonctionnalités déjà présentes sur <a href="http://data.gouv.fr">data.gouv.fr</a> ?</h2>
 						<h3>Pour les développeurs</h3>
 						<p>data.gouv.fr <a href="https://www.data.gouv.fr/fr/apidoc/">propose une API</a> qui permet de consulter les métadonnées et procéder à des modifications. Un outil est
-							même proposé pour tester les appels d'API depuis la page de documentation. Le data.gouv.fr explorer <a href="#api">complète les API proposées</a> avec davantage de
-							formats disponibles.</p>
+							même proposé pour tester les appels d'API depuis la page de documentation. CasanovaLD <a href="#api">complète les API proposées</a> avec davantage de
+							formats disponibles. De plus, dans CasanovaLD, l'URI de chaque ressource est la même pour le HTML ou les autres formats. Seule l'extension (ex: .json) ou la <a
+								href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a> change.</p>
 						<h3>Pour les utilisateurs</h3>
 						<p>Certaines métadonnées ne sont pas visibles pour l'utilisateur, notamment le nombre de visites et de visiteurs uniques sur la page d'un jeu de données. Ces métadonnées
-							sont visibles dans l'interface de navigation du data.gouv.fr explorer. Lorsque vous vous trouvez sur la page d'un jeu de données sur data.gouv.fr, dans l'adresse,
+							sont visibles dans l'interface de navigation de CasanovaLD. Lorsque vous vous trouvez sur la page d'un jeu de données sur data.gouv.fr, dans l'adresse,
 							remplacez "gouv.fr" par "maudry.com". Et voilà.</p>
+						<p><a href="/fr/datasets">L'interface de navigation</a> offre également de nombreuses possibilités de tri et de sélection.</p>
+						<h2>Et quelles données y trouvent t-on ?</h2>
+						<p>Aujourd'hui, les métadonnées des objets suivants peuvent être consultées :</p>
+						<ul>
+							<li>Jeux de données (<a href="https://www.data.maudry.com/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1">exemple</a>)</li>
+							<li>Ressources (les fichiers de données, <a href="https://www.data.maudry.com/fr/resources/e0b7e6ce-461c-4648-aaf9-b98de3ef326d">exemple</a>)</li>
+						</ul>
+						<p>Les données accessibles dans CasanovaLD dépendent de leur <a href="https://wiki.data.gouv.fr/wiki/API_et_donn%C3%A9es_Data.gouv.fr">mise à disposition</a> par data.gouv.fr et de leur conversion en RDF.</p>
+						<p>Les données relatives aux organisations qui publient des données sur data.gouv.fr (<a href="https://www.data.gouv.fr/fr/organizations/caisse-nationale-de-l-assurance-maladie-des-travailleurs-salaries/">exemple</a>) et celles relatives aux réutilisations (<a href="https://www.data.gouv.fr/fr/reuses/explorez-et-telechargez-les-donnees-damir-qui-vous-interessent/">exemple</a>) devraient être bientôt intégrées.</p>
 						<h2 id="why">Mais pourquoi as-tu développé cet outil ?</h2>
 						<ul>
 							<li>Pour m'exercer à la publication de <a href="https://fr.wikipedia.org/wiki/Web_des_donn%C3%A9es">Linked data</a></li>
@@ -107,12 +117,12 @@ $prefLabel, $altLabel, $title and $name variables.
 							contribution réside principalement dans <a href="https://github.com/ColinMaudry/datagouvfr-rdf/tree/master/api">la configuration d'Elda</a> afin qu'elle exploite et
 							présente les métadonnées data.gouv.fr.</p>
 						<p>Elda est codée en Java et est déployée sur un serveur d'applications Tomcat, hébérgé sur un VPS chez <a href="http://gandi.net">Gandi</a>. J'ai implémenté quelques
-							règles de réécriture des URL afin que chacun puisse facilement passé d'une page data.gouv.fr à l'explorer.</p>
+							règles de réécriture des URL afin que chacun puisse facilement passé d'une page data.gouv.fr à CasanovaLD.</p>
 						<p>Une implémentation des Linked Data API existe également en PHP, <a href="https://code.google.com/p/puelia-php/">Puelia</a>. Même si elle est fonctionnelle, Elda jouit
 							d'une communauté plus active.</p>
-						<h2 id="api">Comment fonctionnent les APIs ?</h2>
+						<h2 id="api">Comment fonctionnent l'API ?</h2>
 						<h3>Formats</h3>
-						<p>Les formats suivants sont proposés en réponse :</p>
+						<p>Les formats suivants sont proposés en réponse de HTTP GET :</p>
 						<table class="table">
 							<thead>
 								<tr>
@@ -128,50 +138,43 @@ $prefLabel, $altLabel, $title and $name variables.
 									<td>XML</td>
 									<td>.xml</td>
 									<td>application/xml</td>
-									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</td>
-									<td>https://www.data.maudry.com/fr/datasets.xml</td>
+									<td><a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</a></td>
+									<td><a href="https://www.data.maudry.com/fr/datasets.xml">https://www.data.maudry.com/fr/datasets.xml</a></td>
 								</tr>
 								<tr>
 									<td>JSON</td>
 									<td>.json</td>
 									<td>application/json</td>
-									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.json</td>
-									<td>https://www.data.maudry.com/fr/datasets.json</td>
+									<td><a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.json">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.json</a></td>
+									<td><a href="https://www.data.maudry.com/fr/datasets.json">https://www.data.maudry.com/fr/datasets.json</a></td>
 								</tr>
 								<tr>
 									<td>CSV</td>
 									<td>.csv</td>
 									<td>text/csv</td>
-									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.csv</td>
-									<td>https://www.data.maudry.com/fr/datasets.csv</td>
+									<td><a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.csv">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.csv</a></td>
+									<td><a href="https://www.data.maudry.com/fr/datasets.csv">https://www.data.maudry.com/fr/datasets.csv</a></td>
 								</tr>
 								<tr>
 									<td><a href="https://fr.wikipedia.org/wiki/Atom">Atom</a></td>
 									<td>.atom</td>
 									<td>application/atom+xml</td>
-									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.atom</td>
-									<td>https://www.data.maudry.com/fr/datasets.atom</td>
-								</tr>
-								<tr>
-									<td>Text (identique au JSON)</td>
-									<td>.text</td>
-									<td>text/plain</td>
-									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.text</td>
-									<td>https://www.data.maudry.com/fr/datasets.text</td>
+									<td><a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.atom">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.atom</a></td>
+									<td><a href="https://www.data.maudry.com/fr/datasets.atom">https://www.data.maudry.com/fr/datasets.atom</a></td>
 								</tr>
 								<tr>
 									<td><a href="https://en.wikipedia.org/wiki/RDF/XML">RDF/XML</a></td>
 									<td>.rdf</td>
 									<td>application/rdf+xml</td>
-									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.rdf</td>
-									<td>https://www.data.maudry.com/fr/datasets.rdf</td>
+									<td><a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.rdf">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.rdf</a></td>
+									<td><a href="https://www.data.maudry.com/fr/datasets.rdf">https://www.data.maudry.com/fr/datasets.rdf</a></td>
 								</tr>
 								<tr>
 									<td><a href="https://en.wikipedia.org/wiki/Turtle_%28syntax%29">Turtle</a></td>
 									<td>.ttl</td>
 									<td>text/turtle</td>
-									<td>https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.ttl</td>
-									<td>https://www.data.maudry.com/fr/datasets.ttl</td>
+									<td><a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.ttl">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.ttl</a></td>
+									<td><a href="https://www.data.maudry.com/fr/datasets.ttl">https://www.data.maudry.com/fr/datasets.ttl</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -199,25 +202,26 @@ $prefLabel, $altLabel, $title and $name variables.
 								<tr>
 									<td><tt>curl -H "Accept:text/turtle" https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers</tt></td>
 									<td>Les métadonnées liées aux statistiques des 10 datasets qui ont le plus de followers (ordre décroissant) au format Turtle. Comme ici on utilise la <a
-										href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a>, la réponse inclue des métadonnées supplémentaire liées à la
+										href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a>, la réponse inclut des métadonnées supplémentaire liées à la
 										requête, telles que la requête SPARQL utilisée et la configuration de l'API.</td>
 								</tr>
 							</tbody>
 						</table>
-						<p>Je ne présente ici qu'une petite partie des paramètres que vous pouvez passer dans l'URL. Je vous suggère de naviguer dans <a href="/fr/datasets">l'interface d'exploration</a> et de cliquer partout, en observant l'évolution de l'URL. Pour être honnête, je découvre encore les possibilités offertes par l'API Elda. Conscient qu'une bonne API est une API bien documentée, je tâcherai d'étoffer ce chapitre. Vous pouvez également <a href="dgfr-doc-fr.xsl">le faire vous-même</a> !</p>
+						<p>Je ne présente ici qu'une petite partie des paramètres que vous pouvez passer dans l'URL. Je vous suggère de naviguer dans <a href="/fr/datasets">l'interface d'exploration</a> et de cliquer partout, en observant l'évolution de l'URL. Pour être honnête, je découvre encore les possibilités offertes par l'API Elda. Conscient qu'une bonne API est une API bien documentée, je tâcherai d'étoffer ce chapitre. Vous pouvez également <a href="https://github.com/ColinMaudry/datagouvfr-rdf/blob/master/api/xslt/dgfr-doc-fr.xsl">le faire vous-même</a> !</p>
 						<h3>URI</h3>
 						<p>La structure des URI est la même que celles utilisées pour les pages data.gouv.fr, à ceci près que :</p>
 						<ul>
 							<li>le domaine est différent : https://www.data.maudry.com</li>
 							<li>il n'y pas de slash (/) à la fin des URI. Toutes les URI se terminant par un slash sont redirigées vers l'équivalent sans slash.</li>
 						</ul>
-						<p>Ce projet étant une pure initiative individuelle, il n'existe pas de garantie que ces URI perdurent indéfiniment. Le plus probable est qu'un jour, les possibilités offertes par l'explorer soient implémentées au sein du domaine data.gouv.fr.</p>
+						<p>Ce projet étant une pure initiative individuelle, il n'existe pas de garantie que ces URI perdurent indéfiniment. Le plus probable est qu'un jour, les possibilités offertes par CasanovaLD soient implémentées au sein du domaine data.gouv.fr.</p>
 						<h3>Fraîcheur des données</h3>
 						<p>Je m'engage à synchroniser les métadonnées data.gouv.fr avec le triple store au moins une fois par semaine. En pratique, cette synchronisation a lieu environ une fois par jour. Vous pouvez vérifier la fraîcheur des données <a href="http://dydra.com/colin-maudry/datagouvfr/derniers-jeux-de-donnees-heure-gmt.html">ici</a>.</p>
 						<h3>Performance</h3>
 						<p>Les données sont stockées dans un triple store fourni à titre gracieux par <a href="http://dydra.com">Dydra</a>. Si d'ordinaire les performances sont acceptables, il n'y a aucune garantie que ce soit toujours le cas si l'application est très sollicitée.</p>
 						<p>Elda garde chaque réponse en cache pendant 10 minutes (en tout cas c'est ce que je lui ai demandé).</p>
-						<p>Vous pouvez voir des statistiques sur les requêtes reçues par l'outil et les temps de réponse <a href="/control/show-stats">ici</a>.</p>
+						<p>L'application est hébérgée sur un </p>
+						<p>Vous pouvez voir des statistiques sur les requêtes reçues par l'outil et les temps de réponse depuis le dernier redémarrage de l'application <a href="/control/show-stats">ici</a>.</p>
 						<h2 id="contact">Me contacter</h2>
 						<p>Par email : colin@maudry.com</p>
 						<p>Sur Twitter : <a href="https://twitter.com/CMaudry">@CMaudry</a></p>
@@ -227,26 +231,21 @@ $prefLabel, $altLabel, $title and $name variables.
 			</div>
 			<!-- Bootstrap core JavaScript
     ================================================== -->
-			<!-- Placed at the end of the document so the pages load faster -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-			<script src="../../dist/js/bootstrap.min.js"></script>
-			<script src="../../assets/js/docs.min.js"></script>
-			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-			<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-			<!-- Piwik -->
+			<!-- Piwik - thanks Axel-->
 			<script type="text/javascript">
 				var _paq = _paq || [];
+				_paq.push(['setVisitorCookieTimeout', '1209600']);
+				_paq.push(['setSessionCookieTimeout', '0']);
 				_paq.push(['trackPageView']);
 				_paq.push(['enableLinkTracking']);
 				(function() {
-				var u="//analytics.maudry.com/";
+				var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.maudry.com/";
 				_paq.push(['setTrackerUrl', u+'piwik.php']);
 				_paq.push(['setSiteId', 4]);
-				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-				g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+				g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 				})();
 			</script>
-			<noscript><p><img alt="" src="//analytics.maudry.com/piwik.php?idsite=4" style="border:0;" /></p></noscript>
 			<!-- End Piwik Code -->
 		</body>
 		
