@@ -57,7 +57,7 @@ $prefLabel, $altLabel, $title and $name variables.
         		_paq.push(['trackPageView']);
         		_paq.push(['enableLinkTracking']);
         		(function() {
-        		var u="http" + "://analytics.maudry.com/";
+        		var u="http://analytics.maudry.com/";
         		_paq.push(['setTrackerUrl', u+'piwik.php']);
         		_paq.push(['setSiteId', 4]);
         		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
