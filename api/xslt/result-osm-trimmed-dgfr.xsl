@@ -62,7 +62,6 @@ $prefLabel, $altLabel, $title and $name variables.
         		ga('send', 'pageview');
         		
         	</script>
-        	<noscript><p><img src="http://analytics.maudry.com/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
         </body>
     </html>
 </xsl:template>
