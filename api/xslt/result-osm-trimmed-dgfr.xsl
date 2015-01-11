@@ -79,7 +79,7 @@ $prefLabel, $altLabel, $title and $name variables.
     		<xsl:text> - </xsl:text>
     	</xsl:if>
     	<xsl:value-of select="primaryTopic/label"/>
-    	<xsl:text>data.gouv.fr explorer by Colin Maudry</xsl:text>
+    	<xsl:text>CasanovaLD for data.gouv.fr</xsl:text>
     </title>
 </xsl:template>
 
@@ -368,7 +368,7 @@ $prefLabel, $altLabel, $title and $name variables.
         <xsl:apply-templates select="." mode="formats" />
     </nav>
     <header>
-        <h1><a href="/">data.gouv.fr explorer</a></h1>
+        <h1><a href="/">CasanovaLD for data.gouv.fr</a></h1>
     </header>
 </xsl:template>
 
