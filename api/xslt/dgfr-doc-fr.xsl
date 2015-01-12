@@ -117,7 +117,7 @@ $prefLabel, $altLabel, $title and $name variables.
 							contribution réside principalement dans <a href="https://github.com/ColinMaudry/datagouvfr-rdf/tree/master/api">la configuration d'Elda</a> afin qu'elle exploite et
 							présente les métadonnées data.gouv.fr.</p>
 						<p>Elda est codée en Java et est déployée sur un serveur d'applications Tomcat, hébérgé sur un VPS chez <a href="http://gandi.net">Gandi</a>. J'ai implémenté quelques
-							règles de réécriture des URL afin que chacun puisse facilement passé d'une page data.gouv.fr à CasanovaLD.</p>
+							règles de réécriture des URL afin que chacun puisse facilement passer d'une page data.gouv.fr à CasanovaLD.</p>
 						<p>Une implémentation des Linked Data API existe également en PHP, <a href="https://code.google.com/p/puelia-php/">Puelia</a>. Même si elle est fonctionnelle, Elda jouit
 							d'une communauté plus active.</p>
 						<h2 id="api">Comment fonctionnent l'API ?</h2>
