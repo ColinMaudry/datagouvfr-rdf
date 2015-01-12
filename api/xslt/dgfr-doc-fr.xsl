@@ -85,7 +85,7 @@ $prefLabel, $altLabel, $title and $name variables.
 							sont visibles dans l'interface de navigation de CasanovaLD. Lorsque vous vous trouvez sur la page d'un jeu de données sur data.gouv.fr, dans l'adresse,
 							remplacez "gouv.fr" par "maudry.com". Et voilà.</p>
 						<p><a href="/fr/datasets">L'interface de navigation</a> offre également de nombreuses possibilités de tri et de sélection.</p>
-						<h2>Et quelles données y trouvent t-on ?</h2>
+						<h2>Et quelles données y trouve t-on ?</h2>
 						<p>Aujourd'hui, les métadonnées des objets suivants peuvent être consultées :</p>
 						<ul>
 							<li>Jeux de données (<a href="https://www.data.maudry.com/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1">exemple</a>)</li>
