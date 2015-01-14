@@ -16,6 +16,8 @@ This is the foundation work that fuels [CasanovaLD](https://translate.google.com
 
 **I commit to run this script and update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1%2F&edit-text=&act=url)) at least once a week**.
 
+This wouldn't be possible and so easy without the publication of live CSVs by @noirbizarre for @etalab.
+
 ### Requirements
 
 - [Apache Ant](http://ant.apache.org/bindownload.cgi), with [ANT INSTALL]/bin directory added to your PATH environment variable
