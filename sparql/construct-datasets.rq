@@ -14,7 +14,7 @@ construct
 {
 
   ?dataset a dcat:Dataset ;
-    dct:identifier ?a ;
+    dct:identifier ?id ;
     dct:title ?title ;
     rdfs:label ?title ;
     dcat:landingPage ?urlAsUri ;

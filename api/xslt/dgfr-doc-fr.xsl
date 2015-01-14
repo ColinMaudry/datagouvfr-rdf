@@ -188,22 +188,26 @@ $prefLabel, $altLabel, $title and $name variables.
 							</thead>
 							<tbody>
 								<tr>
-									<td><tt>curl https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</tt></td>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</a></tt></td>
 									<td>Un ensemble prédéfini de propriétés pour ce dataset en XML.</td>
 								</tr>
 								<tr>
-									<td><tt>curl https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018?_view=all</tt></td>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018?_view=all">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018?_view=all</a></tt></td>
 									<td>Toutes les propriétés directes de ce dataset en HTML.</td>
 								</tr>
 								<tr>
-									<td><tt>curl https://www.data.maudry.com/fr/datasets.json</tt></td>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets.json">https://www.data.maudry.com/fr/datasets.json</a></tt></td>
 									<td>Un ensemble prédéfini de propriétés pour les 10 derniers datasets créés sur data.gouv.fr en JSON.</td>
 								</tr>
 								<tr>
-									<td><tt>curl -H "Accept:text/turtle" https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers</tt></td>
+									<td><tt>curl -H "Accept:text/turtle" <a href="https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers">https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers</a></tt></td>
 									<td>Les métadonnées liées aux statistiques des 10 datasets qui ont le plus de followers (ordre décroissant) au format Turtle. Comme ici on utilise la <a
 										href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a>, la réponse inclut des métadonnées supplémentaire liées à la
 										requête, telles que la requête SPARQL utilisée et la configuration de l'API.</td>
+								</tr>
+								<tr>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets?distribution.dgfr_format=zip">https://www.data.maudry.com/fr/datasets?distribution.dgfr_format=zip</a></tt></td>
+									<td>Un ensemble prédéfini de propriétés pour les 10 derniers datasets créés sur data.gouv.fr qui ont au moins une distribution au format ZIP.</td>
 								</tr>
 							</tbody>
 						</table>
