@@ -1,9 +1,9 @@
-Semantic data.gouv.fr (0.2.0)
+Semantic data.gouv.fr (0.2.1)
 ==============
 
 Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
 
-This is the foundation work that fuels the [data.gouv.fr explorer app](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
+This is the foundation work that fuels [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
 
 ## Update script
 
@@ -15,6 +15,8 @@ This is the foundation work that fuels the [data.gouv.fr explorer app](https://t
 1. Uploading the resulting RDF into an RDF repository
 
 **I commit to run this script and update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1%2F&edit-text=&act=url)) at least once a week**.
+
+This wouldn't be possible and so easy without the publication of live CSVs by @noirbizarre for @etalab.
 
 ### Requirements
 
@@ -44,6 +46,11 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+##### 0.2.1
+
+- That was a lame name. Say hi to [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=)!
+- Improved documentation
 
 #### 0.2.0
 

@@ -51,23 +51,17 @@ $prefLabel, $altLabel, $title and $name variables.
                 <xsl:apply-templates select="." mode="content" />
                 <xsl:apply-templates select="." mode="footer" />
             </div>
-        	<!-- Piwik - thanks Axel-->
-        	<script type="text/javascript">
-        		var _paq = _paq || [];
-        		_paq.push(['setVisitorCookieTimeout', '1209600']);
-        		_paq.push(['setSessionCookieTimeout', '0']);
-        		_paq.push(['trackPageView']);
-        		_paq.push(['enableLinkTracking']);
-        		(function() {
-        		var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.maudry.com/";
-        		_paq.push(['setTrackerUrl', u+'piwik.php']);
-        		_paq.push(['setSiteId', 4]);
-        		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-        		g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        		})();
+        	<!-- Sorry, couldn't use Piwik because https-->
+        	<script>
+        		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        		
+        		ga('create', 'UA-58462015-3', 'auto');
+        		ga('send', 'pageview');
+        		
         	</script>
-        	<!-- End Piwik Code -->
-        	<noscript><p><img src="http://analytics.maudry.com/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
         </body>
     </html>
 </xsl:template>
@@ -79,7 +73,7 @@ $prefLabel, $altLabel, $title and $name variables.
     		<xsl:text> - </xsl:text>
     	</xsl:if>
     	<xsl:value-of select="primaryTopic/label"/>
-    	<xsl:text>data.gouv.fr explorer by Colin Maudry</xsl:text>
+    	<xsl:text>CasanovaLD for data.gouv.fr</xsl:text>
     </title>
 </xsl:template>
 
@@ -368,7 +362,7 @@ $prefLabel, $altLabel, $title and $name variables.
         <xsl:apply-templates select="." mode="formats" />
     </nav>
     <header>
-        <h1><a href="/">data.gouv.fr explorer</a></h1>
+        <h1><a href="/">CasanovaLD for data.gouv.fr</a></h1>
     </header>
 </xsl:template>
 
