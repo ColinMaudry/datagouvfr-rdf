@@ -47,13 +47,14 @@ from <file:../csv/datasets.csv#delimiter=%3B;encoding=utf-8>
   bind(xs:boolean(if (?featured="",false,lcase(?featured))) as ?lcFeatured)
   bind(xs:dateTime(?created_at) as ?createdAsDateTime)
   bind(xs:dateTime(?last_modified) as ?modifiedAsDateTime)
-  bind(xs:int(?metric_views) as ?views)
-  bind(xs:int(?metric_issues) as ?issues)
-  bind(xs:int(?metric_followers) as ?followers)
-  bind(xs:int(?metric_nb_hits) as ?hits)
-  bind(xs:int(?metric_nb_visits) as ?visits)
-  bind(xs:int(?metric_reuses) as ?reuses)
-  bind(xs:int(?metric_nb_uniq_visitors) as ?unique_visitors)
+  
+  bind(xs:integer(?metric_views) as ?views)
+  bind(xs:integer(?metric_issues) as ?issues)
+  bind(xs:integer(?metric_followers) as ?followers)
+  bind(xs:integer(?metric_nb_hits) as ?hits)
+  bind(xs:integer(?metric_nb_visits) as ?visits)
+  bind(xs:integer(?metric_reuses) as ?reuses)
+  bind(xs:integer(?metric_nb_uniq_visitors) as ?unique_visitors)
 
   }
   
