@@ -64,11 +64,11 @@
 		<echo>[CONVERT]</echo>
 		<mkdir dir="rdf/history"/>
 		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="tarql.bat" searchpath="true" output="rdf/datasets.ttl">
+		<exec executable="tarql" searchpath="true" output="rdf/datasets.ttl">
 			<arg line="sparql/construct-datasets.rq"/>
 		</exec>
 		<echo>Querying resources.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="tarql.bat" searchpath="true" output="rdf/resources.ttl">
+		<exec executable="tarql" searchpath="true" output="rdf/resources.ttl">
 			<arg line="sparql/construct-resources.rq"/>
 		</exec>
 		<echo>Archiving RDF...</echo>
@@ -83,14 +83,14 @@
 	<target name="upload" depends="convert">
 		<echo>[UPLOAD]</echo>
 		<echo>Uploading datasets.ttl to the repository...</echo>
-		<exec executable="curl.exe" searchpath="true" failonerror="true">
+		<exec executable="curl" searchpath="true" failonerror="true">
 			<arg line="-X PUT"/>
 			<arg line="--data-binary @'rdf/datasets.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
 			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphUri}'"/>
 		</exec>
 		<echo>Uploading resources.ttl to the repository...</echo>
-		<exec executable="curl.exe" searchpath="true" failonerror="true">
+		<exec executable="curl" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
 			<arg line="--data-binary @'rdf/resources.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
@@ -118,13 +118,13 @@
 			<fileset dir="turtle/temp" includes="*.ttl"/>
 		</replace>
 		<echo>Uploading metadata to the main graph of the repository...</echo>
-		<exec executable="curl.exe" searchpath="true">
+		<exec executable="curl" searchpath="true">
 			<arg line="-v -X PUT"/>
 			<arg line="--data-binary @'turtle/temp/prov.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
 			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?default'"/>
 		</exec>
-		<exec executable="curl.exe" searchpath="true">
+		<exec executable="curl" searchpath="true">
 			<arg line="-v -X POST"/>
 			<arg line="--data-binary @'turtle/temp/void.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
