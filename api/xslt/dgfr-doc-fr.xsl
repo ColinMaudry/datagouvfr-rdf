@@ -77,7 +77,8 @@ $prefLabel, $altLabel, $title and $name variables.
 						<h2>Qu'est que CasanovaLD apporte par rapport aux fonctionnalités déjà présentes sur <a href="http://data.gouv.fr">data.gouv.fr</a> ?</h2>
 						<h3>Pour les développeurs</h3>
 						<p>data.gouv.fr <a href="https://www.data.gouv.fr/fr/apidoc/">propose une API</a> qui permet de consulter les métadonnées et procéder à des modifications. Un outil est
-							même proposé pour tester les appels d'API depuis la page de documentation. CasanovaLD <a href="#api">complète les API proposées</a> avec davantage de
+							même proposé pour tester les appels d'API depuis la page de documentation.</p>
+						<p>CasanovaLD <a href="#api">complète les API proposées</a> avec davantage de
 							formats disponibles. De plus, dans CasanovaLD, l'URI de chaque ressource est la même pour le HTML ou les autres formats. Seule l'extension (ex: .json) ou la <a
 								href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a> change.</p>
 						<h3>Pour les utilisateurs</h3>
@@ -97,8 +98,8 @@ $prefLabel, $altLabel, $title and $name variables.
 						<ul>
 							<li>Pour m'exercer à la publication de <a href="https://fr.wikipedia.org/wiki/Web_des_donn%C3%A9es">Linked data</a></li>
 							<li>Pour démontrer mes compétences en la matière</li>
-							<li>Parce que je publie déjà <a href="https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/">les métadonnées data.gouv.fr au
-								format RDF</a> (un format du <a href="https://fr.wikipedia.org/wiki/Web_s%C3%A9mantique">Web sémantique</a>) ce qui était un pré-requis</li>
+							<li>Parce que je publie déjà <a href="https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/">les métadonnées data.gouv.fr au
+								format RDF</a> (le modèle du <a href="https://fr.wikipedia.org/wiki/Web_s%C3%A9mantique">Web sémantique</a>) ce qui était un pré-requis</li>
 							<li>Parce que c'est agréable pour un développeur d'utiliser des outils faciles à utiliser et performants pour améliorer l'expérience des utilisateurs et des autres
 								développeurs</li>
 							<li>Parce que ce n'était ni difficile, ni long, compte tenu des <a href="#components">composants open source existants</a> et mon expérience dans des projets similaires
