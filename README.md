@@ -14,7 +14,7 @@ This is the foundation work that fuels [CasanovaLD](https://translate.google.com
 1. Converting the CSV into RDF (using )
 1. Uploading the resulting RDF into an RDF repository
 
-**I commit to run this script and update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1%2F&edit-text=&act=url)) at least once a week**.
+**I commit to run this script and update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=)) at least once a week**.
 
 This wouldn't be possible and so easy without the publication of live CSVs by @noirbizarre for @etalab.
 
