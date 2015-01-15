@@ -77,7 +77,8 @@ $prefLabel, $altLabel, $title and $name variables.
 						<h2>Qu'est que CasanovaLD apporte par rapport aux fonctionnalités déjà présentes sur <a href="http://data.gouv.fr">data.gouv.fr</a> ?</h2>
 						<h3>Pour les développeurs</h3>
 						<p>data.gouv.fr <a href="https://www.data.gouv.fr/fr/apidoc/">propose une API</a> qui permet de consulter les métadonnées et procéder à des modifications. Un outil est
-							même proposé pour tester les appels d'API depuis la page de documentation. CasanovaLD <a href="#api">complète les API proposées</a> avec davantage de
+							même proposé pour tester les appels d'API depuis la page de documentation.</p>
+						<p>CasanovaLD <a href="#api">complète les API proposées</a> avec davantage de
 							formats disponibles. De plus, dans CasanovaLD, l'URI de chaque ressource est la même pour le HTML ou les autres formats. Seule l'extension (ex: .json) ou la <a
 								href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a> change.</p>
 						<h3>Pour les utilisateurs</h3>
@@ -85,7 +86,7 @@ $prefLabel, $altLabel, $title and $name variables.
 							sont visibles dans l'interface de navigation de CasanovaLD. Lorsque vous vous trouvez sur la page d'un jeu de données sur data.gouv.fr, dans l'adresse,
 							remplacez "gouv.fr" par "maudry.com". Et voilà.</p>
 						<p><a href="/fr/datasets">L'interface de navigation</a> offre également de nombreuses possibilités de tri et de sélection.</p>
-						<h2>Et quelles données y trouvent t-on ?</h2>
+						<h2>Et quelles données y trouve t-on ?</h2>
 						<p>Aujourd'hui, les métadonnées des objets suivants peuvent être consultées :</p>
 						<ul>
 							<li>Jeux de données (<a href="https://www.data.maudry.com/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1">exemple</a>)</li>
@@ -97,8 +98,8 @@ $prefLabel, $altLabel, $title and $name variables.
 						<ul>
 							<li>Pour m'exercer à la publication de <a href="https://fr.wikipedia.org/wiki/Web_des_donn%C3%A9es">Linked data</a></li>
 							<li>Pour démontrer mes compétences en la matière</li>
-							<li>Parce que je publie déjà <a href="https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/">les métadonnées data.gouv.fr au
-								format RDF</a> (un format du <a href="https://fr.wikipedia.org/wiki/Web_s%C3%A9mantique">Web sémantique</a>) ce qui était un pré-requis</li>
+							<li>Parce que je publie déjà <a href="https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/">les métadonnées data.gouv.fr au
+								format RDF</a> (le modèle du <a href="https://fr.wikipedia.org/wiki/Web_s%C3%A9mantique">Web sémantique</a>) ce qui était un pré-requis</li>
 							<li>Parce que c'est agréable pour un développeur d'utiliser des outils faciles à utiliser et performants pour améliorer l'expérience des utilisateurs et des autres
 								développeurs</li>
 							<li>Parce que ce n'était ni difficile, ni long, compte tenu des <a href="#components">composants open source existants</a> et mon expérience dans des projets similaires
@@ -117,7 +118,7 @@ $prefLabel, $altLabel, $title and $name variables.
 							contribution réside principalement dans <a href="https://github.com/ColinMaudry/datagouvfr-rdf/tree/master/api">la configuration d'Elda</a> afin qu'elle exploite et
 							présente les métadonnées data.gouv.fr.</p>
 						<p>Elda est codée en Java et est déployée sur un serveur d'applications Tomcat, hébérgé sur un VPS chez <a href="http://gandi.net">Gandi</a>. J'ai implémenté quelques
-							règles de réécriture des URL afin que chacun puisse facilement passé d'une page data.gouv.fr à CasanovaLD.</p>
+							règles de réécriture des URL afin que chacun puisse facilement passer d'une page data.gouv.fr à CasanovaLD.</p>
 						<p>Une implémentation des Linked Data API existe également en PHP, <a href="https://code.google.com/p/puelia-php/">Puelia</a>. Même si elle est fonctionnelle, Elda jouit
 							d'une communauté plus active.</p>
 						<h2 id="api">Comment fonctionnent l'API ?</h2>
@@ -188,22 +189,26 @@ $prefLabel, $altLabel, $title and $name variables.
 							</thead>
 							<tbody>
 								<tr>
-									<td><tt>curl https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</tt></td>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018.xml</a></tt></td>
 									<td>Un ensemble prédéfini de propriétés pour ce dataset en XML.</td>
 								</tr>
 								<tr>
-									<td><tt>curl https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018?_view=all</tt></td>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018?_view=all">https://www.data.maudry.com/fr/datasets/poles-d-excellence-rurale-30383018?_view=all</a></tt></td>
 									<td>Toutes les propriétés directes de ce dataset en HTML.</td>
 								</tr>
 								<tr>
-									<td><tt>curl https://www.data.maudry.com/fr/datasets.json</tt></td>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets.json">https://www.data.maudry.com/fr/datasets.json</a></tt></td>
 									<td>Un ensemble prédéfini de propriétés pour les 10 derniers datasets créés sur data.gouv.fr en JSON.</td>
 								</tr>
 								<tr>
-									<td><tt>curl -H "Accept:text/turtle" https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers</tt></td>
+									<td><tt>curl -H "Accept:text/turtle" <a href="https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers">https://www.data.maudry.com/fr/datasets?_view=Statistics&amp;_page=0&amp;_sort=-followers</a></tt></td>
 									<td>Les métadonnées liées aux statistiques des 10 datasets qui ont le plus de followers (ordre décroissant) au format Turtle. Comme ici on utilise la <a
 										href="https://fr.wikipedia.org/wiki/N%C3%A9gociation_de_contenu">négociation de contenu</a>, la réponse inclut des métadonnées supplémentaire liées à la
 										requête, telles que la requête SPARQL utilisée et la configuration de l'API.</td>
+								</tr>
+								<tr>
+									<td><tt>curl <a href="https://www.data.maudry.com/fr/datasets?distribution.dgfr_format=zip">https://www.data.maudry.com/fr/datasets?distribution.dgfr_format=zip</a></tt></td>
+									<td>Un ensemble prédéfini de propriétés pour les 10 derniers datasets créés sur data.gouv.fr qui ont au moins une distribution au format ZIP.</td>
 								</tr>
 							</tbody>
 						</table>
@@ -220,7 +225,6 @@ $prefLabel, $altLabel, $title and $name variables.
 						<h3>Performance</h3>
 						<p>Les données sont stockées dans un triple store fourni à titre gracieux par <a href="http://dydra.com">Dydra</a>. Si d'ordinaire les performances sont acceptables, il n'y a aucune garantie que ce soit toujours le cas si l'application est très sollicitée.</p>
 						<p>Elda garde chaque réponse en cache pendant 10 minutes (en tout cas c'est ce que je lui ai demandé).</p>
-						<p>L'application est hébérgée sur un </p>
 						<p>Vous pouvez voir des statistiques sur les requêtes reçues par l'outil et les temps de réponse depuis le dernier redémarrage de l'application <a href="/control/show-stats">ici</a>.</p>
 						<h2 id="contact">Me contacter</h2>
 						<p>Par email : colin@maudry.com</p>
@@ -231,22 +235,17 @@ $prefLabel, $altLabel, $title and $name variables.
 			</div>
 			<!-- Bootstrap core JavaScript
     ================================================== -->
-			<!-- Piwik - thanks Axel-->
-			<script type="text/javascript">
-				var _paq = _paq || [];
-				_paq.push(['setVisitorCookieTimeout', '1209600']);
-				_paq.push(['setSessionCookieTimeout', '0']);
-				_paq.push(['trackPageView']);
-				_paq.push(['enableLinkTracking']);
-				(function() {
-				var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.maudry.com/";
-				_paq.push(['setTrackerUrl', u+'piwik.php']);
-				_paq.push(['setSiteId', 4]);
-				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-				g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-				})();
+			<!-- Sorry, couldn't use Piwik because https -->
+			<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				
+				ga('create', 'UA-58462015-1', 'auto');
+				ga('send', 'pageview');
+				
 			</script>
-			<!-- End Piwik Code -->
 		</body>
 		
 	</html>
