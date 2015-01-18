@@ -9,6 +9,7 @@
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 
 #Author: Colin Maudry
 #Contact: colin@maudry.com
@@ -68,42 +69,42 @@
 		rdfs:domain dcat:Dataset .
 	
 	:views a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Views" ;
 		rdfs:comment "The number of times the page of the dataset bas been viewed."@en ;
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue."@fr ;
 		rdfs:domain dcat:Dataset .
 	
 	:visits a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Visits" ;
 		rdfs:comment "The number of times the page of the dataset bas been visited."@en ;
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été visitée."@fr ;
 		rdfs:domain dcat:Dataset .
 	
 	:reuses a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Reuses" ;
 		rdfs:comment "The number of reuses that have been created from the data of the dataset and published on the same page."@en ;
 		rdfs:comment "Le nombre de réutilisations qui ont été créées à partir des données du jeu de données et publiés sur la même page."@fr ;
 		rdfs:domain dcat:Dataset .	
 		
 	:followers a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Followers" ;
 		rdfs:comment "The number of users who subscribed to be informed when the dataset is updated."@en ;
 		rdfs:comment "Le nombre d'utilisateurs qui se sont abonnés pour être informés lorsque le jeu de données est mis à jour."@fr ;
 		rdfs:domain dcat:Dataset .
 
 	:issues a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Issues" ;
 		rdfs:comment "The number of issues that have been reported about the dataset (wrong or missing data)."@en ;
 		rdfs:comment "Le nombre d'anomalies qui ont été signalées pour le jeu de données (données erronées ou manquantes)."@fr ;
 		rdfs:domain dcat:Dataset .
 
 	:uniqueVisitors a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Unique visitors" ;
 		rdfs:comment "The number of unique visitors who viewed the page of the dataset."@en ;
 		rdfs:comment "Le nombre de visiteurs uniques qui se sont rendus sur la page du jeu de données."@fr ;
@@ -147,7 +148,7 @@
 		rdfs:domain dcat:Distribution .
 		
 	:downloads a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Downloads" ;
 		rdfs:comment "The number of times the resource was downloaded."@en ;
 		rdfs:comment "Le nombre de fois que la ressource a été téléchargée."@fr ;
@@ -156,9 +157,25 @@
 	:dataset a rdf:Property ;
 		rdfs:range dcat:Dataset ;
 		rdfs:label "Dataset" ;
-		rdfs:comment "A dataset in which this distribution is included." ;
-		rdfs:comment "Un jeu de données dans lequel cette ressource est incluse" ;
+		rdfs:comment "A dataset in which this distribution is included."@en ;
+		rdfs:comment "Un jeu de données dans lequel cette ressource est incluse"@fr ;
 		rdfs:domain dcat:Distribution .		
+
+#For dgfr:Reuse
+
+	:Reuse rdfs:subClassOf foaf:Document ;
+		rdfs:label "Reuse" ;
+		rdfs:comment "A creative work derived from the data of one or more dataset"@en ;
+		rdfs:comment "Une réalisation créée à partir des données d'un ou plusieurs jeux de données"@fr .
 	
+	:datasets a rdf:Property ;
+		rdfs:label "Datasets" ;
+		rdfs:comment "The number of datasets used to make the reuse"@en ;
+		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr ;
+		rdfs:range xsd:integer ;
+		rdfs:domain :Reuse .
+	
+	
+		
 	
 			
