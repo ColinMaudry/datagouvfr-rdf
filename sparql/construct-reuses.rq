@@ -10,6 +10,8 @@ PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
 PREFIX schema: <http://schema.org/url>
 PREFIX prov: <http://www.w3.org/ns/prov#> 
+PREFIX datasets: <https://www.data.maudry.com/fr/datasets/>
+PREFIX reuses: <https://www.data.maudry.com/fr/reuses/> 
 
 construct
 
@@ -37,6 +39,13 @@ construct
     prov:used ?usedDataset1 ;
     prov:used ?usedDataset2 ;
     prov:used ?usedDataset3 ;
+    prov:used ?usedDataset4 ;
+    prov:used ?usedDataset5 ;
+    prov:used ?usedDataset6 ;
+    prov:used ?usedDataset7 ;
+    prov:used ?usedDataset8 ;
+    prov:used ?usedDataset9 ;
+    prov:used ?usedDataset10 ;
     dgfr:uniqueVisitors ?unique_visitors .  
 }
 from <file:../csv/reuses.csv#delimiter=%3B;encoding=utf-8>
@@ -54,13 +63,39 @@ from <file:../csv/reuses.csv#delimiter=%3B;encoding=utf-8>
   bind(xs:integer(?metric_datasets) as ?nb_datasets)
   bind(xs:integer(?metric_nb_uniq_visitors) as ?unique_visitors)
   
-  #The ugly part
-  bind(if(contains(?datasets,","),strbefore(?datasets,","),?datasets) as ?datasetId1)
-  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?datasetId1)) as ?usedDataset1)
-  bind(strbefore(strafter(?datasets,concat(?datasetId1,",")),",") as ?datasetId2)
-  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?datasetId2)) as ?usedDataset2)
-  bind(strbefore(strafter(?datasets,concat(?datasetId2,",")),",") as ?datasetId3)
-  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?datasetId3)) as ?usedDataset3)
+  #The ugly part: max 10 source datasets are supported per reuse... We'll see how it goes and expand to more if needed.
+  #Thanks ThomasFrancart
+  #http://answers.semanticweb.com/answer_link/19218/  
+  
+  bind(if(contains(?datasets, ","),strbefore(?datasets, ","), ?datasets) as ?usedDatasetId1)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId1)) as ?usedDataset1)
+  bind(strafter(?datasets, ",") as ?r1)
+  bind(if(?r1 = "",?dummy,if(contains(?r1, ","),strbefore(?r1, ","), ?r1)) as ?usedDatasetId2)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId2)) as ?usedDataset2)
+  bind(strafter(?r1, ",") as ?r2)
+  bind(if(?r2 = "",?dummy,if(contains(?r2, ","),strbefore(?r2, ","), ?r2)) as ?usedDatasetId3)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId3)) as ?usedDataset3)
+  bind(strafter(?r2, ",") as ?r3)
+  bind(if(?r3 = "",?dummy,if(contains(?r3, ","),strbefore(?r3, ","), ?r3)) as ?usedDatasetId4)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId4)) as ?usedDataset4)
+  bind(strafter(?r3, ",") as ?r4)
+  bind(if(?r4 = "",?dummy,if(contains(?r4, ","),strbefore(?r4, ","), ?r4)) as ?usedDatasetId5)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId5)) as ?usedDataset5)
+  bind(strafter(?r4, ",") as ?r5)
+  bind(if(?r5 = "",?dummy,if(contains(?r5, ","),strbefore(?r5, ","), ?r5)) as ?usedDatasetId6)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId6)) as ?usedDataset6)
+  bind(strafter(?r5, ",") as ?r6)
+  bind(if(?r6 = "",?dummy,if(contains(?r6, ","),strbefore(?r6, ","), ?r6)) as ?usedDatasetId7)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId7)) as ?usedDataset7)
+  bind(strafter(?r6, ",") as ?r7)
+  bind(if(?r7 = "",?dummy,if(contains(?r7, ","),strbefore(?r7, ","), ?r7)) as ?usedDatasetId8)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId8)) as ?usedDataset8)
+  bind(strafter(?r7, ",") as ?r8)
+  bind(if(?r8 = "",?dummy,if(contains(?r8, ","),strbefore(?r8, ","), ?r8)) as ?usedDatasetId9)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId9)) as ?usedDataset9)
+  bind(strafter(?r8, ",") as ?r9)
+  bind(if(?r9 = "",?dummy,if(contains(?r9, ","),strbefore(?r9, ","), ?r9)) as ?usedDatasetId10)
+  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?usedDatasetId10)) as ?usedDataset10)
   }
   
   
