@@ -52,8 +52,6 @@
 
 #For dcat:Dataset
 
-
-
 	:private a rdf:Property ;
 		rdfs:range xsd:boolean ;
 		rdfs:label "Private" ;
@@ -73,28 +71,28 @@
 		rdfs:label "Views" ;
 		rdfs:comment "The number of times the page of the dataset bas been viewed."@en ;
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue."@fr ;
-		rdfs:domain dcat:Dataset .
+		rdfs:domain dcat:Dataset, foaf:Organization .
 	
 	:visits a rdf:Property ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Visits" ;
 		rdfs:comment "The number of times the page of the dataset bas been visited."@en ;
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été visitée."@fr ;
-		rdfs:domain dcat:Dataset .
+		rdfs:domain dcat:Dataset, foaf:Organization .
 	
 	:reuses a rdf:Property ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Reuses" ;
-		rdfs:comment "The number of reuses that have been created from the data of the dataset and published on the same page."@en ;
-		rdfs:comment "Le nombre de réutilisations qui ont été créées à partir des données du jeu de données et publiés sur la même page."@fr ;
-		rdfs:domain dcat:Dataset .	
+		rdfs:comment "The number of reuses that have been created from the data of the dataset and published on the same page. For an organization, the number of reuses created using its datasets."@en ;
+		rdfs:comment "Le nombre de réutilisations qui ont été créées à partir des données du jeu de données et publiés sur la même page. Pour une organisation, le nombre de réutilisations créées à partir de ses jeux de données."@fr ;
+		rdfs:domain dcat:Dataset, foaf:Organization .	
 		
 	:followers a rdf:Property ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Followers" ;
 		rdfs:comment "The number of users who subscribed to be informed when the dataset is updated."@en ;
 		rdfs:comment "Le nombre d'utilisateurs qui se sont abonnés pour être informés lorsque le jeu de données est mis à jour."@fr ;
-		rdfs:domain dcat:Dataset .
+		rdfs:domain dcat:Dataset, foaf:Organization .
 
 	:issues a rdf:Property ;
 		rdfs:range xsd:integer ;
@@ -108,14 +106,14 @@
 		rdfs:label "Unique visitors" ;
 		rdfs:comment "The number of unique visitors who viewed the page of the dataset."@en ;
 		rdfs:comment "Le nombre de visiteurs uniques qui se sont rendus sur la page du jeu de données."@fr ;
-		rdfs:domain dcat:Dataset .	
+		rdfs:domain dcat:Dataset, foaf:Organization .	
 		
 	:slug a rdf:Property ;
 		rdfs:range xsd:string ;
 		rdfs:label "Slug" ;
 		rdfs:comment "A URL-friendly version of the title."@en ;
 		rdfs:comment "Une version du titre simplifiée pour pouvoir être inséré dans une URL."@fr ;
-		rdfs:domain dcat:Dataset .	
+		rdfs:domain dcat:Dataset, foaf:Organization, :Reuse .	
 		
 #For dcat:Distribution
 
@@ -173,9 +171,29 @@
 		rdfs:comment "The number of datasets used to make the reuse"@en ;
 		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr ;
 		rdfs:range xsd:integer ;
-		rdfs:domain :Reuse .
+		rdfs:domain :Reuse, foaf:Organization .
+
+#For foaf:Organization
+
+	:members a rdf:Property ;
+		rdfs:label "Members" ;
+		rdfs:comment "The number of people that are members of this organization"@en ;
+		rdfs:comment "Le nombre de personne qui sont membres de cette organisation"@fr ;
+		rdfs:range xsd:integer ;
+		rdfs:domain foaf:Organization .
 	
-	
+	:hasMadeReuses a rdf:Property ;
+		rdfs:label "Has made reuses" ;
+		rdfs:comment "The number of reuses produced and published by this organization"@en ;
+		rdfs:comment "Le nombre de réutilisations produites et publiées par cette organisation"@fr ;
+		rdfs:range xsd:integer ;
+		rdfs:domain foaf:Organization .
 		
+	:publicService a rdf:Property ;
+		rdfs:range xsd:boolean ;
+		rdfs:label "Public service" ;
+		rdfs:comment "Defines whether the organization is entrusted a mission of public service."@en ;
+		rdfs:comment "Détermine si l'organisation est chargée d'une mission de service publique, ou non."@fr ;
+		rdfs:domain foaf:Organization .		
 	
 			
