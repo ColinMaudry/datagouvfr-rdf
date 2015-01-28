@@ -18,8 +18,8 @@ construct
     dct:title ?title ;
     rdfs:label ?title ;
     dcat:landingPage ?urlAsUri ;
-    dct:rightsHolder ?organization ;
-    dct:publisher ?supplier ;
+    dct:publisher ?organization_id ;
+    #dct:publisher ?supplier ;
     dct:description ?description ;
     dct:accrualPeriodicity ?dctFrequency ;
     dct:license ?license ;
