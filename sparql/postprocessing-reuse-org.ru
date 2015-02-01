@@ -27,23 +27,6 @@ insert
  	dct:identifier ?organizationId .
  ?reuse a dgfr:Reuse ;
  	dct:publisher ?organizationId .
-  };
-  
-with <http://www.data.maudry.com>
-delete
-{
-	?reuse prov:used ?datasetId .
-}
-insert
-{
-?reuse prov:used ?dataset .
-}
-where {
- ?dataset a dcat:Dataset ;
- 	dct:identifier ?datasetId .
- ?reuse a dgfr:Reuse ;
- 	prov:used ?datasetId .
   }
-
   
   
