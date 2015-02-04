@@ -17,9 +17,8 @@
 @prefix elda:               <http://www.epimorphics.com/vocabularies/lda#> .
 
 # Prefix for example-local entities.
-@prefix schema:				<http://schema.org/>.
 @prefix dgfr:				<http://colin.maudry.com/ontologies/dgfr#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 # ---------------------------------------------------------------------
@@ -43,13 +42,11 @@ dgfr:api a api:API
 	; api:endpoint dgfr:datasetSlug
 	; api:endpoint dgfr:resources
 	; api:endpoint dgfr:resourceId
-	; api:endpoint dgfr:organizations 
+	; api:endpoint dgfr:organizations
 	; api:endpoint dgfr:organizationSlug
-	; api:endpoint dgfr:reuses
-	; api:endpoint dgfr:reuseId
 	; api:endpoint dgfr:doc 
 	; elda:enableCounting true
-   	; elda:cacheExpiryTime "10m"
+   	; elda:cacheExpiryTime "60m"
 	.
 
 <http://dydra.com/colin-maudry/datagouvfr/sparql> elda:supportsNestedSelect true .
@@ -73,6 +70,7 @@ dgfr:datasetSlug a api:ItemEndpoint
 	; api:uriTemplate "/datasets/{slug}" 
     ; api:selector
         [ api:filter "type=Dataset&slug={slug}"
+        ; api:sort "title"
         ]
 	; elda:graphTemplate "http://www.data.maudry.com"
 	.
@@ -102,34 +100,15 @@ dgfr:organizations a api:ListEndpoint
 	; api:selector [api:filter "type=Organization"; api:sort "-created"]
 	; elda:graphTemplate "http://www.data.maudry.com"
 	; api:defaultViewer dgfr:organizationNormal
-	.	
-	
+	.
+
 dgfr:organizationSlug a api:ItemEndpoint 
+	; api:defaultViewer dgfr:organizationNormal
 	; rdfs:label "Organization by slug" 
 	; api:uriTemplate "/organizations/{slug}" 
     ; api:selector
-        [ api:filter "type=Organization&slug={slug}"
-        ]
+        [ api:filter "type=Organization&slug={slug}" ; api:sort "label"]
 	; elda:graphTemplate "http://www.data.maudry.com"
-	; api:defaultViewer dgfr:organizationNormal
-	.
-
-dgfr:reuses a api:ListEndpoint 
-	; rdfs:label "Reuses" 
-	; api:uriTemplate "/reuses" 
-	; api:selector [api:filter "type=Reuse"; api:sort "-created"]
-	; elda:graphTemplate "http://www.data.maudry.com"
-	; api:defaultViewer dgfr:reuseNormal
-	.	
-	
-dgfr:reuseId a api:ItemEndpoint 
-	; rdfs:label "Reuse by ID" 
-	; api:uriTemplate "/reuses/{id}" 
-    ; api:selector
-        [ api:filter "type=Organization&id={id}"
-        ]
-	; elda:graphTemplate "http://www.data.maudry.com"
-	; api:defaultViewer dgfr:organizationNormal
 	.
 
 #Endpoint for the documentation
@@ -141,6 +120,7 @@ dgfr:doc a api:ItemEndpoint
         [ api:where "?item a <http://rdfs.org/ns/void#Dataset>  ."
         ]
 	.
+
 
 #Viewers
 
@@ -163,23 +143,33 @@ dgfr:datasetStats
 	api:name "Statistics" ;
 	api:properties "reuses,unique_visitors,views,visits,hits,issues,followers"
 	.
+
 dgfr:resourceNormal
 	a api:Viewer ;
 	api:name "Normal" ;
-	api:properties "label,description,id,issued,byte_size,media_type,modified,downloads,download_url,dgfr_format,dataset,dataset.label,dataset.publisher,dataset.publisher.label"
+	api:properties "label,description,id,issued,byte_size,media_type,modified,downloads,download_url,dgfr_format,dataset,dataset.label"
 	.
 	
 dgfr:organizationNormal
-	a api:Viewer ;
-	api:name "Normal" ;
-	api:properties "label,url,description,id,published,published.label,published.created, published.type"
-	.
+  a api:Viewer ;
+  api:name "Normal" ;
+  api:properties "label,created" ;
+  .
+  
+dgfr:organizationDatasetsSimple
+  a api:Viewer ;
+  api:include dgfr:organizationNormal ;
+  api:name "Datasets (simple)" ;
+  api:properties "description,published,published.label,published.landing_page,published.type,datasets" ;
+  .
+ 
+dgfr:organizationDatasetsDetails
+  a api:Viewer ;
+  api:include dgfr:organizationDatasetsSimple ;
+  api:name "Datasets (details)" ;
+  api:properties "published.reuses,published.followers,published.downloads" 
+  .
 
-dgfr:reuseNormal
-	a api:Viewer ;
-	api:name "Normal" ;
-	api:properties "label,url,description,id,publisher,publisher.label"
-	.
 
 #
 # This XSLT formatter produces rich HTML from the viewer properties.
@@ -205,18 +195,12 @@ dgfr:DocFormatter a api:XsltFormatter
 	# ; elda:shortnameMode elda:roundTrip
 	.
 
-#SCHEMA.ORG
-schema:url a rdf:Property ;
-rdfs:range rdfs:Resource ;
-api:label "url" .
+dcat:Dataset a rdfs:Class ;
+api:label "Dataset" .
 
-#FOAF
+dcat:Distribution a rdfs:Class ;
+api:label "Distribution" .
 
-foaf:Organization a rdfs:Class ;
-rdfs:label "Organization" ;
-api:label "Organization" .
-
-#DUBLIN CORE
 dct:modified a rdf:Property ;
 rdfs:domain rdfs:Resource ;
 rdfs:range xsd:dateTime ;
@@ -247,168 +231,30 @@ rdfs:domain rdfs:Resource ;
 api:label "issued" .
 
 dct:publisher a rdf:Property ;
-rdfs:range foaf:Agent ;
 rdfs:domain rdfs:Resource ;
 api:label "publisher" .
 
-
-#DCAT
 dcat:distribution api:label "distribution" .
+dcat:Distribution api:label "Distribution" .
 dcat:landingPage api:label "landing_page" .
 dcat:downloadUrl api:label "download_url" .
 dcat:byteSize api:label "byte_size" ;
 	rdfs:range xsd:int .
 dcat:mediaType api:label "media_type" .
 rdfs:label api:label "label" ; api:multiValued true .
-dcat:Dataset a rdfs:Class ;
-api:label "Dataset" .
 
-dcat:Distribution a rdfs:Class ;
-api:label "Distribution" .
+#FOAF
+
+foaf:Organization a rdfs:Class ;
+	api:label "Organization" .
 
 #DGFR classes
 dgfr:Reuse a rdfs:Class ;
-	api:label "Reuse" ;
-	rdfs:label "Reuse" .
+api:label "Reuse" .
 
+foaf:depiction a rdf:Property ;
+rdfs:domain foaf:Agent ;
+api:label "depiction" .
+ 
 #DGFR properties
-dgfr:checksumType
-    <http://purl.org/linked-data/api/vocab#label> "checksum_type" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:label "Checksum type" ;
-    rdfs:range xsd:string .
-
-dgfr:checksumValue
-    <http://purl.org/linked-data/api/vocab#label> "checksum_value" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:label "Checksum value" ;
-    rdfs:range xsd:string .
-
-dgfr:dataset
-    <http://purl.org/linked-data/api/vocab#label> "dataset" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:label "Dataset" ;
-    rdfs:range dcat:Dataset .
-
-dgfr:datasets
-    <http://purl.org/linked-data/api/vocab#label> "datasets" ;
-    a rdf:Property ;
-    rdfs:domain dgfr:Reuse, foaf:Organization ;
-    rdfs:label "Datasets" ;
-    rdfs:range xsd:integer .
-
-dgfr:downloads
-    <http://purl.org/linked-data/api/vocab#label> "downloads" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:label "Downloads" ;
-    rdfs:range xsd:integer .
-
-dgfr:featured
-    <http://purl.org/linked-data/api/vocab#label> "featured" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:label "Featured" ;
-    rdfs:range xsd:boolean .
-
-dgfr:followers
-    <http://purl.org/linked-data/api/vocab#label> "followers" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset, foaf:Organization ;
-    rdfs:label "Followers" ;
-    rdfs:range xsd:integer .
-
-dgfr:format
-    <http://purl.org/linked-data/api/vocab#label> "dgfr_format" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:label "Format" ;
-    rdfs:range xsd:string .
-
-dgfr:hasMadeReuses
-    <http://purl.org/linked-data/api/vocab#label> "has_made_reuses" ;
-    a rdf:Property ;
-    rdfs:domain foaf:Organization ;
-    rdfs:label "Has made reuses" ;
-    rdfs:range xsd:integer .
-
-dgfr:issues
-    <http://purl.org/linked-data/api/vocab#label> "issues" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:label "Issues" ;
-    rdfs:range xsd:integer .
-
-dgfr:members
-    <http://purl.org/linked-data/api/vocab#label> "members" ;
-    a rdf:Property ;
-    rdfs:domain foaf:Organization ;
-    rdfs:label "Members" ;
-    rdfs:range xsd:integer .
-
-dgfr:private
-    <http://purl.org/linked-data/api/vocab#label> "private" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:label "Private" ;
-    rdfs:range xsd:boolean .
-
-dgfr:publicService
-    <http://purl.org/linked-data/api/vocab#label> "public_service" ;
-    a rdf:Property ;
-    rdfs:domain foaf:Organization ;
-    rdfs:label "Public service" ;
-    rdfs:range xsd:boolean .
-
-dgfr:published
-    <http://purl.org/linked-data/api/vocab#label> "published" ;
-    a rdf:Property ;
-    rdfs:domain foaf:Agent ;
-    rdfs:label "Published" ;
-    rdfs:range dgfr:Reuse, dcat:Dataset .
-
-dgfr:reuses
-    <http://purl.org/linked-data/api/vocab#label> "reuses" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset, foaf:Organization ;
-    rdfs:label "Reuses" ;
-    rdfs:range xsd:integer .
-
-dgfr:slug
-    <http://purl.org/linked-data/api/vocab#label> "slug" ;
-    a rdf:Property ;
-    rdfs:domain dgfr:Reuse, dcat:Dataset, foaf:Organization ;
-    rdfs:label "Slug" ;
-    rdfs:range xsd:string .
-
-dgfr:type
-    <http://purl.org/linked-data/api/vocab#label> "dgfr_type" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:label "Type" ;
-    rdfs:range xsd:string .
-
-dgfr:uniqueVisitors
-    <http://purl.org/linked-data/api/vocab#label> "unique_visitors" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset, foaf:Organization ;
-    rdfs:label "Unique visitors" ;
-    rdfs:range xsd:integer .
-
-dgfr:views
-    <http://purl.org/linked-data/api/vocab#label> "views" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset, foaf:Organization ;
-    rdfs:label "Views" ;
-    rdfs:range xsd:integer .
-
-dgfr:visits
-    <http://purl.org/linked-data/api/vocab#label> "visits" ;
-    a rdf:Property ;
-    rdfs:domain dcat:Dataset, foaf:Organization ;
-    rdfs:label "Visits" ;
-    rdfs:range xsd:integer .
-
+dgfr:checksumType    <http://purl.org/linked-data/api/vocab#label> "checksum_type" ;    a rdf:Property ;    rdfs:domain dcat:Distribution ;    rdfs:label "Checksum type" ;    rdfs:range xsd:string .dgfr:checksumValue    <http://purl.org/linked-data/api/vocab#label> "checksum_value" ;    a rdf:Property ;    rdfs:domain dcat:Distribution ;    rdfs:label "Checksum value" ;    rdfs:range xsd:string .dgfr:dataset    <http://purl.org/linked-data/api/vocab#label> "dataset" ;    a rdf:Property ;    rdfs:domain dcat:Distribution ;    rdfs:label "Dataset" ;    rdfs:range dcat:Dataset .dgfr:datasets    <http://purl.org/linked-data/api/vocab#label> "datasets" ;    a rdf:Property ;    rdfs:domain dgfr:Reuse, foaf:Organization ;    rdfs:label "Datasets" ;    rdfs:range xsd:integer .dgfr:downloads    <http://purl.org/linked-data/api/vocab#label> "downloads" ;    a rdf:Property ;    rdfs:domain dcat:Distribution ;    rdfs:label "Downloads" ;    rdfs:range xsd:integer .dgfr:featured    <http://purl.org/linked-data/api/vocab#label> "featured" ;    a rdf:Property ;    rdfs:domain dcat:Dataset ;    rdfs:label "Featured" ;    rdfs:range xsd:boolean .dgfr:followers    <http://purl.org/linked-data/api/vocab#label> "followers" ;    a rdf:Property ;    rdfs:domain dcat:Dataset, foaf:Organization ;    rdfs:label "Followers" ;    rdfs:range xsd:integer .dgfr:format    <http://purl.org/linked-data/api/vocab#label> "format" ;    a rdf:Property ;    rdfs:domain dcat:Distribution ;    rdfs:label "Format" ;    rdfs:range xsd:string .dgfr:hasMadeReuses    <http://purl.org/linked-data/api/vocab#label> "has_made_reuses" ;    a rdf:Property ;    rdfs:domain foaf:Organization ;    rdfs:label "Has made reuses" ;    rdfs:range xsd:integer .dgfr:hits    <http://purl.org/linked-data/api/vocab#label> "hits" ;    a rdf:Property ;    rdfs:domain dcat:Dataset, foaf:Organization ;    rdfs:label "Hits" ;    rdfs:range xsd:integer .dgfr:issues    <http://purl.org/linked-data/api/vocab#label> "issues" ;    a rdf:Property ;    rdfs:domain dcat:Dataset ;    rdfs:label "Issues" ;    rdfs:range xsd:integer .dgfr:members    <http://purl.org/linked-data/api/vocab#label> "members" ;    a rdf:Property ;    rdfs:domain foaf:Organization ;    rdfs:label "Members" ;    rdfs:range xsd:integer .dgfr:private    <http://purl.org/linked-data/api/vocab#label> "private" ;    a rdf:Property ;    rdfs:domain dcat:Dataset ;    rdfs:label "Private" ;    rdfs:range xsd:boolean .dgfr:publicService    <http://purl.org/linked-data/api/vocab#label> "public_service" ;    a rdf:Property ;    rdfs:domain foaf:Organization ;    rdfs:label "Public service" ;    rdfs:range xsd:boolean .dgfr:published    <http://purl.org/linked-data/api/vocab#label> "published" ;    a rdf:Property ;    rdfs:domain foaf:Agent ;    rdfs:label "Published" ;    rdfs:range dgfr:Reuse, dcat:Dataset .dgfr:reuses    <http://purl.org/linked-data/api/vocab#label> "reuses" ;    a rdf:Property ;    rdfs:domain dcat:Dataset, foaf:Organization ;    rdfs:label "Reuses" ;    rdfs:range xsd:integer .dgfr:slug    <http://purl.org/linked-data/api/vocab#label> "slug" ;    a rdf:Property ;    rdfs:domain dgfr:Reuse, dcat:Dataset, foaf:Organization ;    rdfs:label "Slug" ;    rdfs:range xsd:string .dgfr:type    <http://purl.org/linked-data/api/vocab#label> "type" ;    a rdf:Property ;    rdfs:domain dcat:Distribution ;    rdfs:label "Type" ;    rdfs:range xsd:string .dgfr:uniqueVisitors    <http://purl.org/linked-data/api/vocab#label> "unique_visitors" ;    a rdf:Property ;    rdfs:domain dcat:Dataset, foaf:Organization ;    rdfs:label "Unique visitors" ;    rdfs:range xsd:integer .dgfr:views    <http://purl.org/linked-data/api/vocab#label> "views" ;    a rdf:Property ;    rdfs:domain dcat:Dataset, foaf:Organization ;    rdfs:label "Views" ;    rdfs:range xsd:integer .dgfr:visits    <http://purl.org/linked-data/api/vocab#label> "visits" ;    a rdf:Property ;    rdfs:domain dcat:Dataset, foaf:Organization ;    rdfs:label "Visits" ;    rdfs:range xsd:integer .
