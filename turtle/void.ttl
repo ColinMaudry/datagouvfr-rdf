@@ -15,6 +15,8 @@
     dcterms:title "Métadonnées de jeux de données publiés sur http://data.gouv.fr"@fr ;
     dcterms:source <http://data.gouv.fr/fr/datasets.csv> ;
     dcterms:source <http://data.gouv.fr/fr/resources.csv> ;
+    dcterms:source <http://data.gouv.fr/fr/reuses.csv> ;
+    dcterms:source <http://data.gouv.fr/fr/organizations.csv> ;
     dcterms:created "2014-12-21T16:00:00"^^xsd:dateTime ;
     dcterms:issued "2014-12-21T16:00:00"^^xsd:dateTime ;
     dcterms:modified "@endDate"^^xsd:date ;
@@ -39,6 +41,8 @@
  	
  	void:exampleResource <https://www.data.maudry.com/fr/datasets/resultats-des-elections-cantonales-de-mars-2011-1er-tour-nd> ;
  	void:exampleResource <https://www.data.maudry.com/fr/resources/536993baa3a729239d20428c> ;
+ 	void:exampleResource <https://www.data.maudry.com/fr/reuses/546dfa1dc751df5622068e8d> ;
+ 	void:exampleResource <https://www.data.maudry.com/fr/organizations/banque-mondiale> ; 	 
  	
  	void:uriSpace "https://www.data.maudry.com/fr/" ;
  	
