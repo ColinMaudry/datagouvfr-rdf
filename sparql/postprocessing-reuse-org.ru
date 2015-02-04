@@ -8,7 +8,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX dgfr: <http://colin.maudry.com/ontologies/dgfr#>
 PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
-PREFIX schema: <http://schema.org/url>
+PREFIX schema: <http://schema.org/>
 PREFIX prov: <http://www.w3.org/ns/prov#> 
 PREFIX datasets: <https://www.data.maudry.com/fr/datasets/>
 PREFIX reuses: <https://www.data.maudry.com/fr/reuses/> 
