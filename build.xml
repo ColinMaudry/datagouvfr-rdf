@@ -111,7 +111,7 @@
 		</copy>
 	</target>
 	
-	<target name="upload">
+	<target name="upload" depends="convert">
 		<echo>[UPLOAD]</echo>
 		<echo>Uploading datasets.ttl to the repository...</echo>
 		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true">
