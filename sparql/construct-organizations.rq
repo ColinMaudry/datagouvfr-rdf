@@ -22,6 +22,7 @@ construct
     dct:description ?description ;
     dct:created ?createdAsDateTime ;
     dct:modified ?modifiedAsDateTime ;
+    foaf:depiction ?logoAsUri ;
     dgfr:slug ?slug ;
     dgfr:views ?views ;
     dgfr:followers ?followers ;
@@ -38,6 +39,7 @@ from <file:../csv/organizations.csv#delimiter=%3B;encoding=utf-8>
   where {  
   bind(uri(concat("https://www.data.maudry.com/fr/organizations/",?slug)) as ?organization)
   bind(uri(?url) as ?urlAsUri)
+  bind(uri(?logo) as ?logoAsUri)
   bind(xs:boolean(if(?public_service="",false,lcase(?public_service))) as ?lcPublicService)
   bind(xs:dateTime(?created_at) as ?createdAsDateTime)
   bind(xs:dateTime(?last_modified) as ?modifiedAsDateTime)
