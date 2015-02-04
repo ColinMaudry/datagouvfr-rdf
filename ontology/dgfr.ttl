@@ -76,6 +76,14 @@
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue."@fr ;
 		rdfs:domain dcat:Dataset, foaf:Organization .
 	
+	:hits a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Hits" ;
+		rdfs:comment "The number of times the page of the dataset bas been viewed. But different from views."@en ;
+		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue. Mais différent des views."@fr ;
+		rdfs:domain dcat:Dataset, foaf:Organization .
+	
 	:visits a rdf:Property ;
 		rdfs:isDefinedBy : ;
 		rdfs:range xsd:integer ;
