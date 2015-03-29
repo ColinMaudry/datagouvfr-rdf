@@ -1,6 +1,7 @@
 @echo off
 set tomcat=C:\Users\colin\programs\apache-tomcat-7.0.57\
 set tomcatapp=%tomcat%webapps\ROOT\
+cd C:\Users\colin\CloudStation\work\linkeddata\datagouvfr-rdf\api
 copy specs\*.ttl %tomcatapp%specs
 copy xslt\*.xsl %tomcatapp%lda-assets\xslt
 copy css\* %tomcatapp%lda-assets\css
