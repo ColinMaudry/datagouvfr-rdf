@@ -1,7 +1,4 @@
 #
-# A hello-world config. 
-#
-
 # Assorted prefix declarations. Some of them are for the structuring
 # of the API config, others are for the vocabulary definitions.
 #
@@ -25,8 +22,8 @@
 
 dgfr:api a api:API 
 	; rdfs:label "Data.gouv.fr Linked data API"@en
-	; api:variable [api:name "visibleSparqlForm"; api:value "http://dydra.com/colin-maudry/datagouvfr/query"]
-	; api:sparqlEndpoint <http://dydra.com/colin-maudry/datagouvfr/sparql>
+	; api:variable [api:name "visibleSparqlForm"; api:value "http://localhost:3030/datagouvfr/query"]
+	; api:sparqlEndpoint <http://localhost:3030/datagouvfr/query>
 	# ; api:defaultViewer api:labelledDescribeViewer
 	; api:defaultFormatter dgfr:HtmlFormatter 
     ; api:formatter
@@ -46,7 +43,7 @@ dgfr:api a api:API
    	; elda:cacheExpiryTime "10m"
 	.
 
-<http://dydra.com/colin-maudry/datagouvfr/sparql> elda:supportsNestedSelect true .
+<http://localhost:3030/datagouvfr/query> elda:supportsNestedSelect true .
 
 # Endpoint definition	
 	

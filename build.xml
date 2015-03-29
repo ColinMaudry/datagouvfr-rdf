@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." name="download-convert-upload" default="metadata">
+<project basedir="." name="download-convert-upload" default="publish">
 	<property file="upload.properties"/>
 	<property name="baseurl" value="http://www.data.gouv.fr/fr/"/>
 	<property name="repository.baseurl" value="http://${repository.user}:${repository.password}@${repository.address}"/>
@@ -192,13 +192,13 @@
 			<arg line="-v -X PUT"/>
 			<arg line="--data-binary @'turtle/temp/prov.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?graph=default'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?default'"/>
 		</exec>
 		<exec executable="${curl}" searchpath="true">
 			<arg line="-v -X POST"/>
 			<arg line="--data-binary @'turtle/temp/void.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?graph=default'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?default'"/>
 		</exec>
 		<delete dir="turtle/temp"/>
 	</target>
