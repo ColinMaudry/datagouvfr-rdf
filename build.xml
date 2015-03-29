@@ -145,27 +145,37 @@
 	
 	<target name="postprocessing" depends="upload_temp">
 		<echo>[POSTPROCESSING]</echo>
+		<echo>Populating the graph URI in the queries...</echo>
+		<mkdir dir="sparql/temp/"/>
+		<copy todir="sparql/temp/" overwrite="yes">
+			<fileset dir="sparql/" includes="postprocessing*"/>
+		</copy>
+		<replace dir="sparql/temp/" value="&lt;${postprocessingGraphUriDecoded}>">
+			<include name="**/*.*"/>
+			<replacetoken>?postprocessingGraph</replacetoken>
+		</replace>
 		<echo>Creating relation dataset ~> organization...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/postprocessing-dataset-org.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-dataset-org.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
 		<echo>Creating relation reuse ~> organization...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/postprocessing-reuse-org.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-org.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
 		<echo>Creating relation reuse ~> dataset...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/postprocessing-reuse-dataset.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-dataset.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>	
+		<delete dir="sparql/temp/"/>
 	</target>
 	
 	<target name="metadata" depends="postprocessing">
@@ -205,17 +215,24 @@
 	
 	<target name="publish" depends="metadata">
 		<echo>[PUBLISH]</echo>
+		<echo>Populating the graph URI in the query...</echo>
+		<mkdir dir="sparql/temp/"/>
+		<copy todir="sparql/temp/" overwrite="yes">
+			<fileset dir="sparql/" includes="replace*"/>
+		</copy>
+		<replace file="sparql/temp/replace-prod-graph.ru" value="&lt;${postprocessingGraphUriDecoded}>">
+			<include name="**/*.*"/>
+			<replacefilter token="?postprocessingGraph" value="&lt;${postprocessingGraphUriDecoded}>"/>
+			<replacefilter token="?productionGraph" value="&lt;${graphUriDecoded}>"/>
+		</replace>
 		<echo>Replacing old production data with new data...</echo>
-		<copy file="sparql/replace-prod-graph-template.ru" tofile="sparql/replace-prod-graph.ru" overwrite="yes"/>
-		<replace file="sparql/replace-prod-graph.ru" encoding="utf-8" token='?productionGraph' value="&lt;${graphUriDecoded}>"/>
-		<replace file="sparql/replace-prod-graph.ru" encoding="utf-8" token='?postprocessingGraph' value="&lt;${postprocessingGraphUriDecoded}>"/>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/replace-prod-graph.ru'"/>
+			<arg line="--data-binary @'sparql/temp/replace-prod-graph.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
-		<delete file="sparql/replace-prod-graph.ru"/>
+		<!--<delete dir="sparql/temp/"/>-->
 	</target>
 	
 	
