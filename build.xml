@@ -109,7 +109,7 @@
 		</copy>
 	</target>
 	
-	<target name="upload_temp">
+	<target name="upload_temp" depends="convert">
 		<echo>[TEMPORARY UPLOAD]</echo>
 		<echo>Starting the local in-memory repository (Apache Fuseki)...</echo>
 		<exec executable="${fuseki}" spawn="true"/>
@@ -230,7 +230,7 @@
 		<replace file="sparql/temp/replace-prod-graph.ru" value="${postprocessingGraphUriDecoded}">
 			<include name="**/*.*"/>
 			<replacefilter token="urn:graph:postprocessing" value="${postprocessingGraphUriDecoded}"/>
-			<replacefilter token="urn:graph:production" value="${graphUriDecoded}>"/>
+			<replacefilter token="urn:graph:production" value="${graphUriDecoded}"/>
 		</replace>
 		<echo>Replacing old production data with new data...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
