@@ -355,7 +355,10 @@ $prefLabel, $altLabel, $title and $name variables.
     		<ul>
     			<li class="first"><a href="/fr">Home</a></li>
     			<li><a href="/fr/datasets">Datasets</a></li>
+    			<li><a href="/fr/reuses">Reuses</a></li>
     			<li><a href="/fr/resources">Resources (dcat:Distribution)</a></li>
+    			<li><a href="/fr/organizations">Organisations</a></li>
+    			
     			<li class="last"><a href="#provenance-footer">SPARQL query</a></li>
     		</ul>
     	</div>

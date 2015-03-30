@@ -13,7 +13,7 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX datasets: <https://www.data.maudry.com/fr/datasets/>
 PREFIX reuses: <https://www.data.maudry.com/fr/reuses/> 
  
-with <http://www.data.maudry.com>
+with <urn:graph:postprocessing>
 delete
 {
 	?reuse dct:publisher ?organizationId .
@@ -27,6 +27,23 @@ insert
  	dct:identifier ?organizationId .
  ?reuse a dgfr:Reuse ;
  	dct:publisher ?organizationId .
+
+  };
+  
+with <urn:graph:postprocessing>
+delete
+{
+	?reuse prov:used ?datasetId .
+}
+insert
+{
+?reuse prov:used ?dataset .
+}
+where {
+ ?dataset a dcat:Dataset ;
+ 	dct:identifier ?datasetId .
+ ?reuse a dgfr:Reuse ;
+ 	prov:used ?datasetId .
   }
   
   

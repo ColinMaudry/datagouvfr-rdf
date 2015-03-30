@@ -13,7 +13,7 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX datasets: <https://www.data.maudry.com/fr/datasets/>
 PREFIX reuses: <https://www.data.maudry.com/fr/reuses/> 
  
-with <http://www.data.maudry.com>
+with <urn:graph:postprocessing>
 insert
 {
 ?agent dgfr:published ?resource .

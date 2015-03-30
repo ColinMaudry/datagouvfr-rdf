@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." name="download-convert-upload" default="metadata">
-	<!--<property name="baseurl" value="http://colin.maudry.com/share/"/>-->
-	<property name="baseurl" value="http://www.data.gouv.fr/fr/"/>
+<project basedir="." name="download-convert-upload" default="publish">
 	<property file="upload.properties"/>
-	<condition property="curlExecExt" value=".exe" else="">
+	<property name="baseurl" value="http://www.data.gouv.fr/fr/"/>
+	<property name="repository.baseurl" value="http://${repository.user}:${repository.password}@${repository.address}"/>
+	
+	<!-- Necessary to set full path in Linux as PATH in not available in cron job -->
+	<condition property="curl" value="curl.exe" else="/user/bin/curl">
 		<os family="windows"/>
 	</condition>
-	<condition property="tarqlExecExt" value=".bat" else="">
+	<condition property="tarql" value="tarql.bat" else="/home/admin/tarql/bin/tarql">
 		<os family="windows"/>
 	</condition>
-	<!-- Necessary to set full path as PATH not available in cron job -->
-	<condition property="tarqlDir" value="/home/admin/tarql/bin/" else="">
-		<os family="unix"/>
-	</condition>
-	<condition property="curlDir" value="/usr/bin/" else="">
-		<os family="unix"/>
+	<condition property="fuseki" value="fuseki-server.bat" else="/home/admin/fuseki/fuseki-server">
+		<os family="windows"/>
 	</condition>
 	<tstamp>
 		<!-- With - to be filename-compatible -->
@@ -81,19 +79,19 @@
 		<echo>[CONVERT]</echo>
 		<mkdir dir="rdf/history"/>
 		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="${tarqlDir}tarql${tarqlExecExt}" searchpath="true" output="rdf/datasets.ttl">
+		<exec executable="${tarql}" searchpath="true" output="rdf/datasets.ttl">
 			<arg line="sparql/construct-datasets.rq"/>
 		</exec>
 		<echo>Querying resources.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="${tarqlDir}tarql${tarqlExecExt}" searchpath="true" output="rdf/resources.ttl">
+		<exec executable="${tarql}" searchpath="true" output="rdf/resources.ttl">
 			<arg line="sparql/construct-resources.rq"/>
 		</exec>
 		<echo>Querying reuses.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="${tarqlDir}tarql${tarqlExecExt}" searchpath="true" output="rdf/reuses.ttl">
+		<exec executable="${tarql}" searchpath="true" output="rdf/reuses.ttl">
 			<arg line="sparql/construct-reuses.rq"/>
 		</exec>
 		<echo>Querying organizations.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="${tarqlDir}tarql${tarqlExecExt}" searchpath="true" output="rdf/organizations.ttl">
+		<exec executable="${tarql}" searchpath="true" output="rdf/organizations.ttl">
 			<arg line="sparql/construct-organizations.rq"/>
 		</exec>
 		<echo>Archiving RDF...</echo>
@@ -111,68 +109,80 @@
 		</copy>
 	</target>
 	
-	<target name="upload" depends="convert">
-		<echo>[UPLOAD]</echo>
-		<echo>Uploading datasets.ttl to the repository...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true">
-			<arg line="-X PUT"/>
+	<target name="upload_temp">
+		<echo>[TEMPORARY UPLOAD]</echo>
+		<echo>Starting the local in-memory repository (Apache Fuseki)...</echo>
+		<exec executable="${fuseki}" spawn="true"/>
+		<echo>Uploading datasets.ttl to the postprocessing repository...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true">
+			<arg line="-v -X PUT"/>
 			<arg line="--data-binary @'rdf/datasets.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphUri}'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
 		</exec>
-		<echo>Uploading resources.ttl to the repository...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true">
+		<echo>Uploading resources.ttl to the postprocessing repository...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
 			<arg line="--data-binary @'rdf/resources.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphUri}'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
 		</exec>		
-		<echo>Uploading reuses.ttl to the repository...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true">
+		<echo>Uploading reuses.ttl to the postprocessing repository...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
 			<arg line="--data-binary @'rdf/reuses.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphUri}'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
 		</exec>	
-		<echo>Uploading organizations.ttl to the repository...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true">
+		<echo>Uploading organizations.ttl to the postprocessing repository...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
 			<arg line="--data-binary @'rdf/organizations.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?graph=${graphUri}'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
 		</exec>	
 	</target>
 	
-	<target name="postprocessing" depends="upload">
+	<target name="postprocessing" depends="upload_temp">
 		<echo>[POSTPROCESSING]</echo>
+		<echo>Populating the graph URI in the queries...</echo>
+		<mkdir dir="sparql/temp/"/>
+		<copy todir="sparql/temp/" overwrite="yes">
+			<fileset dir="sparql/" includes="postprocessing*"/>
+		</copy>
+		<replace dir="sparql/temp/" value="${postprocessingGraphUriDecoded}">
+			<include name="**/*.*"/>
+			<replacetoken>urn:graph:postprocessing</replacetoken>
+		</replace>
 		<echo>Creating relation dataset ~> organization...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true">
+		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/postprocessing-dataset-org.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-dataset-org.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/sparql'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
 		<echo>Creating relation reuse ~> organization...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true">
+		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/postprocessing-reuse-org.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-org.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/sparql'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
 		<echo>Creating relation reuse ~> dataset...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true" >
+		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/postprocessing-reuse-dataset.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-dataset.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/sparql'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>			
 		<echo>Creating invert relation of dct:publisher: dgfr:published...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true" failonerror="true" >
+		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/postprocessing-published.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-published.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/sparql'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>				
+		<delete dir="sparql/temp/"/>
 	</target>
 	
 	<target name="metadata" depends="postprocessing">
@@ -194,19 +204,41 @@
 		<replace token="@endDate" value="${end}">
 			<fileset dir="turtle/temp" includes="*.ttl"/>
 		</replace>
-		<echo>Uploading metadata to the main/default graph of the repository...</echo>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true">
+		<echo>Uploading metadata to the main graph of the repository...</echo>
+		<exec executable="${curl}" searchpath="true">
 			<arg line="-v -X PUT"/>
 			<arg line="--data-binary @'turtle/temp/prov.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?default'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?default'"/>
 		</exec>
-		<exec executable="${curlDir}curl${curlExecExt}" searchpath="true">
+		<exec executable="${curl}" searchpath="true">
 			<arg line="-v -X POST"/>
 			<arg line="--data-binary @'turtle/temp/void.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'http://${user}@dydra.com/colin-maudry/datagouvfr/service?default'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?default'"/>
 		</exec>
 		<delete dir="turtle/temp"/>
+	</target>
+	
+	<target name="publish" depends="metadata">
+		<echo>[PUBLISH]</echo>
+		<echo>Populating the graph URI in the query...</echo>
+		<mkdir dir="sparql/temp/"/>
+		<copy todir="sparql/temp/" overwrite="yes">
+			<fileset dir="sparql/" includes="replace*"/>
+		</copy>
+		<replace file="sparql/temp/replace-prod-graph.ru" value="${postprocessingGraphUriDecoded}">
+			<include name="**/*.*"/>
+			<replacefilter token="urn:graph:postprocessing" value="${postprocessingGraphUriDecoded}"/>
+			<replacefilter token="urn:graph:production" value="${graphUriDecoded}>"/>
+		</replace>
+		<echo>Replacing old production data with new data...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true">
+			<arg line="-X POST"/>
+			<arg line="--data-binary @'sparql/temp/replace-prod-graph.ru'"/>
+			<arg line="-H 'Content-type:application/sparql-update'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+		</exec>
+		<delete dir="sparql/temp/"/>
 	</target>
 </project>
