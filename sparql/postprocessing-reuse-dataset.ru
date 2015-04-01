@@ -16,17 +16,18 @@ PREFIX reuses: <https://www.data.maudry.com/fr/reuses/>
 with <urn:graph:postprocessing>
 delete
 {
-	?reuse prov:used ?datasetId .
+	?reuse prov:wasDerivedFrom ?datasetId .
 }
 insert
 {
-?reuse prov:used ?dataset .
+?reuse prov:wasDerivedFrom ?dataset .
+?dataset prov:hadDerivation ?reuse .
 }
 where {
  ?dataset a dcat:Dataset ;
  	dct:identifier ?datasetId .
  ?reuse a dgfr:Reuse ;
- 	prov:used ?datasetId .
+ 	prov:wasDerivedFrom ?datasetId .
   }
 
   

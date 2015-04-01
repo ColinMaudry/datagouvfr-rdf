@@ -5,7 +5,7 @@
 	<property name="repository.baseurl" value="http://${repository.user}:${repository.password}@${repository.address}"/>
 	
 	<!-- Necessary to set full path in Linux as PATH in not available in cron job -->
-	<condition property="curl" value="curl.exe" else="/user/bin/curl">
+	<condition property="curl" value="curl.exe" else="/usr/bin/curl">
 		<os family="windows"/>
 	</condition>
 	<condition property="tarql" value="tarql.bat" else="/home/admin/tarql/bin/tarql">
