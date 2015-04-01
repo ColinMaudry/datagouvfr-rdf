@@ -21,7 +21,8 @@ construct
     dct:identifier ?id ;
     dct:title ?title ;
     rdfs:label ?title ;
-	schema:url ?urlAsUri ;
+	  dgfr:localUrl ?urlAsUri ;
+	  schema:url ?remoteUrlAsUri ;
     dct:publisher ?organization_id ;
     #dct:publisher ?supplier ;
     dct:description ?description ;

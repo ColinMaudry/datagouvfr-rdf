@@ -10,6 +10,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <http://schema.org/> .
 
 #Author: Colin Maudry
 #Contact: colin@maudry.com
@@ -197,6 +198,13 @@
 		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr ;
 		rdfs:range xsd:integer ;
 		rdfs:domain :Reuse, foaf:Organization .
+	
+	:localUrl rdfs:subPropertyOf schema:url ;
+		rdfs:isDefinedBy : ;
+		rdfs:label "Remote URL" ;
+		rdfs:comment "The URL where a reuse is registered and described on the platform."@en ;
+		rdfs:comment "L'URL à laquelle une réutilisation est référencée et décrite sur la plateforme."@fr ;
+		rdfs:domain :Reuse .
 
 #For foaf:Organization
 
