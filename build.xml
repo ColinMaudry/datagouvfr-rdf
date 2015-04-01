@@ -227,7 +227,7 @@
 		<copy todir="sparql/temp/" overwrite="yes">
 			<fileset dir="sparql/" includes="replace*"/>
 		</copy>
-		<replace file="sparql/temp/replace-prod-graph.ru" value="${postprocessingGraphUriDecoded}">
+		<replace file="sparql/temp/replace-production-graph.ru" value="${postprocessingGraphUriDecoded}">
 			<include name="**/*.*"/>
 			<replacefilter token="urn:graph:postprocessing" value="${postprocessingGraphUriDecoded}"/>
 			<replacefilter token="urn:graph:production" value="${graphUriDecoded}"/>
