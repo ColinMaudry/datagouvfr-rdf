@@ -79,7 +79,7 @@ dgfr:datasetSlug a api:ItemEndpoint
 dgfr:resources a api:ListEndpoint 
 	; rdfs:label "Resources" 
 	; api:uriTemplate "/resources" 
-	; api:selector [api:filter "type=Distribution"; api:sort "-created"]
+	; api:selector [api:filter "type=Distribution"; api:sort "-issued"]
 	; elda:graphTemplate "http://www.data.maudry.com"
 	; api:defaultViewer dgfr:resourceNormal
 	.	
