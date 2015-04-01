@@ -35,16 +35,16 @@ construct
     dgfr:datasets ?nb_datasets ;
     dgfr:visits ?visits ;
     dgfr:hits ?hits ;
-    prov:used ?usedDataset1 ;
-    prov:used ?usedDataset2 ;
-    prov:used ?usedDataset3 ;
-    prov:used ?usedDataset4 ;
-    prov:used ?usedDataset5 ;
-    prov:used ?usedDataset6 ;
-    prov:used ?usedDataset7 ;
-    prov:used ?usedDataset8 ;
-    prov:used ?usedDataset9 ;
-    prov:used ?usedDataset10 ;
+    prov:wasDerivedFrom ?usedDataset1 ;
+    prov:wasDerivedFrom ?usedDataset2 ;
+    prov:wasDerivedFrom ?usedDataset3 ;
+    prov:wasDerivedFrom ?usedDataset4 ;
+    prov:wasDerivedFrom ?usedDataset5 ;
+    prov:wasDerivedFrom ?usedDataset6 ;
+    prov:wasDerivedFrom ?usedDataset7 ;
+    prov:wasDerivedFrom ?usedDataset8 ;
+    prov:wasDerivedFrom ?usedDataset9 ;
+    prov:wasDerivedFrom ?usedDataset10 ;
     dgfr:uniqueVisitors ?unique_visitors .  
 }
 from <file:../csv/reuses.csv#delimiter=%3B;encoding=utf-8>
@@ -65,7 +65,7 @@ from <file:../csv/reuses.csv#delimiter=%3B;encoding=utf-8>
   #The ugly part: max 10 source datasets are supported per reuse... We'll see how it goes and expand to more if needed.
   #Thanks ThomasFrancart
   #http://answers.semanticweb.com/answer_link/19218/  
-  #The actual relation reuse prov:used dataset is enabled by construct-relations.ru in postprocessing
+  #The actual relation reuse prov:wasDerivedFrom dataset is enabled by construct-relations.ru in postprocessing
   bind(if(contains(?datasets, ","),strbefore(?datasets, ","), ?datasets) as ?usedDataset1)
   bind(strafter(?datasets, ",") as ?r1)
   bind(if(?r1 = "",?dummy,if(contains(?r1, ","),strbefore(?r1, ","), ?r1)) as ?usedDataset2)
