@@ -174,9 +174,9 @@ dgfr:resourceNormal
 dgfr:organizationNormal
   a api:Viewer ;
   api:name "Normal" ;
-  api:properties "label,created" 
+  api:properties "label,created,depiction" 
   .
-  dgfr:organizationDatasetsSimple  a api:Viewer ;  api:include dgfr:organizationNormal ;  api:name "Datasets (simple)" ;  api:properties "description,published,published.label,published.landing_page,published.type,datasets" ;  . dgfr:organizationDatasetsDetails  a api:Viewer ;  api:include dgfr:organizationDatasetsSimple ;  api:name "Datasets (details)" ;  api:properties "published.reuses,published.followers,published.downloads"   .
+  dgfr:organizationDatasetsSimple  a api:Viewer ;  api:include dgfr:organizationNormal ;  api:name "Datasets (simple)" ;  api:properties "description,published,published.label,published.landing_page,published.type,datasets" ;  . dgfr:organizationDatasetsDetails  a api:Viewer ;  api:include dgfr:organizationDatasetsSimple ;  api:name "Datasets (details)" ;  api:properties "published.reuses,published.followers,published.downloads,published.reuse,published.reuse.label"   .
 
 dgfr:reuseSimple 
 	a api:Viewer ;
