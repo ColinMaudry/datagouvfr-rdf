@@ -118,7 +118,7 @@ dgfr:reusesList a api:ListEndpoint
 	; api:uriTemplate "/reuses" 
 	; api:selector [api:filter "type=Reuse"; api:sort "-created"]
 	; elda:graphTemplate "http://www.data.maudry.com"
-	; api:defaultViewer dgfr:reuseNormal
+	; api:defaultViewer dgfr:reuseSimple
 	.
 
 dgfr:reuseSlug a api:ItemEndpoint 
