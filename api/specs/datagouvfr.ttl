@@ -148,7 +148,7 @@ dgfr:doc a api:ItemEndpoint
 dgfr:datasetNormal
   a api:Viewer ;
   api:name "Normal" ;
-  api:properties "label,landing_page,description,created,modified,distribution.label,distribution.dgfr_format,publisher,publisher.label,reuse,reuse.label" ;
+  api:properties "label,landing_page,description,created,modified,distribution.label,distribution.dgfr_format,publisher,publisher.label,reuse,reuse.label,reuse.local_url,reuse.url" ;
   .
   
 dgfr:datasetResources
@@ -162,7 +162,7 @@ dgfr:datasetStats
 	a api:Viewer ;
 	api:include dgfr:datasetNormal ;
 	api:name "Statistics" ;
-	api:properties "reuses,unique_visitors,views,visits,hits,issues,followers"
+	api:properties "reuses,unique_visitors,views,visits,hits,issues,followers,reuse.unique_visitors,reuse.views"
 	.
 
 dgfr:resourceNormal
