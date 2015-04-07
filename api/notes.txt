@@ -1,0 +1,1 @@
+Ca marche avec l'onto complète dans la spec, mais j'ai eu des coupures de réseau. A tester en conditions normales de connectivité à Internet.
