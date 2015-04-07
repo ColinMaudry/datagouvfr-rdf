@@ -7,6 +7,7 @@
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix activities: <http://colin.maudry.com/rdf/activities/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 activities:updateDGFR-RDF a prov:Activity ;
 	prov:wasAssociatedWith <http://colin.maudry.com/rdf/me> ;
@@ -16,7 +17,7 @@ activities:updateDGFR-RDF a prov:Activity ;
 	prov:used <http://data.gouv.fr/fr/organizations.csv> ;
 	prov:used <https://github.com/ColinMaudry/datagouvfr-rdf> ;
 	prov:startedAtTime "@startDate"^^xsd:dateTime ;
-	prov:generated <http://dydra.com/colin-maudry/datagouvfr#this> .
+	prov:generated <http://www.data.maudry.com:3030/datagouvfr#this> .
 	
 <http://dydra.com/colin-maudry/datagouvfr#this> a void:Dataset ;
 	a prov:Entity .

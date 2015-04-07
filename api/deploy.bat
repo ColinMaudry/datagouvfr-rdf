@@ -5,6 +5,8 @@ cd C:\Users\colin\CloudStation\work\linkeddata\datagouvfr-rdf\api
 copy specs\*.ttl %tomcatapp%specs
 copy xslt\*.xsl %tomcatapp%lda-assets\xslt
 copy css\* %tomcatapp%lda-assets\css
+mkdir %tomcatapp%lda-assets\js\
+copy js\* %tomcatapp%lda-assets\js
 mkdir %tomcatapp%lda-assets\css\bootstrap
 copy css\bootstrap\*.css %tomcatapp%lda-assets\css\bootstrap
 cd %tomcat%\bin
