@@ -13,7 +13,7 @@ This is the foundation work that fuels [CasanovaLD](https://translate.google.com
 1. Cleaning the data dumps (empty lines, wrongly escaped quotes)
 1. Converting the CSV into RDF (using [TARQL](https://github.com/cygri/tarql))
 1. Upload to an RDF repository
-1. Converts text identifiers in URIs (in objects in triples)
+1. Converts text identifiers in URIs for better linking across the data
 1. Adds some metadata about the resulting data set (DCAT, VoID, PROV)
 
 **This script is run every 2 hours to update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=))**.
@@ -52,6 +52,7 @@ Otherwise, you can reach me:
 #### 0.3.0
 
 - The RDF data is now loaded in a single atomic transaction in the repository
+- Switch from Dydra (http://dydra.com) to a local Apache Fuseki instance
 - Added organizations and reuses data
 
 ##### 0.2.1

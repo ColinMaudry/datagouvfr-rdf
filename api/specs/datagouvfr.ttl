@@ -55,7 +55,7 @@ dgfr:api a api:API
 # Endpoint definition	
 	
 dgfr:datasets a api:ListEndpoint 
-	; api:defaultViewer dgfr:datasetNormal
+	; api:defaultViewer dgfr:datasetMinimal
 	; api:viewer dgfr:datasetStats
 	; rdfs:label "Datasets" 
 	; api:uriTemplate "/datasets" 
@@ -144,6 +144,12 @@ dgfr:doc a api:ItemEndpoint
 
 
 #Viewers
+
+dgfr:datasetMinimal
+  a api:Viewer ;
+  api:name "Minimal" ;
+  api:properties "label,landingPage,created,modified,publisher,publisher.label" ;
+  .
 
 dgfr:datasetNormal
   a api:Viewer ;
