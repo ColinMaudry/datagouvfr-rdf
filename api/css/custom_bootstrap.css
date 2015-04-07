@@ -1,7 +1,19 @@
 body {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+
+.bs-docs-sidebar .nav li > ul > li {
+    font-weight: 500;
+    font-size:0.8em;
+    display:block;
+}
+.bs-docs-sidebar .nav .nav 
+{
+	display:block;
+	padding-bottom: 0px;
+	
 }

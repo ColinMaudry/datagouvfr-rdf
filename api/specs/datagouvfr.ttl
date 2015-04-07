@@ -67,6 +67,7 @@ dgfr:datasetSlug a api:ItemEndpoint
 	; api:defaultViewer dgfr:datasetNormal
 	; api:viewer dgfr:datasetResources
 	; api:viewer dgfr:datasetStats
+	; api:viewer dgfr:datasetMinimal
 	; rdfs:label "Dataset by slug" 
 	; api:uriTemplate "/datasets/{slug}" 
     ; api:selector
@@ -189,7 +190,7 @@ dgfr:organizationNormal
   api:name "Normal" ;
   api:properties "label,created,depiction" 
   .
-  dgfr:organizationDatasetsSimple  a api:Viewer ;  api:include dgfr:organizationNormal ;  api:name "Datasets (simple)" ;  api:properties "description,published,published.label,published.landingPage,published.type,datasets" ;  . dgfr:organizationDatasetsDetails  a api:Viewer ;  api:include dgfr:organizationDatasetsSimple ;  api:name "Datasets (details)" ;  api:properties "published.reuses,published.followers,published.downloads,published.reuse,published.reuse.label"   .
+  dgfr:organizationDatasetsSimple  a api:Viewer ;  api:include dgfr:organizationNormal ;  api:name "Datasets (simple)" ;  api:properties "description,published,published.label,published.landingPage,published,datasets" ;  . dgfr:organizationDatasetsDetails  a api:Viewer ;  api:include dgfr:organizationDatasetsSimple ;  api:name "Datasets (details)" ;  api:properties "published.reuses,published.followers,published.downloads,published.reuse,published.reuse.label"   .
 
 dgfr:reuseSimple 
 	a api:Viewer ;

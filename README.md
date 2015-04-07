@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.3.0)
+Semantic data.gouv.fr (0.3.1)
 ==============
 
 Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -48,6 +48,11 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+##### 0.3.1
+
+- Updated [the API documentation](https://www.data.maudry.com/fr/.doc#api)
+- Updated VoiD and PROV metadata to match the new repository location
 
 #### 0.3.0
 
