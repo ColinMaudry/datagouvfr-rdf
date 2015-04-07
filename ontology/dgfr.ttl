@@ -9,6 +9,8 @@
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <http://schema.org/> .
 
 #Author: Colin Maudry
 #Contact: colin@maudry.com
@@ -51,9 +53,8 @@
 
 #For dcat:Dataset
 
-
-
 	:private a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range xsd:boolean ;
 		rdfs:label "Private" ;
 		rdfs:comment "Defines whether the dataset is private (not public) or not."@en ;
@@ -61,6 +62,7 @@
 		rdfs:domain dcat:Dataset .
 	
 	:featured a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range xsd:boolean ;
 		rdfs:label "Featured" ;
 		rdfs:comment "Defines whether the dataset is shown on the portal front page or not."@en ;
@@ -68,57 +70,73 @@
 		rdfs:domain dcat:Dataset .
 	
 	:views a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Views" ;
 		rdfs:comment "The number of times the page of the dataset bas been viewed."@en ;
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue."@fr ;
-		rdfs:domain dcat:Dataset .
+		rdfs:domain dcat:Dataset, foaf:Organization .
+	
+	:hits a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Hits" ;
+		rdfs:comment "The number of times the page of the dataset bas been viewed. But different from views."@en ;
+		rdfs:comment "Le nombre de fois que la page du jeu de données a été vue. Mais différent des views."@fr ;
+		rdfs:domain dcat:Dataset, foaf:Organization .
 	
 	:visits a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Visits" ;
 		rdfs:comment "The number of times the page of the dataset bas been visited."@en ;
 		rdfs:comment "Le nombre de fois que la page du jeu de données a été visitée."@fr ;
-		rdfs:domain dcat:Dataset .
+		rdfs:domain dcat:Dataset, foaf:Organization .
 	
 	:reuses a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Reuses" ;
-		rdfs:comment "The number of reuses that have been created from the data of the dataset and published on the same page."@en ;
-		rdfs:comment "Le nombre de réutilisations qui ont été créées à partir des données du jeu de données et publiés sur la même page."@fr ;
-		rdfs:domain dcat:Dataset .	
+		rdfs:comment "The number of reuses that have been created from the data of the dataset and published on the same page. For an organization, the number of reuses created using its datasets."@en ;
+		rdfs:comment "Le nombre de réutilisations qui ont été créées à partir des données du jeu de données et publiés sur la même page. Pour une organisation, le nombre de réutilisations créées à partir de ses jeux de données."@fr ;
+		rdfs:domain dcat:Dataset, foaf:Organization .	
 		
 	:followers a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Followers" ;
 		rdfs:comment "The number of users who subscribed to be informed when the dataset is updated."@en ;
 		rdfs:comment "Le nombre d'utilisateurs qui se sont abonnés pour être informés lorsque le jeu de données est mis à jour."@fr ;
-		rdfs:domain dcat:Dataset .
+		rdfs:domain dcat:Dataset, foaf:Organization .
 
 	:issues a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Issues" ;
 		rdfs:comment "The number of issues that have been reported about the dataset (wrong or missing data)."@en ;
 		rdfs:comment "Le nombre d'anomalies qui ont été signalées pour le jeu de données (données erronées ou manquantes)."@fr ;
 		rdfs:domain dcat:Dataset .
 
 	:uniqueVisitors a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Unique visitors" ;
 		rdfs:comment "The number of unique visitors who viewed the page of the dataset."@en ;
 		rdfs:comment "Le nombre de visiteurs uniques qui se sont rendus sur la page du jeu de données."@fr ;
-		rdfs:domain dcat:Dataset .	
+		rdfs:domain dcat:Dataset, foaf:Organization .	
 		
 	:slug a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range xsd:string ;
 		rdfs:label "Slug" ;
 		rdfs:comment "A URL-friendly version of the title."@en ;
 		rdfs:comment "Une version du titre simplifiée pour pouvoir être inséré dans une URL."@fr ;
-		rdfs:domain dcat:Dataset .	
+		rdfs:domain dcat:Dataset, foaf:Organization, :Reuse .	
 		
 #For dcat:Distribution
 
 	:type a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range xsd:string ;
 		rdfs:label "Type";
 		rdfs:comment "The type of resource (file, remote file, API, etc.)"@en ;
@@ -126,6 +144,7 @@
 		rdfs:domain dcat:Distribution . 
 	
 	:format a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range xsd:string ;
 		rdfs:label "Format" ;
 		rdfs:comment "Defines the format of a resource/dcat:Distribution. Used until proper resources of type dct:MediaTypeOrExtent are found."@en ;
@@ -133,6 +152,7 @@
 		rdfs:domain dcat:Distribution .
 	
 	:checksumType a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range xsd:string ;
 		rdfs:label "Checksum type" ;
 		rdfs:comment "The type of checksum of the resource."@en ;
@@ -140,6 +160,7 @@
 		rdfs:domain dcat:Distribution .
 
 	:checksumValue a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range xsd:string ;
 		rdfs:label "Checksum value" ;
 		rdfs:comment "The checksum of the resource."@en ;
@@ -147,18 +168,75 @@
 		rdfs:domain dcat:Distribution .
 		
 	:downloads a rdf:Property ;
-		rdfs:range xsd:int ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
 		rdfs:label "Downloads" ;
 		rdfs:comment "The number of times the resource was downloaded."@en ;
 		rdfs:comment "Le nombre de fois que la ressource a été téléchargée."@fr ;
 		rdfs:domain dcat:Distribution .
 		
 	:dataset a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:range dcat:Dataset ;
 		rdfs:label "Dataset" ;
-		rdfs:comment "A dataset in which this distribution is included." ;
-		rdfs:comment "Un jeu de données dans lequel cette ressource est incluse" ;
+		rdfs:comment "A dataset in which this distribution is included."@en ;
+		rdfs:comment "Un jeu de données dans lequel cette ressource est incluse"@fr ;
 		rdfs:domain dcat:Distribution .		
+
+#For dgfr:Reuse
+
+	:Reuse rdfs:subClassOf foaf:Document ;
+		rdfs:isDefinedBy : ;
+		rdfs:label "Reuse" ;
+		rdfs:comment "A creative work derived from the data of one or more dataset"@en ;
+		rdfs:comment "Une réalisation créée à partir des données d'un ou plusieurs jeux de données"@fr .
 	
+	:datasets a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		rdfs:label "Datasets" ;
+		rdfs:comment "The number of datasets used to make the reuse"@en ;
+		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr ;
+		rdfs:range xsd:integer ;
+		rdfs:domain :Reuse, foaf:Organization .
 	
-			
+	:localUrl rdfs:subPropertyOf schema:url ;
+		rdfs:isDefinedBy : ;
+		rdfs:label "Remote URL" ;
+		rdfs:comment "The URL where a reuse is registered and described on the platform."@en ;
+		rdfs:comment "L'URL à laquelle une réutilisation est référencée et décrite sur la plateforme."@fr ;
+		rdfs:domain :Reuse .
+
+#For foaf:Organization
+
+	:members a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		rdfs:label "Members" ;
+		rdfs:comment "The number of people that are members of this organization"@en ;
+		rdfs:comment "Le nombre de personne qui sont membres de cette organisation"@fr ;
+		rdfs:range xsd:integer ;
+		rdfs:domain foaf:Organization .
+	
+	:hasMadeReuses a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		rdfs:label "Has made reuses" ;
+		rdfs:comment "The number of reuses produced and published by this organization"@en ;
+		rdfs:comment "Le nombre de réutilisations produites et publiées par cette organisation"@fr ;
+		rdfs:range xsd:integer ;
+		rdfs:domain foaf:Organization .
+		
+	:publicService a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:boolean ;
+		rdfs:label "Public service" ;
+		rdfs:comment "Defines whether the organization is entrusted a mission of public service."@en ;
+		rdfs:comment "Détermine si l'organisation est chargée d'une mission de service publique, ou non."@fr ;
+		rdfs:domain foaf:Organization .		
+	
+	:published a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		owl:inverseOf dcterms:publisher ;
+		rdfs:range dcat:Dataset, :Reuse ;
+		rdfs:label "Published" ;
+		rdfs:comment "A resource that was published by the agent (person or organization)."@en ;
+		rdfs:comment "Une entité publiée par un agent (personne ou organisation)"@fr ;
+		rdfs:domain foaf:Agent .		

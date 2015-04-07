@@ -8,17 +8,23 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX dgfr: <http://colin.maudry.com/ontologies/dgfr#>
 PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
+PREFIX schema: <http://schema.org/>
+PREFIX prov: <http://www.w3.org/ns/prov#> 
+PREFIX datasets: <https://www.data.maudry.com/fr/datasets/>
+PREFIX reuses: <https://www.data.maudry.com/fr/reuses/> 
 
-
-#This doesn't work, it fails after processing a dozen of resources.
-construct
+with <urn:graph:postprocessing>
+delete
 {
-  ?dataset dcat:keyword ?splitTags .
+	?dataset dct:publisher ?organizationId .
 }
-from <file:csv/datasets.csv#delimiter=%3B>
+insert
+{
+?dataset dct:publisher ?organization .
+}
   where {
-  bind(uri(concat("http://data.gouv.fr/fr/datasets/",?id,"#this")) as ?dataset)
-  ?splitTags apf:strSplit (?tags ",")
-  }
-  
-  
+ ?organization a foaf:Organization ;
+ 	dct:identifier ?organizationId .
+ ?dataset a dcat:Dataset ;
+ 	dct:publisher ?organizationId .
+ }
