@@ -81,7 +81,7 @@ dgfr:resources a api:ListEndpoint
 	; api:uriTemplate "/resources" 
 	; api:selector [api:filter "type=Distribution"; api:sort "-issued"]
 	; elda:graphTemplate "http://www.data.maudry.com"
-	; api:defaultViewer dgfr:resourceNormal
+	; api:defaultViewer dgfr:resourceMinimal
 	.	
 
 dgfr:resourceId a api:ItemEndpoint 
@@ -169,6 +169,13 @@ dgfr:datasetStats
 	api:include dgfr:datasetNormal ;
 	api:name "Statistics" ;
 	api:properties "reuses,uniqueVisitors,views,visits,hits,issues,followers,reuse.uniqueVisitors,reuse.views"
+	.
+
+
+dgfr:resourceMinimal
+	a api:Viewer ;
+	api:name "Minimal" ;
+	api:properties "label,identifier,issued,byteSize,mediaType,modified,downloadUrl,dgfr_format,dataset,dataset.label"
 	.
 
 dgfr:resourceNormal
