@@ -229,9 +229,11 @@ $prefLabel, $altLabel, $title and $name variables.
 						<h3 id="api-méthodes">Autres méthodes</h3>
 						<table class="table">
 							<thead>
-								<tr>Paramètre</tr>
-								<tr>Description</tr>
-								<tr>Exemples</tr>
+									<tr>
+										<th>Paramètre</th>
+										<th>Description</th>
+										<th>Exemples</th>
+									</tr>
 							</thead>
 							<tbody>
 								<tr>
