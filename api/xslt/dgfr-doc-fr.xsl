@@ -230,9 +230,9 @@ $prefLabel, $altLabel, $title and $name variables.
 						<table class="table">
 							<thead>
 									<tr>
-										<td>Paramètre</td>
-										<td>Description</td>
-										<td>Exemples</td>
+										<th>Paramètre</th>
+										<th>Description</th>
+										<th>Exemples</th>
 									</tr>
 							</thead>
 							<tbody>
