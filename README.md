@@ -30,7 +30,7 @@ This wouldn't be possible and so easy without the publication of live CSVs by @n
 ### Configuration
 
 - Copy upload_template.properties and rename it upload.properties
-- Open it and fill it. As-is, your repository must require a user:password combination
+- Open it and fill it. As-is, your repository requires a user:password combination
 
 ### Next steps
 
@@ -53,7 +53,7 @@ Otherwise, you can reach me:
 
 - The RDF data is now loaded in a single atomic transaction in the repository
 - Switch from Dydra (http://dydra.com) to a local Apache Fuseki instance
-- Added organizations and reuses data
+- Added organizations and reuses data, with all identifiers turned into URIs for full linking
 
 ##### 0.2.1
 
