@@ -25,11 +25,11 @@
 
 dgfr:api a api:API 
 	; rdfs:label "Data.gouv.fr Linked data API"@en
-	; api:variable [api:name "visibleSparqlForm"; api:value "http://localhost:3030/datagouvfr/query"]
+	; api:variable [api:name "visibleSparqlEndpoint"; api:value "http://www.data.maudry.com:3030/datagouvfr/query"]
 	; api:sparqlEndpoint <http://localhost:3030/datagouvfr/query>
 	# ; api:defaultViewer api:labelledDescribeViewer
 	; api:defaultFormatter dgfr:HtmlFormatter 
-    ; api:formatter
+    ; api:formatter 
         [a elda:FeedFormatter
         ; api:name "atom"
         ; rdfs:label "Atom"
@@ -51,6 +51,7 @@ dgfr:api a api:API
 	.
 
 <http://localhost:3030/datagouvfr/query> elda:supportsNestedSelect true .
+
 
 # Endpoint definition	
 	
