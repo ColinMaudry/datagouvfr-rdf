@@ -46,6 +46,7 @@ $prefLabel, $altLabel, $title and $name variables.
             <xsl:apply-templates select="." mode="extension" />
         </head>
         <body>
+        	<xsl:comment><xsl:value-of select="$visibleSparqlEndpoint"/></xsl:comment>
             <div id="page">
                 <xsl:apply-templates select="." mode="header" />
                 <xsl:apply-templates select="." mode="content" />
@@ -438,9 +439,11 @@ $prefLabel, $altLabel, $title and $name variables.
                 <xsl:otherwise>identify the items to be shown in the page.</xsl:otherwise>
             </xsl:choose>
             
-            <xsl:text> You can modify it here and re-run the query but you may find more options at the </xsl:text>
-            <a href="{$formToUse}">endpoint's page</a>
-            <xsl:text>.</xsl:text>
+            <xsl:text> You can modify it here and re-run the query. <!--
+            	With Fuseki, no endpoint page
+            	but you may find more options at the </xsl:text>
+            <a href="{$formToUse}">endpoint's page</a>-->
+            .</xsl:text>
         </p>
         <form action="{$endPointToUse}" method="post">
             <xsl:apply-templates select="query" mode="footer" />
