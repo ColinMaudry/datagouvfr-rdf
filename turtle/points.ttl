@@ -1,0 +1,13 @@
+@prefix :     <http://colin.maudry.com/ontologies/dgfr#> .
+
+:views :pointsValue 			1 .
+:hits :pointsValue 				1 .
+:hits :pointsValue 				1 .
+:reuses :pointsValue 			300 .
+:followers :pointsValue 		50 .
+:uniqueVisitors  :pointsValue 	3 .
+:downloads  :pointsValue 		10 .
+:openFormat  :pointsValue 		10 .
+:semWebFormat :pointsValue 		30 .
+:anyResource :pointsValue 		5 .
+:anyDataset :pointsValue 		20 .
