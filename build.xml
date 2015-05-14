@@ -181,7 +181,21 @@
 			<arg line="--data-binary @'sparql/temp/postprocessing-published.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
-		</exec>				
+		</exec>	
+		<echo>Uploading points value into dedicated graph...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true">
+			<arg line="-X PUT"/>
+			<arg line="--data-binary @'turtle/points.ttl'"/>
+			<arg line="-H 'Content-type:text/turtle'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/data?graph=urn%3Agraph%3ApointsValues'"/>
+		</exec>
+		<echo>Calculating total points for datasets, reuses and resources...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true" >
+			<arg line="-X POST"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-points-objects.ru'"/>
+			<arg line="-H 'Content-type:application/sparql-update'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+		</exec>
 		<delete dir="sparql/temp/"/>
 	</target>
 	
