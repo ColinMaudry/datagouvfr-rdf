@@ -189,10 +189,10 @@
 			<arg line="-H 'Content-type:text/turtle'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/data?graph=urn%3Agraph%3ApointsValues'"/>
 		</exec>
-		<echo>Calculating total points for datasets, reuses and resources...</echo>
+		<echo>Calculating total points for datasets, reuses and resources, and total aggregate on organizations...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-points-objects.ru'"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-popularity-points.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
