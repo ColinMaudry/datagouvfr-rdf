@@ -10,20 +10,5 @@ PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
 
 with <urn:graph:postprocessing>
-insert
-{
-?object dgfr:popularityPoints ?sumPoints
-}
-where {
-{select ?object (sum(?totalPoints) as ?sumPoints) where {
-graph <urn:graph:pointsValues> {
-?property dgfr:pointsPopularityValue ?points .
-}
-graph <urn:graph:postprocessing> {
- ?object ?property ?propertyValue .
- }
- bind((?points * ?propertyValue) as ?totalPoints)
-  }
-group by ?object ?sumPoints
-}}
-
+delete {?organization dgfr:tempSumPopularityPoints ?sumObjectPoints}
+where {?organization dgfr:tempSumPopularityPoints ?sumObjectPoints}

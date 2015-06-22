@@ -132,6 +132,14 @@
 		rdfs:comment "A URL-friendly version of the title."@en ;
 		rdfs:comment "Une version du titre simplifiée pour pouvoir être inséré dans une URL."@fr ;
 		rdfs:domain dcat:Dataset, foaf:Organization, :Reuse .	
+
+	:distributions ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Distributions" ;
+		rdfs:comment "The number of distributions that this dataset contains."@en ;
+		rdfs:comment "Le nombre de distributions cotenues dans le jeu de données."@fr ;
+		rdfs:domain dcat:Dataset .	
 		
 #For dcat:Distribution
 
@@ -240,6 +248,10 @@
 		rdfs:comment "A resource that was published by the agent (person or organization)."@en ;
 		rdfs:comment "Une entité publiée par un agent (personne ou organisation)"@fr ;
 		rdfs:domain foaf:Agent .
+
+:datasets a rdf:Property ;
+		rdfs:comment "The number of datasets published "@en ;
+		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr ;
 
 #For ranking purposes
 
