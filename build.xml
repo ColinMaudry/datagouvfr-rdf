@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." name="download-convert-upload" default="publish">
+<project basedir="." name="download-convert-upload" default="build">
 	<property file="upload.properties"/>
 	<property name="baseurl" value="http://www.data.gouv.fr/fr/"/>
 	<property name="repository.baseurl" value="http://${repository.user}:${repository.password}@${repository.address}"/>
@@ -24,6 +24,10 @@
 		<format property="start"
 			pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 	</tstamp>
+	
+	<extension-point name="quick" depends="publish"/>
+	<extension-point name="build" depends="convert, publish"/>
+	
 	<target name="download">
   	<echo>[DOWNLOAD]</echo>
   	<mkdir dir="csv/history"/>
@@ -107,9 +111,10 @@
 		<copy tofile="rdf/history/${now}_organizations.ttl">
 			<file basedir="rdf/" name="organizations.ttl"/>
 		</copy>
+		<antcall target="upload_temp"/>
 	</target>
 	
-	<target name="upload_temp" depends="convert">
+	<target name="upload_temp">
 		<echo>[TEMPORARY UPLOAD]</echo>
 		<echo>Starting the local in-memory repository (Apache Fuseki)...</echo>
 		<exec executable="${fuseki}" spawn="true"/>
