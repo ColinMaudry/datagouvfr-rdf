@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.3.1)
+Semantic data.gouv.fr (0.3.3)
 ==============
 
 Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -48,6 +48,14 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+##### 0.3.3
+
+- Enabled ETL with previously downloaded data to have CasanovaLD up quicker 
+
+##### 0.3.2
+
+- Not much...
 
 ##### 0.3.1
 
