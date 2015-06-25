@@ -27,6 +27,7 @@ group by ?organization ?organizationPoints
 	}};
 with <urn:graph:postprocessing>
 #Sums up the points of reuses at organization level
+#Delete/insert is ineffective, so I had to create a extra query below to remove temp property
 insert {?organization dgfr:sumPopularityPoints ?sumObjectPoints}
 where {
 	{select ?organization ((sum(?reusePoints) + ?oldSumObjectPoints) as ?sumObjectPoints) where {
@@ -41,5 +42,13 @@ where {
 group by ?organization ?oldSumObjectPoints  		
 	}};
 with <urn:graph:postprocessing>
+#Remove temp property for org with reuses
 delete {?organization dgfr:tempSumPopularityPoints ?sumObjectPoints}
+where {?organization dgfr:tempSumPopularityPoints ?sumObjectPoints ;
+				dgfr:published ?reuse .
+				?reuse a dgfr:Reuse .	};
+with <urn:graph:postprocessing>
+#Replace temp property for org without reuses
+delete {?organization dgfr:tempSumPopularityPoints ?sumObjectPoints}
+insert {?organization dgfr:sumPopularityPoints ?sumObjectPoints}
 where {?organization dgfr:tempSumPopularityPoints ?sumObjectPoints}
