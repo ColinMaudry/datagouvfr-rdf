@@ -1,4 +1,5 @@
 @prefix : <http://colin.maudry.com/ontologies/dgfr#> .
+@prefix dcat:				<http://www.w3.org/ns/dcat#> .
 
 
 #Dataset/Organization
@@ -18,5 +19,4 @@
 
 #Distribution
 :downloads  :pointsPopularityValue		 	10 . #pop
-#dcat:byteSize :pointsOpennessValue	  	0.000001 . #ouv
-:openFormats :pointsOpennessValue				20 . #ouv
+dcat:byteSize :pointsOpennessValue	  	0.000001 . #ouv
