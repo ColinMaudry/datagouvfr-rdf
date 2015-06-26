@@ -116,8 +116,6 @@
 	
 	<target name="upload_temp">
 		<echo>[TEMPORARY UPLOAD]</echo>
-		<echo>Starting the local in-memory repository (Apache Fuseki)...</echo>
-		<exec executable="${fuseki}" spawn="true"/>
 		<echo>Uploading datasets.ttl to the postprocessing repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X PUT"/>
@@ -194,34 +192,13 @@
 			<arg line="-H 'Content-type:text/turtle'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/data?graph=urn%3Agraph%3ApointsValues'"/>
 		</exec>
-		<echo>Calculating points for datasets, reuses, resources and organizations...</echo>
+		<echo>Calculating popularity points and aggregates for datasets, reuses, resources and organizations...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-popularity-points.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
-		<echo>Calculating total aggregates on datasets...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true" >
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-sum-popularity-points-datasets.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
-		</exec>
-		<echo>Calculating total aggregates on organizations...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true" >
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-sum-popularity-points-organizations.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
-		</exec>
-		<!--<echo>Deleting temporary relations...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true" >
-			<arg line="-s -X POST"/>
-			<arg line="-\-data-binary @'sparql/temp/postprocessing-delete-temp-relations.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
-		</exec>-->
 		<delete dir="sparql/temp/"/>
 	</target>
 	
