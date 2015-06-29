@@ -6,4 +6,5 @@ api/specs/*.ttl
 server.xml
 rdf/
 csv/
-
+package.json
+/formats.*
