@@ -199,7 +199,15 @@
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
 		</exec>
+		<echo>Gathering collected data about resources...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true" >
+			<arg line="-s -X POST"/>
+			<arg line="--data-binary @'sparql/temp/postprocessing-resources-data.ru'"/>
+			<arg line="-H 'Content-type:application/sparql-update'"/>
+			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+		</exec>
 		<delete dir="sparql/temp/"/>
+		
 	</target>
 	
 	<target name="metadata" depends="postprocessing">

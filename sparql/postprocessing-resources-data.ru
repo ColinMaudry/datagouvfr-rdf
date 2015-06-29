@@ -7,23 +7,27 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX dgfr: <http://colin.maudry.com/ontologies/dgfr#>
 
+#Store original media type for the few distributions that have one
 with <urn:graph:postprocessing>
-delete {?distribution dcat:byteSize ?someSize .}
-insert {
-  ?distribution dgfr:responseStatusCode ?responseCode ;
-								dcat:byteSize ?size ;
-								dgfr:available ?available .
-  ?distributionMT dcat:mediaType ?mediaType .
-}
+delete {?distribution dcat:byteSize ?someSize ;
+			 dcat:mediaType ?oriMediaType .}
+insert {?distribution dgfr:oriMediaType ?oriMediaType .}
 where {
-   graph <urn:files:data> {
-  	 ?distribution dgfr:responseStatusCode ?responseCode ;
-									 dcat:byteSize ?size .
-		 bind(if(?responseCode != "HTTP/1.1 200 OK", false, true) as ?available)
-		 ?distributionMT dcat:mediaType ?mediaType .
-  }
-  	graph <urn:graph:postprocessing> {
-			?distribution a dcat:Distribution .
-			?distributionMT a dcat:Distribution .
-		filter not exists {?distributionMT dcat:mediaType ?someMediaType}
-  }}
+	?distribution a dcat:Distribution ;
+						dcat:byteSize ?someSize ;			
+						dcat:mediaType ?oriMediaType .
+	};
+
+#Copy distribution data over to postprocessing graph
+ADD <urn:files:data> TO <urn:graph:postprocessing> ;
+
+#Replace the value of dcat:mediaType from distribution data with the original one
+with <urn:graph:postprocessing>
+delete {?distribution dcat:mediaType ?newMediaType ;
+			 dgfr:oriMediaType ?oriMediaType .}
+insert {?distribution dcat:mediaType ?oriMediaType .}
+where {
+	?distribution a dcat:Distribution ;
+						dgfr:oriMediaType ?oriMediaType ;
+						dcat:mediaType ?newMediaType .
+	};
