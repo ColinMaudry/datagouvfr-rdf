@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.3.3)
+Semantic data.gouv.fr (0.4.0)
 ==============
 
 Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -48,6 +48,11 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+#### 0.4.0
+
+- Calculation of popularity points for all objects, and aggregate sums on organisations and datasets
+- Integration of the data collected by [beheader](https://github.com/ColinMaudry/beheader) (availability of the distributions, content type, content length)
 
 ##### 0.3.3
 
