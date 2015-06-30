@@ -1,7 +1,7 @@
 Semantic data.gouv.fr (0.4.0)
 ==============
 
-Various stuff around uplifting the French open data portal to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
+Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
 
 This is the foundation work that fuels [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
 
