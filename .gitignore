@@ -4,4 +4,7 @@ upload.properties
 api/specs/*.ttl
 !api/specs/datagouvfr.ttl
 server.xml
-
+rdf/
+csv/
+package.json
+/formats.*

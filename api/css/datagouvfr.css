@@ -35,3 +35,7 @@ nav div.links {
 #page nav.site {
 	padding-top: 10px;
 }
+
+section.view {
+	z-index: 20;
+}

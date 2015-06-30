@@ -31,7 +31,7 @@ construct
     dgfr:uniqueVisitors ?unique_visitors ;
     dgfr:datasets ?datasets ;
     dgfr:members ?members ;
-    dgfr:reuses ?permitted_reuses ;
+    dgfr:permittedReuses ?permitted_reuses ;
     dgfr:hasMadeReuses ?reuses ;
     dgfr:publicService ?lcPublicService .  
 }
