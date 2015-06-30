@@ -3,6 +3,13 @@ Semantic data.gouv.fr (0.4.0)
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
 
+It does the following:
+
+1. Downloads the metadata of all organizations, datasets, distributions (files) and reuses published on data.gouv.fr as CSV
+2. Extracts most of the properties from the CSV and store them as an RDF graph
+3. Does some smart postprocessing to make the objects more interlinked in the graph
+4. Publishes the result to an RDF triple store (more details [here](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=))
+
 This is the foundation work that fuels [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
 
 ## Update script
