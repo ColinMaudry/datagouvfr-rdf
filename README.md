@@ -5,7 +5,7 @@ Various stuff around uplifting the French open data portal, [data.gouv.fr](http:
 
 It does the following:
 
-1. Downloads the metadata of all organizations, datasets, distributions (files) and reuses published on data.gouv.fr as CSV
+1. Downloads the metadata of all organizations, datasets, distributions (files) and reuses published on data.gouv.fr as CSV (18,000+ datasets, 50,000+ distributions)
 2. Extracts most of the properties from the CSV and store them as an RDF graph
 3. Does some smart postprocessing to make the objects more interlinked in the graph
 4. Publishes the result to an RDF triple store (more details [here](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=))
