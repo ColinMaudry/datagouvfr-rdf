@@ -98,7 +98,7 @@
 		<exec executable="${tarql}" searchpath="true" output="rdf/organizations.ttl">
 			<arg line="sparql/construct-organizations.rq"/>
 		</exec>
-		<echo>Archiving RDF...</echo>
+<!--		<echo>Archiving RDF...</echo>
 		<copy tofile="rdf/history/${now}_datasets.ttl">
 			<file basedir="rdf/" name="datasets.ttl"/>
 		</copy>
@@ -110,7 +110,7 @@
 		</copy>
 		<copy tofile="rdf/history/${now}_organizations.ttl">
 			<file basedir="rdf/" name="organizations.ttl"/>
-		</copy>
+		</copy>-->
 		<antcall target="upload_temp"/>
 	</target>
 	
