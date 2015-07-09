@@ -133,7 +133,7 @@
 		rdfs:comment "Une version du titre simplifiée pour pouvoir être inséré dans une URL."@fr ;
 		rdfs:domain dcat:Dataset, foaf:Organization, :Reuse .	
 
-	:distributions ;
+	:distributions a rdf:Property ;
 		rdfs:isDefinedBy : ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Distributions" ;
@@ -251,7 +251,7 @@
 
 :datasets a rdf:Property ;
 		rdfs:comment "The number of datasets published "@en ;
-		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr ;
+		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr .
 
 #For ranking purposes
 

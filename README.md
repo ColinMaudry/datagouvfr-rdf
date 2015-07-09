@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.4.0)
+Semantic data.gouv.fr (0.4.2)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -55,6 +55,10 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+##### 0.4.2
+
+- Fixed errors in ontology
 
 ##### 0.4.1
 
