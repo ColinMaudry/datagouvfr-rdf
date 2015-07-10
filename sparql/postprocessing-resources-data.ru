@@ -31,3 +31,68 @@ where {
 						dgfr:oriMediaType ?oriMediaType ;
 						dcat:mediaType ?newMediaType .
 	};
+#Count unavailable distributions in datasets
+with <urn:graph:postprocessing>
+insert {
+?dataset dgfr:unavailableDistributions ?unavailableDistributions .
+}
+where {
+{
+  select ?dataset (count(?unavailableDistribution) as ?unavailableDistributions) 
+  where {
+  graph <urn:graph:postprocessing> {
+       ?unavailableDistribution a dcat:Distribution ;
+      dgfr:available false .
+  ?dataset a dcat:Dataset ;
+      dcat:distribution ?unavailableDistribution . 
+      }
+  }
+    group by ?dataset
+	}
+};
+#Count available distributions in datasets
+with <urn:graph:postprocessing>
+insert {
+?dataset dgfr:availableDistributions ?availableDistributions .
+}
+where {
+{
+  select ?dataset (count(?availableDistribution) as ?availableDistributions) 
+  where {
+  graph <urn:graph:postprocessing> {
+       ?availableDistribution a dcat:Distribution ;
+      dgfr:available true .
+  ?dataset a dcat:Dataset ;
+      dcat:distribution ?availableDistribution . 
+      }
+  }
+    group by ?dataset
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
