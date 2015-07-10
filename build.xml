@@ -2,8 +2,7 @@
 <project basedir="." name="download-convert-upload" default="build">
 	<property file="upload.properties"/>
 	<property name="baseurl" value="http://www.data.gouv.fr/fr/"/>
-	<property name="repository.baseurl" value="http://${repository.user}:${repository.password}@${repository.address}"/>
-	
+		
 	<!-- Necessary to set full path in Linux as PATH in not available in cron job -->
 	<condition property="curl" value="curl.exe" else="/usr/bin/curl">
 		<os family="windows"/>
@@ -118,31 +117,35 @@
 		<echo>[TEMPORARY UPLOAD]</echo>
 		<echo>Uploading datasets.ttl to the postprocessing repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X PUT"/>
+			<arg line="-v -X PUT"/>
 			<arg line="--data-binary @'rdf/datasets.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
 		</exec>
 		<echo>Uploading resources.ttl to the postprocessing repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'rdf/resources.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
 		</exec>		
 		<echo>Uploading reuses.ttl to the postprocessing repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'rdf/reuses.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
 		</exec>	
 		<echo>Uploading organizations.ttl to the postprocessing repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'rdf/organizations.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?graph=${postprocessingGraphUri}'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
 		</exec>	
 	</target>
 	
@@ -162,49 +165,56 @@
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-dataset-org.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>
 		<echo>Creating relation reuse ~> organization...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-org.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>
 		<echo>Creating relation reuse ~> dataset...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-dataset.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>			
 		<echo>Creating invert relation of dct:publisher: dgfr:published...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-published.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>	
 		<echo>Uploading points value into dedicated graph...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X PUT"/>
 			<arg line="--data-binary @'turtle/points.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?graph=urn%3Agraph%3ApointsValues'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}?graph=urn%3Agraph%3ApointsValues'"/>
 		</exec>
 		<echo>Calculating popularity points and aggregates for datasets, reuses, resources and organizations...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-popularity-points.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>
 		<echo>Gathering collected data about resources...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-resources-data.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>
 		<delete dir="sparql/temp/"/>
 		
@@ -234,13 +244,15 @@
 			<arg line="-s -X PUT"/>
 			<arg line="--data-binary @'turtle/temp/prov.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?default'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}?default'"/>
 		</exec>
 		<exec executable="${curl}" searchpath="true">
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'turtle/temp/void.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/data?default'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}?default'"/>
 		</exec>
 		<delete dir="turtle/temp"/>
 	</target>
@@ -262,7 +274,8 @@
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/replace-production-graph.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="'${repository.baseurl}/${datasetId}/update'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>
 		<delete dir="sparql/temp/"/>
 	</target>
