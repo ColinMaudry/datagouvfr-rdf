@@ -273,5 +273,8 @@
 		rdfs:label "Sum of popularity points" ;
 		rdfs:comment "For a given object, the sum of the points calculated at its level plus the points calculated at the level of dependant objects. For instance, a datasets holds the sum of points at its level and at the level of the related distributions."@en .
 	
+	
+	
+	
 		
 		
