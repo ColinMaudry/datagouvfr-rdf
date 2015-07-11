@@ -49,7 +49,7 @@ RewriteCond %{HTTP_ACCEPT} !application/rdf\+xml.*(text/html|application/xhtml\+
 RewriteCond %{HTTP_ACCEPT} text/html [OR]
 RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
 RewriteCond %{HTTP_USER_AGENT} ^Mozilla/.*
-RewriteRule ^dgfr$ http://data.gouv.fr [R=303]
+RewriteRule ^dgfr$ https://colinmaudry.github.io/datagouvfr-rdf/ [R=303]
 
 # Rewrite rule to make sure we serve RDF/XML content from the namespace URI if requested
 RewriteCond %{REQUEST_URI} /ontologies/dgfr.*

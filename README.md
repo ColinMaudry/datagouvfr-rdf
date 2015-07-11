@@ -1,14 +1,7 @@
-Semantic data.gouv.fr (0.5.0)
+Semantic data.gouv.fr (0.6.0)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
-
-It does the following:
-
-1. Downloads the metadata of all organizations, datasets, distributions (files) and reuses published on data.gouv.fr as CSV (18,000+ datasets, 50,000+ distributions)
-2. Extracts most of the properties from the CSV and store them as an RDF graph
-3. Does some smart postprocessing to make the objects more interlinked in the graph
-4. Publishes the result to an RDF triple store (more details [here](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=))
 
 This is the foundation work that fuels [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
 
@@ -21,6 +14,7 @@ This is the foundation work that fuels [CasanovaLD](https://translate.google.com
 1. Converting the CSV into RDF (using [TARQL](https://github.com/cygri/tarql))
 1. Upload to an RDF repository
 1. Converts text identifiers in URIs for better linking across the data
+3. Does some smart postprocessing to make the objects more interlinked in the graph, integrates the output of [beheader](https://github.com/ColinMaudry/beheader) into the graph
 1. Adds some metadata about the resulting data set (DCAT, VoID, PROV)
 
 **This script is run every 2 hours to update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=))**.
@@ -39,6 +33,11 @@ This wouldn't be possible and so easy without the publication of live CSVs by @n
 - Copy upload_template.properties and rename it upload.properties
 - Open it and fill it. As-is, your repository requires a user:password combination
 
+### Run it
+
+- If Requirements are fulfilled, just run `ant` in `datagouvfr-rdf` root folder.
+- If you have already run the process and just want to reload the data in the triple store, run `ant quick`.
+
 ### Next steps
 
 - Tell me!
@@ -56,7 +55,11 @@ Otherwise, you can reach me:
 
 ## Change log
 
-##### 0.5.0
+#### 0.6.0
+
+- Added ontology documentation (Ontoology, thanks @dgarijo). You can view it following the ontology URI at http://colin.maudry.com/ontologies/dgfr
+
+#### 0.5.0
 
 - Availability and unavailability count at dataset and organization levels
 
