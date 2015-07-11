@@ -1,0 +1,40 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1501"
+	"http://colin.maudry/rdf/colin-maudry#me" -> "mailto:colin@maudry.com" [ label = "foaf:mbox" ];
+	"dgfr:" -> "dgfr:" [ label = "vann:preferredNamespaceUri" ];
+	"dgfr:" -> "http://unlicense.org" [ label = "cc:license" ];
+	"dgfr:" -> "http://data.gouv.fr" [ label = "rdfs:seeAlso" ];
+	"dgfr:" -> "http://colin.maudry/rdf/colin-maudry#me" [ label = "dcterms:creator" ];
+	"dgfr:localUrl" -> "schema:url" [ label = "rdfs:subPropertyOf" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:visits" ];
+	"foaf:Agent" -> "xsd:integer" [ label = "dgfr:datasets" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:views" ];
+	"dcat:Distribution" -> "xsd:string" [ label = "dgfr:format" ];
+	"foaf:Organization" -> "xsd:integer" [ label = "dgfr:members" ];
+	"dcat:Dataset" -> "xsd:string" [ label = "dgfr:slug" ];
+	"dgfr:Reuse" -> "owl:Thing" [ label = "dgfr:localUrl" ];
+	"foaf:Agent" -> "xsd:integer" [ label = "dgfr:availableDistributions" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:uniqueVisitors" ];
+	"dcat:Dataset" -> "xsd:boolean" [ label = "dgfr:featured" ];
+	"foaf:Organization" -> "xsd:integer" [ label = "dgfr:sumPopularityPoints" ];
+	"foaf:Organization" -> "xsd:integer" [ label = "dgfr:hasMadeReuses" ];
+	"rdf:Property" -> "xsd:integer" [ label = "dgfr:pointsValue" ];
+	"dcat:Distribution" -> "xsd:string" [ label = "dgfr:checksumValue" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:hits" ];
+	"dcat:Distribution" -> "xsd:boolean" [ label = "dgfr:available" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:distributions" ];
+	"foaf:Agent" -> "dcat:Dataset" [ label = "dgfr:published" ];
+	"foaf:Organization" -> "xsd:boolean" [ label = "dgfr:publicService" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:issues" ];
+	"dcat:Dataset" -> "xsd:boolean" [ label = "dgfr:private" ];
+	"dcat:Distribution" -> "dcat:Dataset" [ label = "dgfr:dataset" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:followers" ];
+	"dcat:Distribution" -> "xsd:string" [ label = "dgfr:type" ];
+	"dcat:Distribution" -> "xsd:string" [ label = "dgfr:checksumType" ];
+	"foaf:Agent" -> "xsd:integer" [ label = "dgfr:unavailableDistributions" ];
+	"dcat:Dataset" -> "xsd:integer" [ label = "dgfr:reuses" ];
+	"foaf:Organization" -> "xsd:integer" [ label = "dgfr:popularityPoints" ];
+	"dcat:Distribution" -> "xsd:integer" [ label = "dgfr:downloads" ];
+
+}
