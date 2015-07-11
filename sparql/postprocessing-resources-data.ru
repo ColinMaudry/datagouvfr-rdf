@@ -31,3 +31,106 @@ where {
 						dgfr:oriMediaType ?oriMediaType ;
 						dcat:mediaType ?newMediaType .
 	};
+#Count unavailable distributions in datasets
+with <urn:graph:postprocessing>
+insert {
+?dataset dgfr:unavailableDistributions ?unavailableDistributions .
+}
+where {
+{
+  select ?dataset (count(?unavailableDistribution) as ?unavailableDistributions) 
+  where {
+  graph <urn:graph:postprocessing> {
+       ?unavailableDistribution a dcat:Distribution ;
+      dgfr:available false .
+  ?dataset a dcat:Dataset ;
+      dcat:distribution ?unavailableDistribution . 
+      }
+  }
+    group by ?dataset
+	}
+};
+#Count available distributions in datasets
+with <urn:graph:postprocessing>
+insert {
+?dataset dgfr:availableDistributions ?availableDistributions .
+}
+where {
+{
+  select ?dataset (count(?availableDistribution) as ?availableDistributions) 
+  where {
+  graph <urn:graph:postprocessing> {
+       ?availableDistribution a dcat:Distribution ;
+      dgfr:available true .
+  ?dataset a dcat:Dataset ;
+      dcat:distribution ?availableDistribution . 
+      }
+  }
+    group by ?dataset
+	}
+};
+#Sum up unavailable distributions at organization level
+with <urn:graph:postprocessing>
+insert {
+?organization dgfr:unavailableDistributions ?unavailableDistributions .
+
+}
+where {
+{
+  select ?organization (sum(?datasetUnavailableDistributions) as ?unavailableDistributions) 
+  where {
+        ?organization a foaf:Organization ;
+          dgfr:published ?dataset .
+       
+         ?dataset a dcat:Dataset ;
+            dgfr:unavailableDistributions ?datasetUnavailableDistributions . 
+  }
+    group by ?organization
+	}
+};
+#Sum up available distributions at organization level
+with <urn:graph:postprocessing>
+insert {
+?organization dgfr:availableDistributions ?availableDistributions .
+
+}
+where {
+{
+  select ?organization (sum(?datasetAvailableDistributions) as ?availableDistributions) 
+  where {    
+        ?organization a foaf:Organization ;
+          dgfr:published ?dataset .
+       
+         ?dataset a dcat:Dataset ;
+            dgfr:availableDistributions ?datasetAvailableDistributions . 
+  }
+    group by ?organization
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

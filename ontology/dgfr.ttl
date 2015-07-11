@@ -251,27 +251,57 @@
 
 :datasets a rdf:Property ;
 		rdfs:comment "The number of datasets published "@en ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Datasets" ;
+		rdfs:domain foaf:Agent ;
 		rdfs:comment "Le nombre de jeux de données utilisés pour réaliser la réutilisation"@fr .
 
 #For ranking purposes
 
 	:pointsValue a rdf:Property ;
-		 rdfs:range xsd:integer ;
-		 rdfs:label "Points value" ;
-		 rdfs:domain rdf:Property ;
-		 rdfs:comment "The value in points that each unit is worth" .
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Points value" ;
+		rdfs:domain rdf:Property ;
+		rdfs:comment "The value in points that each unit is worth" .
 	
 	:popularityPoints a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:domain foaf:Organization, dcat:Dataset, dcat:Distribution, :Reuse ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Popularity points" ;
 		rdfs:comment "For a given object, the number of points related to popularity (downloads, followers)"@en .
 	
 	:sumPopularityPoints a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:domain foaf:Organization, dcat:Dataset ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Sum of popularity points" ;
 		rdfs:comment "For a given object, the sum of the points calculated at its level plus the points calculated at the level of dependant objects. For instance, a datasets holds the sum of points at its level and at the level of the related distributions."@en .
-	
+
+#Availability
+
+:available a rdf:Property ;
+		rdfs:range xsd:boolean ;
+		rdfs:isDefinedBy : ;
+		rdfs:comment "Whether the distribution (file) can actually be downloaded or if the server returns an error."@en ;
+		rdfs:comment "Si la distribution (fichier) peut véritablement être téléchargée, ou si le serveur renvoie une erreur." ;
+		rdfs:label "Available" ;
+		rdfs:domain dcat:Distribution .
+
+:availableDistributions a rdf:Property ;
+		rdfs:comment "The number of distributons that are actually available."@en ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Available distributions" ;
+		rdfs:domain foaf:Agent , dcat:Dataset ;
+		rdfs:comment "Le nombre de distributions qui sont véritablement disponibles."@fr .
+
+:unavailableDistributions a rdf:Property ;
+		rdfs:comment "The number of distributons for which the hosting server returns an error."@en ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Unavailable distributions" ;
+		rdfs:domain foaf:Agent , dcat:Dataset ;
+		rdfs:comment "Le nombre de distributions pour les lesquels le serveur qui les hébérge renvoie une erreur."@fr .
+
 		
 		

@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.4.3)
+Semantic data.gouv.fr (0.5.0)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -55,6 +55,10 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+##### 0.5.0
+
+- Availability and unavailability count at dataset and organization levels
 
 ##### 0.4.3
 
@@ -129,7 +133,6 @@ Otherwise, you can reach me:
 
 - Script to download/clean/convert/publish data.gouv.fr dataset metadata
 - Basic documentation
-- 
 
 
 
