@@ -40,6 +40,7 @@ dgfr:api a api:API
 	; api:endpoint dgfr:datasets 
 	; api:endpoint dgfr:datasetSlug
 	; api:endpoint dgfr:resources
+	; api:endpoint dgfr:resourcesUnavailability
 	; api:endpoint dgfr:resourceId
 	; api:endpoint dgfr:organizations
 	; api:endpoint dgfr:organizationSlug
@@ -82,6 +83,14 @@ dgfr:resources a api:ListEndpoint
 	; elda:graphTemplate "http://www.data.maudry.com"
 	; api:defaultViewer dgfr:resourceMinimal
 	.	
+
+dgfr:resourcesUnavailability a api:ListEndpoint 
+	; rdfs:label "Unavailable resources with response code" 
+	; api:uriTemplate "/resources/unavailable" 
+   	; api:selector [api:filter "type=Distribution&available=false"; api:sort "-modified"]
+	; elda:graphTemplate "http://www.data.maudry.com"
+	; api:defaultViewer dgfr:resourceUnavailability
+	.
 
 dgfr:resourceId a api:ItemEndpoint 
 	; rdfs:label "Resource by id" 
@@ -174,13 +183,21 @@ dgfr:datasetStats
 dgfr:resourceMinimal
 	a api:Viewer ;
 	api:name "Minimal" ;
-	api:properties "label,identifier,issued,byteSize,mediaType,modified,downloadUrl,dgfr_format,dataset,dataset.label"
+	api:properties "label,identifier,modified,mediaType,downloadUrl,dataset,dataset.label"
 	.
 
 dgfr:resourceNormal
 	a api:Viewer ;
+	api:include dgfr:datasetMinimal ;
 	api:name "Normal" ;
-	api:properties "label,description,identifier,issued,byteSize,mediaType,modified,downloads,downloadUrl,dgfr_format,dataset,dataset.label"
+	api:properties "description,issued,downloads,dgfr_format,byteSize"
+	.
+
+dgfr:resourceUnavailability
+	a api:Viewer ;
+	api:include dgfr:resourceMinimal ;
+	api:name "Availability" ;
+	api:properties "available,responseStatusCode"
 	.
 	
 dgfr:organizationNormal
@@ -510,3 +527,37 @@ dgfr:popularityPoints
     rdfs:domain dcat:Dataset, foaf:Organization, dcat:Distribution, dgfr:Reuse ;
     rdfs:label "Sum popularity points" ;
     rdfs:range xsd:integer .
+
+#Availability
+
+dgfr:available a rdf:Property ;
+		api:label "available" ;
+		rdfs:range xsd:boolean ;
+		rdfs:comment "Whether the distribution (file) can actually be downloaded or if the server returns an error."@en ;
+		rdfs:comment "Si la distribution (fichier) peut véritablement être téléchargée, ou si le serveur renvoie une erreur." ;
+		rdfs:label "Available" ;
+		rdfs:domain dcat:Distribution .
+
+dgfr:responseStatusCode a rdf:Property ;
+		rdfs:range xsd:string ;
+		api:label "responseStatusCode" ;
+		rdfs:comment "The HTTP response code returned by the server when downloading the resource."@en ;
+		rdfs:comment "Le code HTTP renvoyé par le serveur lors d'une tentative de téléchargement de la distribution."@fr ;
+		rdfs:label "Response status code" ;
+		rdfs:domain dcat:Distribution .
+
+dgfr:availableDistributions a rdf:Property ;
+		api:label "availableDistributions" ;
+		rdfs:comment "The number of distributons that are actually available."@en ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Available distributions" ;
+		rdfs:domain foaf:Agent , dcat:Dataset ;
+		rdfs:comment "Le nombre de distributions qui sont véritablement disponibles."@fr .
+
+dgfr:unavailableDistributions a rdf:Property ;
+		api:label "unavailableDistributions" ;
+		rdfs:comment "The number of distributons for which the hosting server returns an error."@en ;
+		rdfs:range xsd:integer ;
+		rdfs:label "Unavailable distributions" ;
+		rdfs:domain foaf:Agent , dcat:Dataset ;
+		rdfs:comment "Le nombre de distributions pour les lesquels le serveur qui les hébérge renvoie une erreur."@fr .
