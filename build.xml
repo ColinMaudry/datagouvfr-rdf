@@ -13,6 +13,9 @@
 	<condition property="fuseki" value="fuseki-server.bat" else="/home/admin/fuseki/fuseki-server">
 		<os family="windows"/>
 	</condition>
+	<condition property="livedataDownloaded" value="true" else="false">
+		<available file="rdf/livedata.trig"></available>
+	</condition>
 	<tstamp>
 		<!-- With - to be filename-compatible -->
 		<format property="now"
@@ -117,7 +120,7 @@
 		<echo>[TEMPORARY UPLOAD]</echo>
 		<echo>Uploading datasets.ttl to the postprocessing repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-v -X PUT"/>
+			<arg line="-s -X PUT"/>
 			<arg line="--data-binary @'rdf/datasets.ttl'"/>
 			<arg line="-H 'Content-type:text/turtle'"/>
 			<arg line="-u ${repository.user}:${repository.password}"/>
@@ -279,4 +282,26 @@
 		</exec>
 		<delete dir="sparql/temp/"/>
 	</target>
+	
+	<target name="download-livedata" unless="${livedataDownloaded}">
+		<echo>[DOWNLOAD LIVE DATA]</echo>
+		<echo>Downloading live data as Trig (Turtle with graphs)...</echo>
+		<get
+			verbose="false"
+			src="${live.repository.get.url}"
+			dest="rdf/livedata.trig"/>
+	</target>
+	
+	<target name="livedata" depends="download-livedata">
+		<echo>[UPLOAD LIVE DATA]</echo>
+		<echo>Uploading live data into the local repository...</echo>
+		<exec executable="${curl}" searchpath="true">
+			<arg line="-s -X PUT"/>
+			<arg line="--data-binary @'rdf/livedata.trig'"/>
+			<arg line="-H 'Content-type:text/trig'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}'"/>
+		</exec>
+	</target>
 </project>
+
