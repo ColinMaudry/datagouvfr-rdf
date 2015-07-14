@@ -282,15 +282,24 @@
 
 #Availability
 
+:responseStatusCode a rdf:Property ;
+		rdfs:range xsd:string ;
+		rdfs:isDefinedBy : ;
+		rdfs:comment "The HTTP response code returned by the server when downloading the resource."@en ;
+		rdfs:comment "Le code HTTP renvoyé par le serveur lors d'une tentative de téléchargement de la distribution."@fr ;
+		rdfs:label "Response status code" ;
+		rdfs:domain dcat:Distribution .
+
 :available a rdf:Property ;
 		rdfs:range xsd:boolean ;
 		rdfs:isDefinedBy : ;
 		rdfs:comment "Whether the distribution (file) can actually be downloaded or if the server returns an error."@en ;
-		rdfs:comment "Si la distribution (fichier) peut véritablement être téléchargée, ou si le serveur renvoie une erreur." ;
+		rdfs:comment "Si la distribution (fichier) peut véritablement être téléchargée, ou si le serveur renvoie une erreur."@fr ;
 		rdfs:label "Available" ;
 		rdfs:domain dcat:Distribution .
 
 :availableDistributions a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:comment "The number of distributons that are actually available."@en ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Available distributions" ;
@@ -298,6 +307,7 @@
 		rdfs:comment "Le nombre de distributions qui sont véritablement disponibles."@fr .
 
 :unavailableDistributions a rdf:Property ;
+		rdfs:isDefinedBy : ;
 		rdfs:comment "The number of distributons for which the hosting server returns an error."@en ;
 		rdfs:range xsd:integer ;
 		rdfs:label "Unavailable distributions" ;
