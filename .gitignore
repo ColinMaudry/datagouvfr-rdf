@@ -1,5 +1,4 @@
 temp/
-run.bat
 upload.properties
 api/specs/*.ttl
 !api/specs/datagouvfr.ttl
@@ -8,3 +7,4 @@ rdf/
 csv/
 package.json
 /formats.*
+*.bat
