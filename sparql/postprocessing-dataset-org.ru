@@ -21,10 +21,13 @@ delete
 insert
 {
 ?dataset dct:publisher ?organization .
+?distribution dct:publisher ?organization .
+#The inverse relation (dgfr:published) is inserted later in postprocessing
 }
   where {
  ?organization a foaf:Organization ;
  	dct:identifier ?organizationId .
  ?dataset a dcat:Dataset ;
+	dcat:distribution ?distribution ;	
  	dct:publisher ?organizationId .
  }

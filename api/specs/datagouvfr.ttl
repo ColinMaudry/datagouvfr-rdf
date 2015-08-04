@@ -81,6 +81,7 @@ dgfr:resources a api:ListEndpoint
 	; api:uriTemplate "/resources" 
 	; api:selector [api:filter "type=Distribution"; api:sort "-issued"]
 	; elda:graphTemplate "http://www.data.maudry.com"
+	; api:viewer dgfr:resourceUnavailability
 	; api:defaultViewer dgfr:resourceMinimal
 	.	
 
@@ -109,7 +110,7 @@ dgfr:organizations a api:ListEndpoint
 	; api:selector [api:filter "type=Organization"; api:sort "-created"]
 	; elda:graphTemplate "http://www.data.maudry.com"
 	; api:defaultViewer dgfr:organizationNormal
-	; api:viewer dgfr:organizationDatasetsSimple, dgfr:organizationDatasetsDetails
+	; api:viewer dgfr:organizationDatasetsSimple, dgfr:organizationDatasetsDetails, dgfr:organizationAvailability
 	.
 
 dgfr:organizationSlug a api:ItemEndpoint 
@@ -156,79 +157,86 @@ dgfr:doc a api:ItemEndpoint
 
 dgfr:datasetMinimal
   a api:Viewer ;
-  api:name "Minimal" ;
+  api:name "simple" ;
   api:properties "label,landingPage,created,modified,publisher,publisher.label" ;
   .
 
 dgfr:datasetNormal
   a api:Viewer ;
-  api:name "Normal" ;
-  api:properties "label,landingPage,description,created,modified,distribution.label,distribution.dgfr_format,publisher,publisher.label,reuse,reuse.label,reuse.localUrl,reuse.url" ;
+  api:name "normal" ;
+  api:properties "label,landingPage,description,created,modified,distribution.label,distribution.dgfr_format,distribution.downloadUrl,publisher,publisher.label,reuse,reuse.label,reuse.localUrl,reuse.url" ;
   .
   
 dgfr:datasetResources
   a api:Viewer ;
   api:include dgfr:datasetNormal ;
-  api:name "Resources" ;
-  api:properties "distribution.downloads,distribution.description,distribution.issued,distribution.modified,distribution.downloadUrl,distribution.byteSize" ;
+  api:name "resources" ;
+  api:properties "distribution.downloads,distribution.description,distribution.available, distribution.issued,distribution.modified,distribution.downloadUrl,distribution.byteSize" ;
   .
 
 dgfr:datasetStats
 	a api:Viewer ;
 	api:include dgfr:datasetNormal ;
-	api:name "Statistics" ;
+	api:name "statistics" ;
 	api:properties "reuses,uniqueVisitors,views,visits,hits,issues,followers,reuse.uniqueVisitors,reuse.views"
 	.
 
 dgfr:resourceMinimal
 	a api:Viewer ;
-	api:name "Minimal" ;
+	api:name "simple" ;
 	api:properties "label,identifier,modified,mediaType,downloadUrl,dataset,dataset.label"
 	.
 
 dgfr:resourceNormal
 	a api:Viewer ;
 	api:include dgfr:datasetMinimal ;
-	api:name "Normal" ;
+	api:name "normal" ;
 	api:properties "description,issued,downloads,dgfr_format,byteSize"
 	.
 
 dgfr:resourceUnavailability
 	a api:Viewer ;
 	api:include dgfr:resourceMinimal ;
-	api:name "Availability" ;
-	api:properties "available,responseStatusCode"
+	api:name "unavailability" ;
+	api:properties "available,responseStatusCode,publisher,publisher.label"
 	.
 	
 dgfr:organizationNormal
   a api:Viewer ;
-  api:name "Normal" ;
+  api:name "normal" ;
   api:properties "label,created,depiction" 
   .
   
 dgfr:organizationDatasetsSimple
   a api:Viewer ;
   api:include dgfr:organizationNormal ;
-  api:name "Datasets (simple)" ;
+  api:name "simple" ;
   api:properties "description,published,published.label,published.landingPage,published,datasets" ;
   .
  
 dgfr:organizationDatasetsDetails
   a api:Viewer ;
   api:include dgfr:organizationDatasetsSimple ;
-  api:name "Datasets (details)" ;
-  api:properties "published.reuses,published.followers,published.downloads,published.reuse,published.reuse.label" 
+  api:name "details" ;
+  api:properties "availableDistributions,unavailableDistributions,published.reuses,published.followers,published.downloads,published.reuse,published.reuse.label,published.availableDistributions,published.unavailableDistributions" 
   .
+
+dgfr:organizationAvailability
+  a api:Viewer ;
+  api:include dgfr:organizationNormal ;
+  api:name "availability" ;
+  api:properties "availableDistributions,unavailableDistributions"
+.
 
 dgfr:reuseSimple 
 	a api:Viewer ;
-	api:name "Reuse normal view" ;
+	api:name "normal" ;
 	api:properties "label,created,url,localUrl,wasDerivedFrom,wasDerivedFrom.label" .
 	
 dgfr:reuseStats 
 	a api:Viewer ;
 	api:include dgfr:reuseSimple  ;
-	api:name "Reuse (stats)" ;
+	api:name "statistics" ;
 	api:properties "uniqueVisitors,views,visits,hits,followers,datasets,wasDerivedFrom.url,wasDerivedFrom.publisher" .
 
 
