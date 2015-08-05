@@ -8,7 +8,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
  <http://dydra.com/colin-maudry/datagouvfr#this> a void:Dataset ;
-    dcterms:creator <http://colin.maudry.com/rdf/me> ;
+    dcterms:creator <http://colin.maudry.com/id/me> ;
     foaf:homepage <https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/> ;
     foaf:primaryTopicOf <https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/> ;
     dcterms:title "Metadata of the datasets published on http://data.gouv.fr"@en ;

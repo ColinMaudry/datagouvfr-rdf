@@ -10,7 +10,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 activities:updateDGFR-RDF a prov:Activity ;
-	prov:wasAssociatedWith <http://colin.maudry.com/rdf/me> ;
+	prov:wasAssociatedWith <http://colin.maudry.com/id/me> ;
 	prov:used <http://data.gouv.fr/fr/datasets.csv> ;
 	prov:used <http://data.gouv.fr/fr/resources.csv> ;
 	prov:used <http://data.gouv.fr/fr/reuses.csv> ;
@@ -21,9 +21,6 @@ activities:updateDGFR-RDF a prov:Activity ;
 	
 <http://dydra.com/colin-maudry/datagouvfr#this> a void:Dataset ;
 	a prov:Entity .
-	
-<http://colin.maudry.com/rdf/me> foaf:name "Colin Maudry" ;
-	a foaf:Person .
 	
 <http://data.gouv.fr/fr/datasets.csv>
 	prov:wasAttributedTo <http://data.gouv.fr#this> ;
