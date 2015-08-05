@@ -57,7 +57,7 @@ Otherwise, you can reach me:
 
 #### 0.6.0
 
-- Added ontology documentation (Ontoology, thanks @dgarijo). You can view it following the ontology URI at http://colin.maudry.com/ontologies/dgfr
+- Added ontology documentation (Ontoology, thanks @dgarijo). You can view it following the ontology URI at http://colin.maudry.com/ontologies/dgfr/index.html
 
 #### 0.5.0
 
