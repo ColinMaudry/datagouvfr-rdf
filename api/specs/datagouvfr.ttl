@@ -546,12 +546,30 @@ dgfr:available a rdf:Property ;
 		rdfs:label "Available" ;
 		rdfs:domain dcat:Distribution .
 
+dgfr:responseTime a rdf:Property ;
+		api:label "responseTime" ;
+		rdfs:range xsd:decimal ;
+		rdfs:isDefinedBy : ;
+		rdfs:comment "The time, in seconds, for the server that hosts the distribution (file), to respond to a request. This is not the download time."@en ;
+		rdfs:comment "Le temps, en seconde, que met le serveur hébergeant la distribution (fichier) pour répondre à une requête. Ce n'est pas le temps téléchargement."@fr ;
+		rdfs:label "Response time (seconds)" ;
+		rdfs:domain dcat:Distribution .
+
 dgfr:responseStatusCode a rdf:Property ;
 		rdfs:range xsd:string ;
 		api:label "responseStatusCode" ;
 		rdfs:comment "The HTTP response code returned by the server when downloading the resource."@en ;
 		rdfs:comment "Le code HTTP renvoyé par le serveur lors d'une tentative de téléchargement de la distribution."@fr ;
 		rdfs:label "Response status code" ;
+		rdfs:domain dcat:Distribution .
+
+dgfr:availabilityCheckedOn a rdf:Property ;
+		api:label "availabilityCheckedOn" ;
+		rdfs:range xsd:dateTime ;
+		rdfs:isDefinedBy : ;
+		rdfs:comment "The date and time when the distribution (file) had its availability checked for the last time."@en ;
+		rdfs:comment "La date et l'heure auxquelles la disponibilité de la distribution (fichier) a été vérifée pour la dernière fois."@fr ;
+		rdfs:label "Availability checked on" ;
 		rdfs:domain dcat:Distribution .
 
 dgfr:availableDistributions a rdf:Property ;
