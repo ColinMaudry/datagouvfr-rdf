@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.6.0)
+Semantic data.gouv.fr (0.7.0)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -20,6 +20,8 @@ This is the foundation work that fuels [CasanovaLD](https://translate.google.com
 **This script is run every 2 hours to update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=))**.
 
 This wouldn't be possible and so easy without the publication of live CSVs by @noirbizarre for @etalab.
+
+The data model can be seen [here](https://www.lucidchart.com/documents/view/6011b6e0-6a85-413a-8279-0588b0f10992).
 
 ### Requirements
 
@@ -54,6 +56,13 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+#### 0.7.0
+
+* Added properties dgfr:responseStatusCode, dgfr:responseTime and dgfr:availabilityCheckedOn to the ontology and API configuration
+* Added direct link between organizations and published distributions (see the result in [the data model]((https://www.lucidchart.com/documents/view/6011b6e0-6a85-413a-8279-0588b0f10992))
+* Added a view for anavailable resources in the API (https://www.data.maudry.com/fr/resources/unavailable)
+* Icons for boolean values (true/false) are clearer now
 
 #### 0.6.0
 
