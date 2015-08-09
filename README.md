@@ -55,7 +55,7 @@ Otherwise, you can reach me:
 
 #### 0.1.0
 
-* Adapt scripts and queries to data.gov.uk setup
+* Adapt scripts and queries to data.gov.uk setup (#1)
 
 ## Pre-fork change log
 
