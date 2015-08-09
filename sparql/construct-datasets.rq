@@ -10,7 +10,6 @@ PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
 
 construct
-#Name,Title,URL,Organization,Top_level_organisation,License,Published,NII,Location,Import_source,Author,Geographic_Coverage,Isopen,License,License_Id,Maintainer,Mandate,Metadata_Created,Metadata_Modified,Notes,ODI_Certificate_URL,Tags,Temporal_Coverage_From,Temporal_Coverage_To,Primary_Theme,Secondary Themes,Update_Frequency,Version
 {
 
   ?dataset a dcat:Dataset ;

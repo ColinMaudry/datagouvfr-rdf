@@ -17,8 +17,7 @@ construct
   	dgfr:dataset ?dataset ;
     dct:identifier ?Resource_ID ;
     dcat:downloadUrl ?urlAsUri ;
-    dct:title ?title ;
-    rdfs:label ?title ;
+    rdfs:label ?Description ;
     dct:description ?Description ;
     dgfr:format ?lcFormat ; 
 		dct:publisher ?Organization .
