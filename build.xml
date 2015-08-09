@@ -83,10 +83,10 @@
 	
 	<target name="convert" depends="clean">
 		<echo>[CONVERT]</echo>
-		<!--<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
+		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
 		<exec executable="${tarql}" searchpath="true" output="rdf/datasets.ttl">
 			<arg line="sparql/construct-datasets.rq"/>
-		</exec>-->
+		</exec>
 		<echo>Querying resources.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
 		<exec executable="${tarql}" searchpath="true" output="rdf/resources.ttl">
 			<arg line="sparql/construct-resources.rq"/>
@@ -112,22 +112,6 @@
 			<arg line="-u ${repository.user}:${repository.password}"/>
 			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
 		</exec>		
-		<echo>Uploading reuses.ttl to the postprocessing repository...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'rdf/reuses.ttl'"/>
-			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
-		</exec>	
-		<echo>Uploading organizations.ttl to the postprocessing repository...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'rdf/organizations.ttl'"/>
-			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
-		</exec>	
 	</target>
 	
 	<target name="postprocessing" depends="upload_temp">
