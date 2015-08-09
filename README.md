@@ -1,4 +1,4 @@
-Semantic data.gov.uk (0.1.0)
+Semantic data.gov.uk (0.8.0)
 ==============
 
 This project is a fork of [datagouvfr-rdf](https://github.com/ColinMaudry/datagouvfr-rdf), adapted to the British Open Data portal metadata ([data.gov.uk](http://data.gov.uk)).
@@ -53,7 +53,7 @@ Otherwise, you can reach me:
 
 ## Change log
 
-#### 0.1.0
+#### 0.8.0
 
 * Adapt scripts and queries to data.gov.uk setup (#1)
 
