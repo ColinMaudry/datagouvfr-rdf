@@ -271,6 +271,7 @@
 	</target>
 	
 	<target name="backup-repository">
+		<echo>[BACKUP REPOSITORY]</echo>
 		<echo>Backing up the content of the repository as Trig (Turtle with named graphs)...</echo>
 		<get 
 			verbose="false"
@@ -279,6 +280,7 @@
 	</target>
 	
 	<target name="load-backup">
+		<echo>[LOAD BACKUP DATA]</echo>
 		<echo>Loading the backup dump file into the repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X PUT"/>
