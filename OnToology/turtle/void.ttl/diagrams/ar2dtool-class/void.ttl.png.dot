@@ -1,0 +1,37 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1501"
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://data.gouv.fr/fr/resources.csv" [ label = "dcterms:source" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/" [ label = "foaf:homepage" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/prov#" [ label = "void:vocabulary" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/formats/N-Triples" [ label = "void:feature" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://data.gouv.fr/fr/reuses.csv" [ label = "dcterms:source" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://colin.maudry.com/ontologies/dgfr" [ label = "void:vocabulary" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://dbpedia.org/resource/Open_government" [ label = "dcterms:subject" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/formats/N-Quads" [ label = "void:feature" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://schema.org/" [ label = "void:vocabulary" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/formats/JSON-LD" [ label = "void:feature" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.data.maudry.com:3030/datagouvfr/" [ label = "void:dataDump" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://data.gouv.fr/fr/organizations.csv" [ label = "dcterms:source" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "https://www.data.maudry.com/fr/datasets/resultats-des-elections-cantonales-de-mars-2011-1er-tour-nd" [ label = "void:exampleResource" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.opendatacommons.org/licenses/odbl/" [ label = "dcterms:license" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://data.gouv.fr/fr/datasets.csv" [ label = "dcterms:source" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/" [ label = "foaf:primaryTopicOf" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "https://www.data.maudry.com/fr/reuses/546dfa1dc751df5622068e8d" [ label = "void:exampleResource" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "https://www.data.maudry.com/fr/organizations/banque-mondiale" [ label = "void:exampleResource" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/dcat" [ label = "void:vocabulary" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://colin.maudry.com/id/me" [ label = "dcterms:creator" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/formats/N3" [ label = "void:feature" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "foaf:" [ label = "void:vocabulary" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "https://www.data.maudry.com/fr/resources/536993baa3a729239d20428c" [ label = "void:exampleResource" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.data.maudry.com:3030/datagouvfr/sparql" [ label = "void:sparqlEndpoint" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/formats/TriG" [ label = "void:feature" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "dcterms:" [ label = "void:vocabulary" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/formats/RDF_XML" [ label = "void:feature" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://dbpedia.org/resource/France" [ label = "dcterms:subject" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.data.maudry.com" [ label = "sd:namedGraph" ];
+	"http://dydra.com/colin-maudry/datagouvfr#this" -> "http://www.w3.org/ns/formats/Turtle" [ label = "void:feature" ];
+	"http://www.data.maudry.com:3030/datagouvfr/sparql#this" -> "www.data.maudry.com:3030/datagouvfr/" [ label = "sd:defaultDatasetDescription" ];
+	"http://www.data.maudry.com:3030/datagouvfr/sparql#this" -> "http://www.data.maudry.com:3030/datagouvfr/sparql" [ label = "sd:url" ];
+
+}
