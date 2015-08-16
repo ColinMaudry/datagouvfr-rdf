@@ -7,22 +7,17 @@
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
- <http://dydra.com/colin-maudry/datagouvfr#this> a void:Dataset ;
+ <http://www.data.maudry.com:3030/datagovuk#this> a void:Dataset ;
     dcterms:creator <http://colin.maudry.com/id/me> ;
-    foaf:homepage <https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/> ;
-    foaf:primaryTopicOf <https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique/> ;
-    dcterms:title "Metadata of the datasets published on http://data.gouv.fr"@en ;
-    dcterms:title "Métadonnées de jeux de données publiés sur http://data.gouv.fr"@fr ;
-    dcterms:source <http://data.gouv.fr/fr/datasets.csv> ;
-    dcterms:source <http://data.gouv.fr/fr/resources.csv> ;
-    dcterms:source <http://data.gouv.fr/fr/reuses.csv> ;
-    dcterms:source <http://data.gouv.fr/fr/organizations.csv> ;
-    dcterms:created "2014-12-21T16:00:00"^^xsd:dateTime ;
-    dcterms:issued "2014-12-21T16:00:00"^^xsd:dateTime ;
+    dcterms:title "Metadata of the datasets published on http://data.gov.uk"@en ;
+    dcterms:title "Métadonnées des jeux de données publiés sur http://data.gov.uk"@fr ;
+    dcterms:source <http://www.data.gov.uk/data/dumps/data.gov.uk-ckan-meta-data-latest.csv.zip>	 ;
+    dcterms:created "2015-08-09T16:00:00"^^xsd:dateTime ;
+    dcterms:issued "2015-08-09T16:00:00"^^xsd:dateTime ;
     dcterms:modified "@endDate"^^xsd:date ;
     dcterms:license <http://www.opendatacommons.org/licenses/odbl/> ;
     dcterms:subject <http://dbpedia.org/resource/Open_government> ;
-    dcterms:subject <http://dbpedia.org/resource/France> ;
+    dcterms:subject <http://dbpedia.org/resource/United_Kingdom> ;
     
     void:feature <http://www.w3.org/ns/formats/N3> ;
     void:feature <http://www.w3.org/ns/formats/N-Triples> ;
@@ -32,33 +27,24 @@
  	void:feature <http://www.w3.org/ns/formats/Turtle> ;
  	void:feature <http://www.w3.org/ns/formats/TriG> ;
  	
- 	void:sparqlEndpoint <http://www.data.maudry.com:3030/datagouvfr/sparql> ;
+ 	void:sparqlEndpoint <http://www.data.maudry.com:3030/datagovuk/sparql> ;
  	
- 	void:dataDump <http://www.data.maudry.com:3030/datagouvfr/> ;
+ 	void:dataDump <http://www.data.maudry.com:3030/datagovuk/get> ;
 
- 	void:exampleResource <https://www.data.maudry.com/fr/datasets/resultats-des-elections-cantonales-de-mars-2011-1er-tour-nd> ;
- 	void:exampleResource <https://www.data.maudry.com/fr/resources/536993baa3a729239d20428c> ;
- 	void:exampleResource <https://www.data.maudry.com/fr/reuses/546dfa1dc751df5622068e8d> ;
- 	void:exampleResource <https://www.data.maudry.com/fr/organizations/banque-mondiale> ; 	 
- 	
- 	void:uriSpace "https://www.data.maudry.com/fr/" ;
- 	
+ 	void:exampleResource <https://www.data.maudry.com/uk/datasets/1981-census--10-data-master-file-for-county-nn> ;
+ 	void:exampleResource <https://www.data.maudry.com/uk/resources/dcaddfd8-2706-4c5c-9638-e2e294ce1174> ;
+ 	void:uriSpace "https://www.data.maudry.com/uk/" ;
  	void:vocabulary <http://purl.org/dc/terms/> ;
  	void:vocabulary <http://www.w3.org/ns/dcat> ;
- 	void:vocabulary <http://colin.maudry.com/ontologies/dgfr> ;
- 	void:vocabulary <http://xmlns.com/foaf/0.1/> ;
- 	void:vocabulary <http://www.w3.org/ns/prov#> ;	
-	void:vocabulary	<http://schema.org/> ;
- 	
-	sd:namedGraph <http://www.data.maudry.com> .
+	sd:namedGraph <http://www.data.maudry.com/uk> .
 
-<http://www.data.maudry.com:3030/datagouvfr/> rdfs:comment
+<http://www.data.maudry.com:3030/datagovuk/get> rdfs:comment
 "You need to use content negotiation, that is specifying a MIME/type value with 'Accept' HTTP header. Otherwise, by default, you get RDF TriG." .
 
  	
- <http://www.data.maudry.com:3030/datagouvfr/sparql#this> a sd:Service ;
- 	sd:url <http://www.data.maudry.com:3030/datagouvfr/sparql> ;
- 	 sd:defaultDatasetDescription <www.data.maudry.com:3030/datagouvfr/> .
+ <http://www.data.maudry.com:3030/datagovuk/sparql#this> a sd:Service ;
+ 	sd:url <http://www.data.maudry.com:3030/datagovuk/sparql> ;
+ 	 sd:defaultDatasetDescription <www.data.maudry.com:3030/datagovuk/get> .
  	 	
  	
  	 	

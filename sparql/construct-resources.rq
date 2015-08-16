@@ -15,35 +15,23 @@ construct
 
   ?resource a dcat:Distribution ;
   	dgfr:dataset ?dataset ;
-    dct:identifier ?id ;
+    dct:identifier ?Resource_ID ;
     dcat:downloadUrl ?urlAsUri ;
-    dct:title ?title ;
-    rdfs:label ?title ;
-    dct:description ?description ;
-    dgfr:type ?lcType ;
-    dgfr:format ?lcFormat ;
-    dcat:mediaType ?mime ;
-    dcat:byteSize ?sizeAsInt ;
-    dgfr:checksumType ?checksum_type ;
-    dgfr:checksumValue ?checksum_value ;
-    dct:issued ?createdAsDateTime ;
-    dct:modified ?modifiedAsDateTime ;
-    dgfr:downloads ?downloadsAsInt .
+    rdfs:label ?Description ;
+    dct:description ?Description ;
+    dgfr:format ?lcFormat ; 
+		dct:publisher ?Organization .
       
   ?dataset dcat:distribution ?resource .
 }
-from <file:../csv/resources.csv#delimiter=%3B;encoding=utf-8>
+from <file:../csv/resources.csv#delimiter=%2C;encoding=utf-8>
   where {
   
-  bind(uri(concat("https://www.data.maudry.com/fr/resources/",?id)) as ?resource)
-  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?dataset_slug)) as ?dataset)
-  bind(if(contains(?url," "), uri(encode_for_uri(?url)),uri(?url)) as ?urlAsUri)
-  bind(xs:dateTime(?created_at) as ?createdAsDateTime)
-  bind(xs:dateTime(?modified) as ?modifiedAsDateTime)
-  bind(xs:integer(?size) as ?sizeAsInt)
-  bind(xs:integer(?downloads) as ?downloadsAsInt)
-  bind(lcase(?format) as ?lcFormat)
-  bind(lcase(?type) as ?lcType)
+  bind(uri(concat("https://www.data.maudry.com/uk/resources/",?Resource_ID)) as ?resource)
+  bind(uri(concat("https://www.data.maudry.com/uk/datasets/",?Dataset_Name)) as ?dataset)
+  bind(if(contains(?URL," "), uri(encode_for_uri(?url)),uri(?url)) as ?urlAsUri)
+ # bind(xs:dateTime(?Date) as ?createdAsDateTime)
+  bind(lcase(?Format) as ?lcFormat)
   }
   
   

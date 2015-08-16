@@ -29,30 +29,17 @@
 	
 	<extension-point name="quick" depends="publish"/>
 	<extension-point name="build" depends="convert, publish"/>
+	<extension-point name="test" depends="convert"/>
 	
 	<target name="download">
-  	<echo>[DOWNLOAD]</echo>
-  	<mkdir dir="csv/history"/>
-		<echo>Downloading datasets.csv...</echo>
+  	<echo>[DOWNLOAD AND EXTRACT]</echo>
+		<echo>Downloading ZIP...</echo>
   	<get
   		verbose="false"
-  		src="${baseurl}datasets.csv"
-  		dest="csv/datasets.csv"/>
-  	<echo>Downloading resources.csv...</echo>
-  	<get
-  		verbose="false"
-  		src="${baseurl}resources.csv"
-  		dest="csv/resources.csv"/>
-		<echo>Downloading reuses.csv...</echo>
-		<get
-			verbose="false"
-			src="${baseurl}reuses.csv"
-			dest="csv/reuses.csv"/>
-		<echo>Downloading organizations.csv...</echo>
-		<get
-			verbose="false"
-			src="${baseurl}organizations.csv"
-			dest="csv/organizations.csv"/>
+  		src="http://www.data.gov.uk/data/dumps/data.gov.uk-ckan-meta-data-latest.csv.zip"
+  		dest="csv/dump.zip"/>
+		<echo>Extracting CSV dumps...</echo>
+		<unzip src="csv/dump.zip" dest="csv/"/>
   </target>
 	
 	<target name="clean" depends="download">
@@ -68,22 +55,34 @@
 		<move todir="csv/">
 			<fileset dir="csv/temp/" includes="*.csv"/>
 		</move>
-		<echo> </echo>
-		<echo>Unescaping escaped quotes that are followed by a semicolon (\";)...</echo>
-		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match='\\";' replace='";'/>
-		<echo>Replacing "." with "_" in headers to ease TARQL processing...</echo>
-		<replace file="csv/datasets.csv" encoding="utf-8" token=';"metric.' value=';"metric_'/>
-		<replace file="csv/resources.csv" encoding="utf-8"  token=';"checksum.' value=';"checksum_'/>
-		<replace file="csv/resources.csv" encoding="utf-8"  token='"dataset.' value='"dataset_'/>
-		<replace file="csv/reuses.csv" encoding="utf-8" token=';"metric.' value=';"metric_'/>
-		<replace file="csv/organizations.csv" encoding="utf-8" token=';"metric.' value=';"metric_'/>
+		<echo>Replacing " " with "_" in headers to ease TARQL processing...</echo>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Top level organisation" replace=",Top_level_organisation"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Import source" replace=",Import_source"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Geographic Coverage" replace=",Geographic_Coverage"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",License Id" replace=",License_Id"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Metadata Created" replace=",Metadata_Created"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Metadata Modified" replace=",Metadata_Modified"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",ODI Certificate URL" replace=",ODI_Certificate_URL"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Temporal Coverage From" replace=",Temporal_Coverage_From"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Temporal Coverage To" replace=",Temporal_Coverage_To"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Primary Theme" replace=",Primary_Theme"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Secondary Themes" replace=",Secondary_themes"/>
+		<replaceregexp flags="gs" file="csv/datasets.csv" encoding="utf-8" match=",Update Frequency," replace=",Update_Frequency,"/>		
+		
+		<replaceregexp flags="gs" file="csv/resources.csv" encoding="utf-8" match="Dataset Name," replace="Dataset_Name,"/>
+		<replaceregexp flags="gs" file="csv/resources.csv" encoding="utf-8" match=",Resource ID" replace=",Resource_ID"/>
+		<replaceregexp flags="gs" file="csv/resources.csv" encoding="utf-8" match=",Top level organization" replace=",Top_level_organization"/>
+		
+		<echo>Removing ""[""" and """]"" from datasets.csv...</echo>
+		<replace file="csv/datasets.csv" encoding="utf-8" token='"[""' />
+		<replace file="csv/datasets.csv" encoding="utf-8" token='""]"' />	
+		
 		<echo>Deleting temp directory...</echo>
 		<delete dir="csv/temp/"/>
 	</target>
 	
 	<target name="convert" depends="clean">
 		<echo>[CONVERT]</echo>
-		<mkdir dir="rdf/history"/>
 		<echo>Querying datasets.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
 		<exec executable="${tarql}" searchpath="true" output="rdf/datasets.ttl">
 			<arg line="sparql/construct-datasets.rq"/>
@@ -92,28 +91,7 @@
 		<exec executable="${tarql}" searchpath="true" output="rdf/resources.ttl">
 			<arg line="sparql/construct-resources.rq"/>
 		</exec>
-		<echo>Querying reuses.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="${tarql}" searchpath="true" output="rdf/reuses.ttl">
-			<arg line="sparql/construct-reuses.rq"/>
-		</exec>
-		<echo>Querying organizations.csv with a SPARQL CONSTRUCT using TARQL (thanks @cygri)...</echo>
-		<exec executable="${tarql}" searchpath="true" output="rdf/organizations.ttl">
-			<arg line="sparql/construct-organizations.rq"/>
-		</exec>
-<!--		<echo>Archiving RDF...</echo>
-		<copy tofile="rdf/history/${now}_datasets.ttl">
-			<file basedir="rdf/" name="datasets.ttl"/>
-		</copy>
-		<copy tofile="rdf/history/${now}_resources.ttl">
-			<file basedir="rdf/" name="resources.ttl"/>
-		</copy> 	
-		<copy tofile="rdf/history/${now}_reuses.ttl">
-			<file basedir="rdf/" name="reuses.ttl"/>
-		</copy>
-		<copy tofile="rdf/history/${now}_organizations.ttl">
-			<file basedir="rdf/" name="organizations.ttl"/>
-		</copy>-->
-		<antcall target="upload_temp"/>
+		<!--<antcall target="upload_temp"/>-->
 	</target>
 	
 	<target name="upload_temp">
@@ -134,22 +112,6 @@
 			<arg line="-u ${repository.user}:${repository.password}"/>
 			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
 		</exec>		
-		<echo>Uploading reuses.ttl to the postprocessing repository...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'rdf/reuses.ttl'"/>
-			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
-		</exec>	
-		<echo>Uploading organizations.ttl to the postprocessing repository...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'rdf/organizations.ttl'"/>
-			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
-		</exec>	
 	</target>
 	
 	<target name="postprocessing" depends="upload_temp">
@@ -163,64 +125,17 @@
 			<include name="**/*.*"/>
 			<replacetoken>urn:graph:postprocessing</replacetoken>
 		</replace>
-		<echo>Creating relation dataset ~> organization...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-dataset-org.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.sparqlUpdate.url}'"/>
-		</exec>
-		<echo>Creating relation reuse ~> organization...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-org.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.sparqlUpdate.url}'"/>
-		</exec>
-		<echo>Creating relation reuse ~> dataset...</echo>
+		<echo>No post-processing for now.</echo>
+
+		<!--<echo>Gathering collected data about resources...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-reuse-dataset.ru'"/>
+			<arg line="-\-data-binary @'sparql/temp/postprocessing-resources-data.ru'"/>
 			<arg line="-H 'Content-type:application/sparql-update'"/>
 			<arg line="-u ${repository.user}:${repository.password}"/>
 			<arg line="'${repository.sparqlUpdate.url}'"/>
-		</exec>			
-		<echo>Creating invert relation of dct:publisher: dgfr:published...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true" >
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-published.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.sparqlUpdate.url}'"/>
-		</exec>	
-		<echo>Uploading points value into dedicated graph...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true">
-			<arg line="-s -X PUT"/>
-			<arg line="--data-binary @'turtle/points.ttl'"/>
-			<arg line="-H 'Content-type:text/turtle'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.put.url}?graph=urn%3Agraph%3ApointsValues'"/>
-		</exec>
-		<echo>Calculating popularity points and aggregates for datasets, reuses, resources and organizations...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true" >
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-popularity-points.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.sparqlUpdate.url}'"/>
-		</exec>
-		<echo>Gathering collected data about resources...</echo>
-		<exec executable="${curl}" searchpath="true" failonerror="true" >
-			<arg line="-s -X POST"/>
-			<arg line="--data-binary @'sparql/temp/postprocessing-resources-data.ru'"/>
-			<arg line="-H 'Content-type:application/sparql-update'"/>
-			<arg line="-u ${repository.user}:${repository.password}"/>
-			<arg line="'${repository.sparqlUpdate.url}'"/>
-		</exec>
+		</exec>-->
 		<delete dir="sparql/temp/"/>
-		
 	</target>
 	
 	<target name="metadata" depends="postprocessing">

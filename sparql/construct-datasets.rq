@@ -10,52 +10,30 @@ PREFIX xs: <http://www.w3.org/2001/XMLSchema#>
 PREFIX apf: <http://jena.hpl.hp.com/ARQ/property#>
 
 construct
-
 {
 
   ?dataset a dcat:Dataset ;
-    dct:identifier ?id ;
-    dct:title ?title ;
-    rdfs:label ?title ;
+    dct:identifier ?Name ;
+    dct:title ?Title ;
+    rdfs:label ?Title ;
     dcat:landingPage ?urlAsUri ;
-    dct:publisher ?organization_id ;
-    #dct:publisher ?supplier ;
-    dct:description ?description ;
+    dct:publisher ?Organization ;
+    dct:description ?Notes ;
     dct:accrualPeriodicity ?dctFrequency ;
     dct:license ?license ;
-    dgfr:private ?lcPrivate ;
-    dgfr:featured ?lcFeatured ;
     dct:created ?createdAsDateTime ;
     dct:modified ?modifiedAsDateTime ;
-    dcat:keywords ?tags ;
-   	dgfr:slug ?slug ;
-    dgfr:views ?views ;
-    dgfr:followers ?followers ;
-    dgfr:reuses ?reuses ;
-    dgfr:visits ?visits ;
-    dgfr:hits ?hits ;
-    dgfr:uniqueVisitors ?unique_visitors ;
-    dgfr:issues ?issues .  
+    dcat:keywords ?Tags .
 }
-from <file:../csv/datasets.csv#delimiter=%3B;encoding=utf-8>
+from <file:../csv/datasets.csv#delimiter=%2C;encoding=utf-8>
   where {
   
-  bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?slug)) as ?dataset)
-  bind(uri(?url) as ?urlAsUri)
-  bind(uri(concat("http://purl.org/cld/freq/",?frequency)) as ?dctFrequency)
-  bind(xs:boolean(if (?private="",false,lcase(?private))) as ?lcPrivate)
-  bind(xs:boolean(if (?featured="",false,lcase(?featured))) as ?lcFeatured)
-  bind(xs:dateTime(?created_at) as ?createdAsDateTime)
-  bind(xs:dateTime(?last_modified) as ?modifiedAsDateTime)
-  
-  bind(xs:integer(?metric_views) as ?views)
-  bind(xs:integer(?metric_issues) as ?issues)
-  bind(xs:integer(?metric_followers) as ?followers)
-  bind(xs:integer(?metric_nb_hits) as ?hits)
-  bind(xs:integer(?metric_nb_visits) as ?visits)
-  bind(xs:integer(?metric_reuses) as ?reuses)
-  bind(xs:integer(?metric_nb_uniq_visitors) as ?unique_visitors)
-
+  bind(uri(concat("https://www.data.maudry.com/uk/datasets/",?Name)) as ?dataset)
+  bind(uri(?URL) as ?urlAsUri)	
+  bind(if(?Update_Frequency="","",uri(concat("http://purl.org/cld/freq/",?Update_Frequency))) as ?dctFrequency)
+	bind((if (?License_Id="uk-ogl",uri("http://www.nationalarchives.gov.uk/doc/open-government-licence/"),?License)) as ?license_uri)
+ bind(if(contains(?Metadata_Created,"T"),xs:dateTime(?Metadata_Created),xs:date(?Metadata_Created)) as ?createdAsDateTime)
+  bind(if(contains(?Metadata_Modified,"T"),xs:dateTime(?Metadata_Modified),xs:date(?Metadata_Modified)) as ?modifiedAsDateTime)
   }
   
   

@@ -9,34 +9,20 @@
 @prefix activities: <http://colin.maudry.com/rdf/activities/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-activities:updateDGFR-RDF a prov:Activity ;
+activities:updateDGUK-RDF a prov:Activity ;
 	prov:wasAssociatedWith <http://colin.maudry.com/id/me> ;
-	prov:used <http://data.gouv.fr/fr/datasets.csv> ;
-	prov:used <http://data.gouv.fr/fr/resources.csv> ;
-	prov:used <http://data.gouv.fr/fr/reuses.csv> ;
-	prov:used <http://data.gouv.fr/fr/organizations.csv> ;
-	prov:used <https://github.com/ColinMaudry/datagouvfr-rdf> ;
+	prov:used <http://www.data.gov.uk/data/dumps/data.gov.uk-ckan-meta-data-latest.csv.zip> ;
 	prov:startedAtTime "@startDate"^^xsd:dateTime ;
-	prov:generated <http://www.data.maudry.com:3030/datagouvfr#this> .
+	prov:generated <http://www.data.maudry.com:3030/datagovuk#this> .
 	
-<http://dydra.com/colin-maudry/datagouvfr#this> a void:Dataset ;
+<http://www.data.maudry.com:3030/datagovuk#this> a void:Dataset ;
 	a prov:Entity .
 	
-<http://data.gouv.fr/fr/datasets.csv>
-	prov:wasAttributedTo <http://data.gouv.fr#this> ;
-	dcterms:created "@startDate"^^xsd:dateTime .
-<http://data.gouv.fr/fr/resources.csv>
-	prov:wasAttributedTo <http://data.gouv.fr#this> ;
-	dcterms:created "@startDate"^^xsd:dateTime .
-<http://data.gouv.fr/fr/reuses.csv>
-	prov:wasAttributedTo <http://data.gouv.fr#this> ;
-	dcterms:created "@startDate"^^xsd:dateTime .
-<http://data.gouv.fr/fr/organizations.csv>
-	prov:wasAttributedTo <http://data.gouv.fr#this> ;
+<http://www.data.gov.uk/data/dumps/data.gov.uk-ckan-meta-data-latest.csv.zip>	prov:wasAttributedTo <http://data.gov.uk#this> ;
 	dcterms:created "@startDate"^^xsd:dateTime .
 
-<http://data.gouv.fr#this> a foaf:Organization ;
-	foaf:name "Plateforme ouverte des données publiques françaises"@fr .
+<http://data.gov.uk#this> a foaf:Organization ;
+	foaf:name "British Open Data portal"@en .
 	
 
 
