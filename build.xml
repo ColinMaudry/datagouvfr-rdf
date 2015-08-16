@@ -100,7 +100,19 @@
 		<exec executable="${tarql}" searchpath="true" output="rdf/organizations.ttl">
 			<arg line="sparql/construct-organizations.rq"/>
 		</exec>
-		<antcall target="upload_temp"/>
+<!--		<echo>Archiving RDF...</echo>
+		<copy tofile="rdf/history/${now}_datasets.ttl">
+			<file basedir="rdf/" name="datasets.ttl"/>
+		</copy>
+		<copy tofile="rdf/history/${now}_resources.ttl">
+			<file basedir="rdf/" name="resources.ttl"/>
+		</copy> 	
+		<copy tofile="rdf/history/${now}_reuses.ttl">
+			<file basedir="rdf/" name="reuses.ttl"/>
+		</copy>
+		<copy tofile="rdf/history/${now}_organizations.ttl">
+			<file basedir="rdf/" name="organizations.ttl"/>
+		</copy>-->
 		<antcall target="upload_temp"/>
 	</target>
 	

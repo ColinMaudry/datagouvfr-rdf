@@ -3,24 +3,25 @@ Semantic data.gouv.fr (0.7.0)
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
 
-I have forked this project to deal with [data.gov.uk](http://data.gov.uk/) and it became [datagovuk-rdf](https://github.com/ColinMaudry/datagovuk-rdf).
-
 This is the foundation work that fuels [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
 
+I have forked this projet to deal with data.gov.uk metadata. It became [datagovuk-rdf](https://github.com/ColinMaudry/datagovuk-rdf).
 
 ## Update script
 
 [build.xml](build.xml) is an Apache Ant script that runs the following tasks:
 
-1. Downloading [the latest metadata dumps from data.gov.uk](http://data.gov.uk/dataset/data_gov_uk-datasets) (CSV)
-1. Cleaning the data dumps (empty lines, spaces in CSV headers, etc.)
+1. Downloading the latest metadata dumps from data.gouv.fr (CSV)
+1. Cleaning the data dumps (empty lines, wrongly escaped quotes)
 1. Converting the CSV into RDF (using [TARQL](https://github.com/cygri/tarql))
-1. Uploading the RDF to a repository
-1. Converting text identifiers into URIs [for better linking across the data](https://en.wikipedia.org/wiki/Linked_Data)
-3. Integrating the output of [beheader](https://github.com/ColinMaudry/beheader) into the graph (soon)
-1. Adding some metadata about the resulting data set ([DCAT](http://www.w3.org/TR/vocab-dcat/#vocabulary-overview), [VoID](http://www.w3.org/TR/void/), [PROV](http://www.w3.org/TR/2013/REC-prov-o-20130430/#introduction))
+1. Uploading to an RDF repository
+1. Converting text identifiers in URIs for better linking across the data
+3. Doing some smart postprocessing to make the objects more interlinked in the graph, integrates the output of [beheader](https://github.com/ColinMaudry/beheader) into the graph
+1. Adding some metadata about the resulting data set (DCAT, VoID, PROV)
 
-**This script is run every day to update the RDF metadata**.
+**This script is run every 2 hours to update the RDF metadata ([see here in French](https://www.data.gouv.fr/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1/), [in English](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.gouv.fr%2Ffr%2Fdatasets%2Fmetadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique%2F&edit-text=))**.
+
+This wouldn't be possible and so easy without the publication of live CSVs by [@noirbizarre](https://twitter.com/noirbizarre) for [Etalab](https://twitter.com/etalab).
 
 The data model can be seen [here](https://www.lucidchart.com/documents/view/6011b6e0-6a85-413a-8279-0588b0f10992).
 
@@ -33,7 +34,7 @@ The data model can be seen [here](https://www.lucidchart.com/documents/view/6011
 
 ### Configuration
 
-- Copy `upload_template.properties` and rename it `upload.properties`
+- Copy upload_template.properties and rename it upload.properties
 - Open it and fill it. As-is, your repository requires a user:password combination
 
 ### Run it
