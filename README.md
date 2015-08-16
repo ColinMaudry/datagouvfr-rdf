@@ -3,6 +3,8 @@ Semantic data.gouv.fr (0.7.0)
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
 
+I have forked this project to deal with [data.gov.uk](http://data.gov.uk/) and became [datagovuk-rdf](https://github.com/ColinMaudry/datagovuk-rdf).
+
 This is the foundation work that fuels [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=).
 
 ## Update script
