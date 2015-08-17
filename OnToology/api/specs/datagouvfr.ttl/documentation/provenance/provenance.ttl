@@ -2,8 +2,4 @@
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 <..\index.html> a prov:Entity;
-	 dc:title "Data.gouv.fr (DGFR) ontology";
-	 prov:wasAttributedTo <http://colin.maudry/rdf/colin-maudry#me>;
-	 dc:creator <http://colin.maudry/rdf/colin-maudry#me>;
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
-	 prov:wasGeneratedAt "2014-12-12".
