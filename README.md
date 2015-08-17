@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.7.0)
+Semantic data.gouv.fr (0.8.0)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -58,6 +58,12 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+#### 0.8.0
+
+* Added backup-repository and load-backup targets to enable the management of the repository as a service
+* Added dgfr:machineReadable property to distinguish machine readable resources from the others (CSV, XML, JSON, RDF, plain text, etc.)
+* Added a clean version of dcat:mediaType values, without `charset=`
 
 #### 0.7.0
 
