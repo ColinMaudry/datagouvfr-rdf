@@ -31,6 +31,7 @@ where {
 						dgfr:oriMediaType ?oriMediaType ;
 						dcat:mediaType ?newMediaType .
 	};
+
 #Count unavailable distributions in datasets
 with <urn:graph:postprocessing>
 insert {
@@ -50,6 +51,7 @@ where {
     group by ?dataset
 	}
 };
+
 #Count available distributions in datasets
 with <urn:graph:postprocessing>
 insert {
@@ -69,6 +71,7 @@ where {
     group by ?dataset
 	}
 };
+
 #Sum up unavailable distributions at organization level
 with <urn:graph:postprocessing>
 insert {
@@ -88,6 +91,7 @@ where {
     group by ?organization
 	}
 };
+
 #Sum up available distributions at organization level
 with <urn:graph:postprocessing>
 insert {
@@ -107,6 +111,8 @@ where {
     group by ?organization
 	}
 };
+
+#Declare a list of content types as "machine readable"
 with <urn:graph:postprocessing>
 insert {
 	?resource dgfr:machineReadable ?machineReadable .
@@ -127,6 +133,16 @@ where {
     }
     ?resource a dcat:Distribution ;
       dcat:mediaType ?mediaType .
+};
+
+#The resources that didn't get the dgfr:machineReadable property are declared as not-machine readable
+with <http://www.data.maudry.com>
+insert {?resource dgfr:machineReadable false .}
+
+where {
+    ?resource a dcat:Distribution ;
+    dcat:mediaType ?mediaType .
+  filter not exists {?resource dgfr:machineReadable ?machineReadable}
 }
 
 
