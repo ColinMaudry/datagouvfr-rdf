@@ -5,7 +5,7 @@
    <key for="edge" id="d2" yfiles.type="edgegraphics" />
    <key attr.name="description" attr.type="string" for="edge" id="d3" />
    <key for="graphml" id="d4" yfiles.type="resources" />
-   <graph edgedefault="directed" id="G" parse.edges="35" parse.nodes="17" parse.order="free">
+   <graph edgedefault="directed" id="G" parse.edges="39" parse.nodes="19" parse.order="free">
       <node id="nid_http://colin.maudry/rdf/colin-maudry#me">
          <data key="d0">
             <y:ShapeNode>
@@ -214,17 +214,6 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:views8" source="nid_dcat:Dataset" target="nid_xsd:integer">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:views</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
       <node id="nid_dcat:Distribution">
          <data key="d0">
             <y:ShapeNode>
@@ -237,6 +226,40 @@
          </data>
          <data key="d1" />
       </node>
+      <node id="nid_xsd:dateTime">
+         <data key="d0">
+            <y:ShapeNode>
+               <y:Geometry height="30.0" width="120.0" x="0.0" y="0.0" />
+               <y:Fill color="#FFFFFF" transparent="false" />
+               <y:BorderStyle color="#000000" type="line" width="1.0" />
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">xsd:dateTime</y:NodeLabel>
+               <y:Shape type="rectangle" />
+            </y:ShapeNode>
+         </data>
+         <data key="d1" />
+      </node>
+    <edge id="eid_dgfr:availabilityCheckedOn8" source="nid_dcat:Distribution" target="nid_xsd:dateTime">
+         <data key="d2">
+            <y:PolyLineEdge>
+               <y:LineStyle color="black" type="line" width="1.0" />
+               <y:Arrows source="none" target="normal" />
+               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:availabilityCheckedOn</y:EdgeLabel>
+               <y:BendStyle smoothed="false" />
+            </y:PolyLineEdge>
+         </data>
+         <data key="d3" />
+      </edge>
+    <edge id="eid_dgfr:views9" source="nid_dcat:Dataset" target="nid_xsd:integer">
+         <data key="d2">
+            <y:PolyLineEdge>
+               <y:LineStyle color="black" type="line" width="1.0" />
+               <y:Arrows source="none" target="normal" />
+               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:views</y:EdgeLabel>
+               <y:BendStyle smoothed="false" />
+            </y:PolyLineEdge>
+         </data>
+         <data key="d3" />
+      </edge>
       <node id="nid_xsd:string">
          <data key="d0">
             <y:ShapeNode>
@@ -249,12 +272,23 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_dgfr:format9" source="nid_dcat:Distribution" target="nid_xsd:string">
+    <edge id="eid_dgfr:format10" source="nid_dcat:Distribution" target="nid_xsd:string">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
                <y:Arrows source="none" target="normal" />
                <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:format</y:EdgeLabel>
+               <y:BendStyle smoothed="false" />
+            </y:PolyLineEdge>
+         </data>
+         <data key="d3" />
+      </edge>
+    <edge id="eid_dgfr:responseStatusCode11" source="nid_dcat:Distribution" target="nid_xsd:string">
+         <data key="d2">
+            <y:PolyLineEdge>
+               <y:LineStyle color="black" type="line" width="1.0" />
+               <y:Arrows source="none" target="normal" />
+               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:responseStatusCode</y:EdgeLabel>
                <y:BendStyle smoothed="false" />
             </y:PolyLineEdge>
          </data>
@@ -272,7 +306,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_dgfr:members10" source="nid_foaf:Organization" target="nid_xsd:integer">
+    <edge id="eid_dgfr:members12" source="nid_foaf:Organization" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -283,7 +317,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:slug11" source="nid_dcat:Dataset" target="nid_xsd:string">
+    <edge id="eid_dgfr:slug13" source="nid_dcat:Dataset" target="nid_xsd:string">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -318,7 +352,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_dgfr:localUrl12" source="nid_dgfr:Reuse" target="nid_owl:Thing">
+    <edge id="eid_dgfr:localUrl14" source="nid_dgfr:Reuse" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -329,7 +363,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:availableDistributions13" source="nid_foaf:Agent" target="nid_xsd:integer">
+    <edge id="eid_dgfr:availableDistributions15" source="nid_foaf:Agent" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -340,12 +374,35 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:uniqueVisitors14" source="nid_dcat:Dataset" target="nid_xsd:integer">
+    <edge id="eid_dgfr:uniqueVisitors16" source="nid_dcat:Dataset" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
                <y:Arrows source="none" target="normal" />
                <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:uniqueVisitors</y:EdgeLabel>
+               <y:BendStyle smoothed="false" />
+            </y:PolyLineEdge>
+         </data>
+         <data key="d3" />
+      </edge>
+      <node id="nid_xsd:decimal">
+         <data key="d0">
+            <y:ShapeNode>
+               <y:Geometry height="30.0" width="110.0" x="0.0" y="0.0" />
+               <y:Fill color="#FFFFFF" transparent="false" />
+               <y:BorderStyle color="#000000" type="line" width="1.0" />
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">xsd:decimal</y:NodeLabel>
+               <y:Shape type="rectangle" />
+            </y:ShapeNode>
+         </data>
+         <data key="d1" />
+      </node>
+    <edge id="eid_dgfr:responseTime17" source="nid_dcat:Distribution" target="nid_xsd:decimal">
+         <data key="d2">
+            <y:PolyLineEdge>
+               <y:LineStyle color="black" type="line" width="1.0" />
+               <y:Arrows source="none" target="normal" />
+               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:responseTime</y:EdgeLabel>
                <y:BendStyle smoothed="false" />
             </y:PolyLineEdge>
          </data>
@@ -363,7 +420,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_dgfr:featured15" source="nid_dcat:Dataset" target="nid_xsd:boolean">
+    <edge id="eid_dgfr:featured18" source="nid_dcat:Dataset" target="nid_xsd:boolean">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -374,7 +431,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:sumPopularityPoints16" source="nid_foaf:Organization" target="nid_xsd:integer">
+    <edge id="eid_dgfr:sumPopularityPoints19" source="nid_foaf:Organization" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -385,7 +442,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:hasMadeReuses17" source="nid_foaf:Organization" target="nid_xsd:integer">
+    <edge id="eid_dgfr:hasMadeReuses20" source="nid_foaf:Organization" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -408,7 +465,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_dgfr:pointsValue18" source="nid_rdf:Property" target="nid_xsd:integer">
+    <edge id="eid_dgfr:pointsValue21" source="nid_rdf:Property" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -419,7 +476,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:checksumValue19" source="nid_dcat:Distribution" target="nid_xsd:string">
+    <edge id="eid_dgfr:checksumValue22" source="nid_dcat:Distribution" target="nid_xsd:string">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -430,7 +487,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:hits20" source="nid_dcat:Dataset" target="nid_xsd:integer">
+    <edge id="eid_dgfr:hits23" source="nid_dcat:Dataset" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -441,7 +498,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:available21" source="nid_dcat:Distribution" target="nid_xsd:boolean">
+    <edge id="eid_dgfr:available24" source="nid_dcat:Distribution" target="nid_xsd:boolean">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -452,7 +509,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:distributions22" source="nid_dcat:Dataset" target="nid_xsd:integer">
+    <edge id="eid_dgfr:distributions25" source="nid_dcat:Dataset" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -463,7 +520,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:published23" source="nid_foaf:Agent" target="nid_dcat:Dataset">
+    <edge id="eid_dgfr:published26" source="nid_foaf:Agent" target="nid_dcat:Dataset">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -474,7 +531,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:publicService24" source="nid_foaf:Organization" target="nid_xsd:boolean">
+    <edge id="eid_dgfr:publicService27" source="nid_foaf:Organization" target="nid_xsd:boolean">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -485,7 +542,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:issues25" source="nid_dcat:Dataset" target="nid_xsd:integer">
+    <edge id="eid_dgfr:issues28" source="nid_dcat:Dataset" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -496,7 +553,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:private26" source="nid_dcat:Dataset" target="nid_xsd:boolean">
+    <edge id="eid_dgfr:private29" source="nid_dcat:Dataset" target="nid_xsd:boolean">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -507,7 +564,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:dataset27" source="nid_dcat:Distribution" target="nid_dcat:Dataset">
+    <edge id="eid_dgfr:dataset30" source="nid_dcat:Distribution" target="nid_dcat:Dataset">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -518,7 +575,18 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:followers28" source="nid_dcat:Dataset" target="nid_xsd:integer">
+    <edge id="eid_dgfr:machineReadable31" source="nid_dcat:Distribution" target="nid_xsd:boolean">
+         <data key="d2">
+            <y:PolyLineEdge>
+               <y:LineStyle color="black" type="line" width="1.0" />
+               <y:Arrows source="none" target="normal" />
+               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">dgfr:machineReadable</y:EdgeLabel>
+               <y:BendStyle smoothed="false" />
+            </y:PolyLineEdge>
+         </data>
+         <data key="d3" />
+      </edge>
+    <edge id="eid_dgfr:followers32" source="nid_dcat:Dataset" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -529,7 +597,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:type29" source="nid_dcat:Distribution" target="nid_xsd:string">
+    <edge id="eid_dgfr:type33" source="nid_dcat:Distribution" target="nid_xsd:string">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -540,7 +608,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:checksumType30" source="nid_dcat:Distribution" target="nid_xsd:string">
+    <edge id="eid_dgfr:checksumType34" source="nid_dcat:Distribution" target="nid_xsd:string">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -551,7 +619,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:unavailableDistributions31" source="nid_foaf:Agent" target="nid_xsd:integer">
+    <edge id="eid_dgfr:unavailableDistributions35" source="nid_foaf:Agent" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -562,7 +630,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:reuses32" source="nid_dcat:Dataset" target="nid_xsd:integer">
+    <edge id="eid_dgfr:reuses36" source="nid_dcat:Dataset" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -573,7 +641,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:popularityPoints33" source="nid_foaf:Organization" target="nid_xsd:integer">
+    <edge id="eid_dgfr:popularityPoints37" source="nid_foaf:Organization" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -584,7 +652,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_dgfr:downloads34" source="nid_dcat:Distribution" target="nid_xsd:integer">
+    <edge id="eid_dgfr:downloads38" source="nid_dcat:Distribution" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />

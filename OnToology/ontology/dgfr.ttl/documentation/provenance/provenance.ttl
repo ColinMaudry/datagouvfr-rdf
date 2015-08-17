@@ -1,9 +1,11 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-<..\index.html> a prov:Entity;
+<http://colin.maudry.com/ontologies/dgfr> a prov:Entity;
 	 dc:title "Data.gouv.fr (DGFR) ontology";
 	 prov:wasAttributedTo <http://colin.maudry/rdf/colin-maudry#me>;
 	 dc:creator <http://colin.maudry/rdf/colin-maudry#me>;
+	 prov:wasAttributedTo [ a prov:Agent; foaf:name "".];
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+	 prov:specializationOf <http://colin.maudry.com/ontologies/dgfr>;
 	 prov:wasGeneratedAt "2014-12-12".
