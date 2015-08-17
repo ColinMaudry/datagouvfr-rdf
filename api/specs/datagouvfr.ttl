@@ -81,6 +81,7 @@ dgfr:resources a api:ListEndpoint
 	; api:uriTemplate "/resources" 
 	; api:selector [api:filter "type=Distribution"; api:sort "-issued"]
 	; elda:graphTemplate "http://www.data.maudry.com"
+	; api:viewer dgfr:resourceNormal	
 	; api:viewer dgfr:resourceUnavailability
 	; api:defaultViewer dgfr:resourceMinimal
 	.	
@@ -184,12 +185,12 @@ dgfr:datasetStats
 dgfr:resourceMinimal
 	a api:Viewer ;
 	api:name "simple" ;
-	api:properties "label,identifier,modified,mediaType,downloadUrl,dataset,dataset.label"
+	api:properties "label,identifier,modified,mediaType,downloadUrl,dataset,dataset.label,available"
 	.
 
 dgfr:resourceNormal
 	a api:Viewer ;
-	api:include dgfr:datasetMinimal ;
+	api:include dgfr:resourceMinimal ;
 	api:name "normal" ;
 	api:properties "description,issued,downloads,dgfr_format,byteSize"
 	.
@@ -535,6 +536,14 @@ dgfr:popularityPoints
     rdfs:domain dcat:Dataset, foaf:Organization, dcat:Distribution, dgfr:Reuse ;
     rdfs:label "Sum popularity points" ;
     rdfs:range xsd:integer .
+
+dgfr:machineReadable a rdf:Property ;
+    <http://purl.org/linked-data/api/vocab#label> "machineReadable" ;
+		rdfs:range xsd:boolean ;
+		rdfs:label "Machine readable" ;
+		rdfs:comment "Whether the data in the distribution can easily be processed with open source software and without decompression."@en ;
+		rdfs:comment "Si oui ou non les données contenues dans la distribution peuvent être facilement traitées par un logiciel open source et sans décompression."@fr ;
+		rdfs:domain dcat:Distribution .	
 
 #Availability
 

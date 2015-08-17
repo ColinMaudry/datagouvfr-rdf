@@ -27,8 +27,8 @@
 			pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 	</tstamp>
 	
-	<extension-point name="quick" depends="publish"/>
-	<extension-point name="build" depends="convert, publish"/>
+	<extension-point name="quick" depends="publish, backup-repository"/>
+	<extension-point name="build" depends="convert, publish, backup-repository"/>
 	
 	<target name="download">
   	<echo>[DOWNLOAD]</echo>
@@ -100,19 +100,6 @@
 		<exec executable="${tarql}" searchpath="true" output="rdf/organizations.ttl">
 			<arg line="sparql/construct-organizations.rq"/>
 		</exec>
-<!--		<echo>Archiving RDF...</echo>
-		<copy tofile="rdf/history/${now}_datasets.ttl">
-			<file basedir="rdf/" name="datasets.ttl"/>
-		</copy>
-		<copy tofile="rdf/history/${now}_resources.ttl">
-			<file basedir="rdf/" name="resources.ttl"/>
-		</copy> 	
-		<copy tofile="rdf/history/${now}_reuses.ttl">
-			<file basedir="rdf/" name="reuses.ttl"/>
-		</copy>
-		<copy tofile="rdf/history/${now}_organizations.ttl">
-			<file basedir="rdf/" name="organizations.ttl"/>
-		</copy>-->
 		<antcall target="upload_temp"/>
 	</target>
 	
@@ -211,7 +198,7 @@
 			<arg line="-u ${repository.user}:${repository.password}"/>
 			<arg line="'${repository.sparqlUpdate.url}'"/>
 		</exec>
-		<echo>Gathering collected data about resources...</echo>
+		<echo>Gathering collected data about resources (see https://github.com/ColinMaudry/beheader)...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true" >
 			<arg line="-s -X POST"/>
 			<arg line="--data-binary @'sparql/temp/postprocessing-resources-data.ru'"/>
@@ -283,9 +270,30 @@
 		<delete dir="sparql/temp/"/>
 	</target>
 	
+	<target name="backup-repository">
+		<echo>[BACKUP REPOSITORY]</echo>
+		<echo>Backing up the content of the repository as Trig (Turtle with named graphs)...</echo>
+		<get 
+			verbose="false"
+			src="${repository.get.url}"
+			dest="rdf/latest.trig"/>
+	</target>
+	
+	<target name="load-backup">
+		<echo>[LOAD BACKUP DATA]</echo>
+		<echo>Loading the backup dump file into the repository...</echo>
+		<exec executable="${curl}" searchpath="true" failonerror="true">
+			<arg line="-s -X PUT"/>
+			<arg line="--data-binary @'rdf/latest.trig'"/>
+			<arg line="-H 'Content-type:text/trig'"/>
+			<arg line="-u ${repository.user}:${repository.password}"/>
+			<arg line="'${repository.put.url}'"/>
+		</exec>	
+	</target>
+	
 	<target name="download-livedata" unless="${livedataDownloaded}">
 		<echo>[DOWNLOAD LIVE DATA]</echo>
-		<echo>Downloading live data as Trig (Turtle with graphs)...</echo>
+		<echo>Downloading live data as Trig (Turtle with named graphs)...</echo>
 		<get
 			verbose="false"
 			src="${live.repository.get.url}"
