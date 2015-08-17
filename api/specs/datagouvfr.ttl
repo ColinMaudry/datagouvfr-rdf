@@ -81,7 +81,7 @@ dgfr:resources a api:ListEndpoint
 	; api:uriTemplate "/resources" 
 	; api:selector [api:filter "type=Distribution"; api:sort "-issued"]
 	; elda:graphTemplate "http://www.data.maudry.com"
-	; api:viewer dgfr:resourceNormal
+	; api:viewer dgfr:resourceNormal	
 	; api:viewer dgfr:resourceUnavailability
 	; api:defaultViewer dgfr:resourceMinimal
 	.	
