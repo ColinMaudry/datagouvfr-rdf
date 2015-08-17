@@ -106,8 +106,28 @@ where {
   }
     group by ?organization
 	}
+};
+with <urn:graph:postprocessing>
+insert {
+	?resource dgfr:machineReadable ?machineReadable .
 }
-
+where {
+  values (?mediaType ?machineReadable) {
+    ("application/xml" true)
+    ("text/xml" true)
+		("application/json" true)
+    ("text/csv" true)
+    ("application/csv" true)
+    ("text/tsv" true)
+    ("text/plain" true)
+		("application/rdf+xml" true)
+    ("text/turtle" true)
+    ("text/trig" true)
+    ("text/n-triples" true)
+    }
+    ?resource a dcat:Distribution ;
+      dcat:mediaType ?mediaType .
+}
 
 
 
