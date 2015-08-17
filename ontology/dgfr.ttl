@@ -191,6 +191,14 @@
 		rdfs:comment "Un jeu de données dans lequel cette ressource est incluse"@fr ;
 		rdfs:domain dcat:Distribution .		
 
+	:machineReadable a rdf:Property ;
+		rdfs:isDefinedBy : ;
+		rdfs:range xsd:boolean ;
+		rdfs:label "Machine readable" ;
+		rdfs:comment "Whether the data in the distribution can easily be processed with open source software and without decompression."@en ;
+		rdfs:comment "Si oui ou non les données contenues dans la distribution peuvent être facilement traitées par un logiciel open source et sans décompression."@fr ;
+		rdfs:domain dcat:Distribution .	
+
 #For dgfr:Reuse
 
 	:Reuse rdfs:subClassOf foaf:Document ;
