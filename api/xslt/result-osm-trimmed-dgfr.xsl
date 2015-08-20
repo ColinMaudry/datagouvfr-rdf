@@ -354,7 +354,7 @@ $prefLabel, $altLabel, $title and $name variables.
     <nav class="site">
     	<div class="links">
     		<ul>
-    			<li class="first"><a href="/fr">Home</a></li>
+    			<li class="first"><a href="/fr/.doc">Home</a></li>
     			<li><a href="/fr/datasets">Datasets</a></li>
     			<li><a href="/fr/reuses">Reuses</a></li>
     			<li><a href="/fr/resources">Resources (dcat:Distribution)</a></li>
