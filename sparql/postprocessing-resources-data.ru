@@ -130,6 +130,7 @@ where {
     ("text/turtle" true)
     ("text/trig" true)
     ("text/n-triples" true)
+		("application/shp+zip" true)
     }
     ?resource a dcat:Distribution ;
       dcat:mediaType ?mediaType .
@@ -144,9 +145,6 @@ where {
     dcat:mediaType ?mediaType .
   filter not exists {?resource dgfr:machineReadable ?machineReadable}
 }
-
-
-
 
 
 
