@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.8.0)
+Semantic data.gouv.fr (0.8.1)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -58,6 +58,10 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+##### 0.8.1
+
+* Fixed CasanovaLD address for documentation ([/.doc](https://www.data.maudry.com/fr/.doc))
 
 #### 0.8.0
 
