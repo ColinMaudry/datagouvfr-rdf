@@ -144,10 +144,10 @@ dgfr:reuseSlug a api:ItemEndpoint
 	.
 
 #Endpoint for the documentation
-dgfr:doc a api:ItemEndpoint 
+dgfr:docu a api:ItemEndpoint 
 	; rdfs:label "Documentation" 
-	; api:defaultFormatter dgfr:DocFormatter
-	; api:uriTemplate "/" 
+	; api:defaultFormatter dgfr:DocuFormatter
+	; api:uriTemplate "/documentation" 
     ; api:selector
         [ api:where "?item a <http://rdfs.org/ns/void#Dataset>  ."
         ]
@@ -258,8 +258,8 @@ dgfr:CsvFormatter a api:XsltFormatter ;
   api:stylesheet "lda-assets/xslt/csv.xsl" ;
   api:mimeType "text/csv" .
   
-dgfr:DocFormatter a api:XsltFormatter 
-	; api:name "doc" 
+dgfr:DocuFormatter a api:XsltFormatter 
+	; api:name "docu" 
 	; api:mimeType "text/html; charset=utf-8" 
 	; api:stylesheet "lda-assets/xslt/dgfr-doc-fr.xsl"
 	# ; elda:shortnameMode elda:roundTrip
