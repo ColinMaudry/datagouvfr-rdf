@@ -147,7 +147,7 @@ dgfr:reuseSlug a api:ItemEndpoint
 dgfr:documentation a api:ItemEndpoint 
 	; rdfs:label "Documentation" 
 	; api:defaultFormatter dgfr:DocuFormatter
-	; api:uriTemplate "/api" 
+	; api:uriTemplate "/" 
     ; api:selector
         [ api:where "?item a <http://rdfs.org/ns/void#Dataset>  ."
         ]
