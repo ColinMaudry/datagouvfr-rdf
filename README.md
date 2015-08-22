@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.8.2)
+Semantic data.gouv.fr (0.8.3)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -58,6 +58,11 @@ Otherwise, you can reach me:
 - on Twitter: [@CMaudry](https://twitter.com/CMaudry)
 
 ## Change log
+
+
+##### 0.8.3
+
+* Added [KML formats](https://en.wikipedia.org/wiki/Keyhole_Markup_Language), [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD) and [N3](https://en.wikipedia.org/wiki/Notation3) to the list of machine readable formats (ColinMaudry/datagouvfr-rdf#37)
 
 ##### 0.8.2
 
