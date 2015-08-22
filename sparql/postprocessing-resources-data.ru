@@ -130,7 +130,11 @@ where {
     ("text/turtle" true)
     ("text/trig" true)
     ("text/n-triples" true)
+		("application/ld+json" true)
 		("application/shp+zip" true)
+		("application/vnd.google-earth.kml+xml" true)
+		("application/vnd.google-earth.kmz" true)
+		("application/kmz" true)
     }
     ?resource a dcat:Distribution ;
       dcat:mediaType ?mediaType .
