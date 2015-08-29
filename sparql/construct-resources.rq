@@ -37,8 +37,9 @@ from <file:../csv/resources.csv#delimiter=%3B;encoding=utf-8>
   
   bind(uri(concat("https://www.data.maudry.com/fr/resources/",?id)) as ?resource)
   bind(uri(concat("https://www.data.maudry.com/fr/datasets/",?dataset_slug)) as ?dataset)
-  bind(if(contains(?url," "), uri(encode_for_uri(?url)),uri(?url)) as ?urlAsUri)
-  bind(xs:dateTime(?created_at) as ?createdAsDateTime)
+  #If the URL contains space(s) 1) We remove the trailing space(s) (if any) 2) We replace the remaining spaces with %20 (the encoded equivalent of space)
+  bind(if(contains(?url," "), uri(replace(replace(?url,"[ ]+$","")," ","%20")),uri(?url)) as ?urlAsUri)
+	bind(xs:dateTime(?created_at) as ?createdAsDateTime)
   bind(xs:dateTime(?modified) as ?modifiedAsDateTime)
   bind(xs:integer(?size) as ?sizeAsInt)
   bind(xs:integer(?downloads) as ?downloadsAsInt)
