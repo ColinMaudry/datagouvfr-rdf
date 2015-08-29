@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.8.3)
+Semantic data.gouv.fr (0.8.4)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -59,6 +59,9 @@ Otherwise, you can reach me:
 
 ## Change log
 
+##### 0.8.4
+
+* Trims trailing spaces off resource URLs and replace other spaces with %20 (#52)
 
 ##### 0.8.3
 
