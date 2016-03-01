@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project basedir="." name="download-convert-upload" default="build">
-	<property file="upload.properties"/>
+	<property file="config.properties"/>
 	<property name="baseurl" value="http://www.data.gouv.fr/fr/"/>
 		
 	<!-- Necessary to set full path in Linux as PATH in not available in cron job -->
-	<condition property="curl" value="curl.exe" else="/usr/bin/curl">
+	<condition property="curl" value="curl.exe" else="${fullCurlPath}">
 		<os family="windows"/>
 	</condition>
-	<condition property="tarql" value="tarql.bat" else="/home/admin/tarql/bin/tarql">
+	<condition property="tarql" value="tarql.bat" else="${fullTarqlPath}">
 		<os family="windows"/>
 	</condition>
-	<condition property="fuseki" value="fuseki-server.bat" else="/home/admin/fuseki/fuseki-server">
+	<condition property="fuseki" value="fuseki-server.bat" else="${fullFusekiPath}">
 		<os family="windows"/>
 	</condition>
 	<condition property="livedataDownloaded" value="true" else="false">
@@ -28,7 +28,7 @@
 	</tstamp>
 	
 	<extension-point name="quick" depends="publish, backup-repository"/>
-	<extension-point name="build" depends="convert, publish, backup-repository"/>
+	<extension-point name="build" depends="download,convert, publish, backup-repository"/>
 	
 	<target name="download">
   	<echo>[DOWNLOAD]</echo>
@@ -55,7 +55,7 @@
 			dest="csv/organizations.csv"/>
   </target>
 	
-	<target name="clean" depends="download">
+	<target name="clean">
 		<echo>[CLEAN]</echo>
 		<mkdir dir="csv/temp/"/>
 		<echo>Removing empty lines that mess with TARQL querying...</echo>
