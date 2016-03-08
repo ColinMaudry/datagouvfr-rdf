@@ -1,4 +1,4 @@
-Semantic data.gouv.fr (0.8.4)
+Semantic data.gouv.fr (0.9.0)
 ==============
 
 Various stuff around uplifting the French open data portal, [data.gouv.fr](http://data.gouv.fr/en), to the [Semantic Web](http://www.w3.org/standards/semanticweb) (Web 3.0).
@@ -59,6 +59,11 @@ Otherwise, you can reach me:
 
 ## Change log
 
+#### 0.9
+
+- Externalized more configuration to `config.properties`
+- Restructured tasks 
+
 ##### 0.8.4
 
 * Trims trailing spaces off resource URLs and replace other spaces with %20 (#52)
@@ -75,24 +80,24 @@ Otherwise, you can reach me:
 
 * Fixed CasanovaLD address for documentation ([/.doc](https://www.data.maudry.com/fr/.doc))
 
-#### 0.8.0
+#### 0.8
 
 * Added backup-repository and load-backup targets to enable the management of the repository as a service
 * Added dgfr:machineReadable property to distinguish machine readable resources from the others (CSV, XML, JSON, RDF, plain text, etc.)
 * Added a clean version of dcat:mediaType values, without `charset=`
 
-#### 0.7.0
+#### 0.7
 
 * Added properties dgfr:responseStatusCode, dgfr:responseTime and dgfr:availabilityCheckedOn to the ontology and API configuration
 * Added direct link between organizations and published distributions (see the result in [the data model]((https://www.lucidchart.com/documents/view/6011b6e0-6a85-413a-8279-0588b0f10992))
 * Added a view for anavailable resources in the API (https://www.data.maudry.com/fr/resources/unavailable)
 * Icons for boolean values (true/false) are clearer now
 
-#### 0.6.0
+#### 0.6
 
 - Added ontology documentation (Ontoology, thanks @dgarijo). You can view it following the ontology URI at http://colin.maudry.com/ontologies/dgfr/index.html
 
-#### 0.5.0
+#### 0.5
 
 - Availability and unavailability count at dataset and organization levels
 
@@ -108,7 +113,7 @@ Otherwise, you can reach me:
 
 - Disabled archiving of RDF due to disk space. Will enable again when I have a clearer archiving strategy.
 
-#### 0.4.0
+#### 0.4
 
 - Calculation of popularity points for all objects, and aggregate sums on organisations and datasets
 - Integration of the data collected by [beheader](https://github.com/ColinMaudry/beheader) (availability of the distributions, content type, content length)
@@ -126,7 +131,7 @@ Otherwise, you can reach me:
 - Updated [the API documentation](https://www.data.maudry.com/fr/.doc#api)
 - Updated VoiD and PROV metadata to match the new repository location
 
-#### 0.3.0
+#### 0.3
 
 - The RDF data is now loaded in a single atomic transaction in the repository
 - Switch from Dydra (http://dydra.com) to a local Apache Fuseki instance
@@ -137,7 +142,7 @@ Otherwise, you can reach me:
 - That was a lame name. Say hi to [CasanovaLD](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=)!
 - Improved documentation
 
-#### 0.2.0
+#### 0.2
 
 - The [data.gouv.fr explorer app](https://translate.google.com/translate?sl=fr&tl=en&js=y&prev=_t&hl=fr&ie=UTF-8&u=https%3A%2F%2Fwww.data.maudry.com%2Ffr&edit-text=), with somewhat documented APIs, is live!
 - URIs have changed to match the domain of the app
@@ -165,7 +170,7 @@ Otherwise, you can reach me:
 - Configured upload and update of VoID and PROV metadata (in default graph)
 - Enabled scheduled task to update data every day
 
-#### 0.1.0
+#### 0.1
 
 - Script to download/clean/convert/publish data.gouv.fr dataset metadata
 - Basic documentation
