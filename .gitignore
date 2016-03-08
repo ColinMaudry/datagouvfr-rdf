@@ -1,5 +1,5 @@
 temp/
-upload.properties
+config.properties
 api/specs/*.ttl
 !api/specs/datagouvfr.ttl
 server.xml
@@ -8,3 +8,4 @@ csv/
 package.json
 /formats.*
 *.bat
+*.save
