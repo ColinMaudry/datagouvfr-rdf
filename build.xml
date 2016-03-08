@@ -10,9 +10,6 @@
 	<condition property="tarql" value="tarql.bat" else="${fullTarqlPath}">
 		<os family="windows"/>
 	</condition>
-	<condition property="fuseki" value="fuseki-server.bat" else="${fullFusekiPath}">
-		<os family="windows"/>
-	</condition>
 	<condition property="livedataDownloaded" value="true" else="false">
 		<available file="rdf/livedata.trig"></available>
 	</condition>
@@ -100,11 +97,18 @@
 		<exec executable="${tarql}" searchpath="true" output="rdf/organizations.ttl">
 			<arg line="sparql/construct-organizations.rq"/>
 		</exec>
-		<antcall target="upload_temp"/>
+		<antcall target="publish"/>
 	</target>
 	
 	<target name="upload_temp">
 		<echo>[TEMPORARY UPLOAD]</echo>
+		<echo>Creating prostprocessing graph...</echo>
+                <exec executable="${curl}" searchpath="true" failonerror="true">
+                        <arg line="-s -X PUT"/>
+                        <arg line="-H 'Content-type:text/turtle'"/>
+                        <arg line="-u ${repository.user}:${repository.password}"/>
+                        <arg line="'${repository.put.url}?graph=${postprocessingGraphUri}'"/>
+                </exec>
 		<echo>Uploading datasets.ttl to the postprocessing repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X PUT"/>
@@ -276,7 +280,7 @@
 		<get 
 			verbose="false"
 			src="${repository.get.url}"
-			dest="rdf/latest.trig"/>
+			dest="${dataDirectory}/latest_${datasetId}.trig"/>
 	</target>
 	
 	<target name="load-backup">
@@ -284,7 +288,7 @@
 		<echo>Loading the backup dump file into the repository...</echo>
 		<exec executable="${curl}" searchpath="true" failonerror="true">
 			<arg line="-s -X PUT"/>
-			<arg line="--data-binary @'rdf/latest.trig'"/>
+			<arg line="--data-binary @'${dataDirectory}/latest_${datasetId}.trig'"/>
 			<arg line="-H 'Content-type:text/trig'"/>
 			<arg line="-u ${repository.user}:${repository.password}"/>
 			<arg line="'${repository.put.url}'"/>
@@ -297,7 +301,7 @@
 		<get
 			verbose="false"
 			src="${live.repository.get.url}"
-			dest="rdf/livedata.trig"/>
+			dest="${dataDirectory}/livedata_${datasetId}.trig"/>
 	</target>
 	
 	<target name="livedata" depends="download-livedata">
@@ -305,7 +309,7 @@
 		<echo>Uploading live data into the local repository...</echo>
 		<exec executable="${curl}" searchpath="true">
 			<arg line="-s -X PUT"/>
-			<arg line="--data-binary @'rdf/livedata.trig'"/>
+			<arg line="--data-binary @'${dataDirectory}/livedata_${datasetId}.trig'"/>
 			<arg line="-H 'Content-type:text/trig'"/>
 			<arg line="-u ${repository.user}:${repository.password}"/>
 			<arg line="'${repository.put.url}'"/>
