@@ -99,7 +99,7 @@ $prefLabel, $altLabel, $title and $name variables.
 						<h3 id="donnees-objets">Types d'objets</h3>
 						<p>Aujourd'hui, les métadonnées des objets suivants peuvent être consultées :</p>
 						<ul>
-							<li><a href="/fr/datasets">Jeux de données</a> (<a href="https://www.data.maudry.com/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-1">exemple</a>)</li>
+							<li><a href="/fr/datasets">Jeux de données</a> (<a href="https://www.data.maudry.com/fr/datasets/metadonnees-des-jeux-de-donnees-publies-sur-data-gouv-fr-rdf-web-semantique">exemple</a>)</li>
 							<li><a href="/fr/resources">Ressources</a> (les fichiers de données, <a href="https://www.data.maudry.com/fr/resources/e0b7e6ce-461c-4648-aaf9-b98de3ef326d">exemple</a>)</li>
 							<li><a href="/fr/organizations">Organisations</a> (<a href="https://www.data.maudry.com/fr/organizations/sevres">exemple</a>)</li>
 							<li><a href="/fr/reuses">Réutilisations</a> (<a href="https://www.data.maudry.com/fr/reuses/casanovald-devergonde-les-metadonnees-data-gouv-fr">exemple</a>)</li>
