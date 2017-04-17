@@ -1,0 +1,16 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1501"
+	"http://data.gouv.fr/fr/organizations.csv" -> "http://data.gouv.fr#this" [ label = "prov:wasAttributedTo" ];
+	"http://data.gouv.fr/fr/reuses.csv" -> "http://data.gouv.fr#this" [ label = "prov:wasAttributedTo" ];
+	"http://data.gouv.fr/fr/resources.csv" -> "http://data.gouv.fr#this" [ label = "prov:wasAttributedTo" ];
+	"http://data.gouv.fr/fr/datasets.csv" -> "http://data.gouv.fr#this" [ label = "prov:wasAttributedTo" ];
+	"activities:updateDGFR-RDF" -> "http://www.data.maudry.com:3030/datagouvfr#this" [ label = "prov:generated" ];
+	"activities:updateDGFR-RDF" -> "https://github.com/ColinMaudry/datagouvfr-rdf" [ label = "prov:used" ];
+	"activities:updateDGFR-RDF" -> "http://data.gouv.fr/fr/organizations.csv" [ label = "prov:used" ];
+	"activities:updateDGFR-RDF" -> "http://data.gouv.fr/fr/reuses.csv" [ label = "prov:used" ];
+	"activities:updateDGFR-RDF" -> "http://data.gouv.fr/fr/resources.csv" [ label = "prov:used" ];
+	"activities:updateDGFR-RDF" -> "http://data.gouv.fr/fr/datasets.csv" [ label = "prov:used" ];
+	"activities:updateDGFR-RDF" -> "http://colin.maudry.com/id/me" [ label = "prov:wasAssociatedWith" ];
+
+}
