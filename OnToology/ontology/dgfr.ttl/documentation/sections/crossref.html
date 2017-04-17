@@ -1,5 +1,5 @@
-<h2>4. Cross reference for [Ontology Name] classes and properties</h2>
-This section provides details for each class and property defined by [Ontology Name].
+<h2>4. Cross reference for Data.gouv.fr (DGFR) ontology classes and properties</h2>
+This section provides details for each class and property defined by Data.gouv.fr (DGFR) ontology.
 <div id="classes">
    <h2>Classes</h2>
    <ul class="hlist">
@@ -92,6 +92,10 @@ This section provides details for each class and property defined by [Ontology N
    <h2>Data Properties</h2>
    <ul class="hlist">
       <li>
+         <a href="#availabilityCheckedOn"
+            title="http://colin.maudry.com/ontologies/dgfr#availabilityCheckedOn">Availability checked on</a>
+      </li>
+      <li>
          <a href="#available"
             title="http://colin.maudry.com/ontologies/dgfr#available">Available</a>
       </li>
@@ -132,7 +136,7 @@ This section provides details for each class and property defined by [Ontology N
          <a href="#format" title="http://colin.maudry.com/ontologies/dgfr#format">Format</a>
       </li>
       <li>
-         <a href="#hasMadeReuses"
+         <a href="#checksumType5"
             title="http://colin.maudry.com/ontologies/dgfr#hasMadeReuses">Has made reuses</a>
       </li>
       <li>
@@ -142,10 +146,14 @@ This section provides details for each class and property defined by [Ontology N
          <a href="#issues" title="http://colin.maudry.com/ontologies/dgfr#issues">Issues</a>
       </li>
       <li>
+         <a href="#machineReadable"
+            title="http://colin.maudry.com/ontologies/dgfr#machineReadable">Machine readable</a>
+      </li>
+      <li>
          <a href="#members" title="http://colin.maudry.com/ontologies/dgfr#members">Members</a>
       </li>
       <li>
-         <a href="#checksumValue9"
+         <a href="#pointsValue"
             title="http://colin.maudry.com/ontologies/dgfr#pointsValue">Points value</a>
       </li>
       <li>
@@ -162,6 +170,14 @@ This section provides details for each class and property defined by [Ontology N
       <li>
          <a href="#published"
             title="http://colin.maudry.com/ontologies/dgfr#published">Published</a>
+      </li>
+      <li>
+         <a href="#responseStatusCode"
+            title="http://colin.maudry.com/ontologies/dgfr#responseStatusCode">Response status code</a>
+      </li>
+      <li>
+         <a href="#responseTime"
+            title="http://colin.maudry.com/ontologies/dgfr#responseTime">Response time (seconds)</a>
       </li>
       <li>
          <a href="#reuses" title="http://colin.maudry.com/ontologies/dgfr#reuses">Reuses</a>
@@ -191,6 +207,35 @@ This section provides details for each class and property defined by [Ontology N
          <a href="#visits" title="http://colin.maudry.com/ontologies/dgfr#visits">Visits</a>
       </li>
    </ul>
+   <div class="entity" id="availabilityCheckedOn">
+      <h3>Availability checked on<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://colin.maudry.com/ontologies/dgfr#availabilityCheckedOn</p>
+      <dl class="definedBy">
+         <dt>is defined by</dt>
+         <dd>
+            <a href="http://colin.maudry.com/ontologies/dgfr#">http://colin.maudry.com/ontologies/dgfr#</a>
+         </dd>
+      </dl>
+      <div class="comment">
+         <p>The date and time when the distribution (file) had its availability checked for the last time.</p>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#dateTime">date time</span>
+            </dd>
+            <dt>is also defined as</dt>
+            <dd>
+               <a href="#availabilityCheckedOn">annotation property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="available">
       <h3>Available<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -227,8 +272,14 @@ This section provides details for each class and property defined by [Ontology N
       </h3>
       <p>
          <strong>IRI:</strong> http://colin.maudry.com/ontologies/dgfr#availableDistributions</p>
+      <dl class="definedBy">
+         <dt>is defined by</dt>
+         <dd>
+            <a href="http://colin.maudry.com/ontologies/dgfr#">http://colin.maudry.com/ontologies/dgfr#</a>
+         </dd>
+      </dl>
       <div class="comment">
-         <p>The number of distributons that are actually available.</p>
+         <p>The number of distributions (files) that are actually available.</p>
       </div>
       <div class="description">
          <dl>
@@ -504,7 +555,7 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
-   <div class="entity" id="hasMadeReuses">
+   <div class="entity" id="checksumType5">
       <h3>Has made reuses<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
          </span>
@@ -591,6 +642,35 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
+   <div class="entity" id="machineReadable">
+      <h3>Machine readable<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://colin.maudry.com/ontologies/dgfr#machineReadable</p>
+      <dl class="definedBy">
+         <dt>is defined by</dt>
+         <dd>
+            <a href="http://colin.maudry.com/ontologies/dgfr#">http://colin.maudry.com/ontologies/dgfr#</a>
+         </dd>
+      </dl>
+      <div class="comment">
+         <p>Whether the data in the distribution can easily be processed with open source software and without decompression.</p>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</span>
+            </dd>
+            <dt>is also defined as</dt>
+            <dd>
+               <a href="#machineReadable">annotation property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="members">
       <h3>Members<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -620,7 +700,7 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
-   <div class="entity" id="checksumValue9">
+   <div class="entity" id="pointsValue">
       <h3>Points value<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
          </span>
@@ -770,6 +850,64 @@ This section provides details for each class and property defined by [Ontology N
          </dl>
       </div>
    </div>
+   <div class="entity" id="responseStatusCode">
+      <h3>Response status code<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://colin.maudry.com/ontologies/dgfr#responseStatusCode</p>
+      <dl class="definedBy">
+         <dt>is defined by</dt>
+         <dd>
+            <a href="http://colin.maudry.com/ontologies/dgfr#">http://colin.maudry.com/ontologies/dgfr#</a>
+         </dd>
+      </dl>
+      <div class="comment">
+         <p>The HTTP response code returned by the server when downloading the resource.</p>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+            <dt>is also defined as</dt>
+            <dd>
+               <a href="#responseStatusCode">annotation property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="responseTime">
+      <h3>Response time (seconds)<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://colin.maudry.com/ontologies/dgfr#responseTime</p>
+      <dl class="definedBy">
+         <dt>is defined by</dt>
+         <dd>
+            <a href="http://colin.maudry.com/ontologies/dgfr#">http://colin.maudry.com/ontologies/dgfr#</a>
+         </dd>
+      </dl>
+      <div class="comment">
+         <p>The time, in seconds, for the server that hosts the distribution (file), to respond to a request. This is not the download time.</p>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</span>
+            </dd>
+            <dt>is also defined as</dt>
+            <dd>
+               <a href="#responseTime">annotation property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="reuses">
       <h3>Reuses<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
@@ -893,8 +1031,14 @@ This section provides details for each class and property defined by [Ontology N
       </h3>
       <p>
          <strong>IRI:</strong> http://colin.maudry.com/ontologies/dgfr#unavailableDistributions</p>
+      <dl class="definedBy">
+         <dt>is defined by</dt>
+         <dd>
+            <a href="http://colin.maudry.com/ontologies/dgfr#">http://colin.maudry.com/ontologies/dgfr#</a>
+         </dd>
+      </dl>
       <div class="comment">
-         <p>The number of distributons for which the hosting server returns an error.</p>
+         <p>The number of distributions (files) for which the hosting server returns an error.</p>
       </div>
       <div class="description">
          <dl>
